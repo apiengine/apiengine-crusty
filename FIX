@@ -1,0 +1,19 @@
+. Implement PUT for user.
+. Make README.  Include setting PATH.
+. Move into separate repository.
+. Replace `< file cat` with $(< file).
+. Install instructions for jshon / jansson.
+. Use alternative to | as a token for '.  For example degrees unicode.
+. Determine how gen scales beyond single user.
+. Put /out somewhere outside the project.
+. Coalesce " stripping.
+. Get rid of ,urlsed once urls are encoded as hexstrings.
+
+- ^http | Deal with 000 return code from curl.  Server not there.
+- set -e | Verify all return codes explicitly.
+- ^init | Remove POST / GET dupe in :main.
+_ keep for now | Resources with just GET do not need a pre _ file.
+_ keep for now | Resources with just GET do not need a post % file.
+_ keep for now |  May not need the post files.
+- cd $dirname | Make :main runnable from anywhere.  Ensure dotted others too.
+- cd $dirname | Scripts currently rely on being the current directory.

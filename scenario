@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+reset
+status r
+api r
+user c bob bob@builder.com orange
+#user u bob bob@builder.com orange '{"name":"bobby"}'
+session d
+session c bob orange
+user d bob

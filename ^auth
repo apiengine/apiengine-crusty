@@ -1,0 +1,28 @@
+#!/bin/sh
+
+__len=`jshon -l < ${AE_RESPONSE}`
+__authy=1
+if [ $__len != 0 ]; then
+    __keys=`jshon -k < ${AE_RESPONSE}`
+    (echo $__keys | grep -q auth)
+    __authy=$?
+fi
+
+_=`< ${AE_RESPONSE}`
+if [ $__authy = 0 ]; then
+    __=`< ${AE_RESPONSE} cat`; jsonv auth;  __auth=$__
+fi
+
+if [ "$__auth" = "true" ]; then
+    __=`< ${AE_RESPONSE} cat`; jsonv csrf;  __csrf=$__
+    __=`< ${AE_RESPONSE} cat`; jsonv id; __id=$__
+    __=
+    jsonadd "id" $__id
+    jsonadd "csrf" $__csrf
+    > ${AE_SESSION} echo $__
+    echo "authenticated."
+fi
+
+if [ "$__auth" = "false" ]; then
+    invalidate
+fi

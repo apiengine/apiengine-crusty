@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ "${AE_METHOD}" = "POST" ]; then
+    __login=$1
+    __password=$2
+    AE_REQUEST="{'login':|${__login}|,'password':|${__password}|}"
+fi
+
+# FIX: move off to utility area.
+AE_REQUEST=`echo $AE_REQUEST | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
+
+if [ "${AE_METHOD}" = "DELETE" ]; then
+    if [ ! -f ${AE_SESSION} ]; then
+        fail "no active session to delete."
+    fi
+    __=`< ${AE_SESSION} cat`; jsonv id; urlencode; 
+    AE_RESOURCE=${AE_RESOURCE}/$__
+fi

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+usage() {
+    __1=$1; shift
+
+    echo "$__1 : usage : ${AE_CMD} {c,r,u,d} $*"
+    exit 1
+}
+
+fail() {
+    echo error: $1
+    exit 2
+}
+
+retok() {
+    if [ $1 != 0 ]; then
+        fail "$2 command failed."
+    fi
+}

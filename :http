@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set_method()
+{
+      if [ "$1" = "c" ];      then __="POST"
+    elif [ "$1" = "r" ];      then __="GET"
+    elif [ "$1" = "u" ];      then __="PUT"
+    elif [ "$1" = "d" ];      then __="DELETE"
+    elif [ "$1" = "GET" ];    then __=$1
+    elif [ "$1" = "POST" ];   then __=$1
+    elif [ "$1" = "PUT" ];    then __=$1
+    elif [ "$1" = "DELETE" ]; then __=$1
+    else
+        usage "illegal crud method" "[args...]"
+    fi
+}

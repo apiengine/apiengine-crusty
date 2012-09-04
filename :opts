@@ -1,0 +1,17 @@
+#!/bin/sh
+
+checkopts() {
+    __plusone=`expr $2 + 1`
+    if [ $1 != $2 -a $1 != $__plusone ]; then
+        shift 2
+        usage "wrong argument count" $* "[optionals as json]"
+    fi
+    if [ $1 = $__plusone ]; then
+        __last=`echo $@ | awk '{ print $NF }'`
+        __f=`echo $__last | cut -c1-1`
+        if [ "$__f" != '{' ]; then
+            shift 2
+            usage "optional last argument MUST be json" "[optionals as json]"
+        fi
+    fi
+}

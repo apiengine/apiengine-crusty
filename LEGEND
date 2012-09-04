@@ -1,0 +1,11 @@
+files with no prefix are either
+scenarios or <cmd>s.  <cmd>s
+are symbolic links to :main
+
+files starting with
+
+: function definitions
+^ functionality
+_ pre <cmd> hooks
+% post command hooks
+, sed configuration

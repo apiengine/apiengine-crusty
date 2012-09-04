@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "${AE_METHOD}" = "DELETE" ]; then
+    # FIX can 'bob' delete himself from active session?
+    # FIX does this need to be here.
+    invalidate
+fi

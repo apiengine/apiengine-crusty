@@ -1,0 +1,37 @@
+#!/bin/sh
+
+loc=`dirname $0`
+cmd=`basename $0`
+
+cd $loc
+
+. :bomb
+. :util
+. :opts
+. :session
+. :http
+. :json
+. :common $*
+
+shift
+
+. _${AE_CMD} $*
+. ^cookie
+. ^session
+. ^init
+
+set -x
+> ${AE_HTTPCODE} curl \
+    ${AE_COOKIES} \
+    ${AE_CSRF} \
+    -s \
+    -X ${AE_METHOD} \
+    ${AE_POST} \
+    -o ${AE_RESPONSE} \
+    -w %{http_code} \
+    ${AE_HOST}:${AE_PORT}/${AE_RESOURCE}
+set +x
+
+. ^http
+. ^auth
+. %${AE_CMD} $*
