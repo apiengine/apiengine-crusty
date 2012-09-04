@@ -1,6 +1,6 @@
 #!/bin/sh
 
-__httpcode=`cat ${AE_HTTPCODE}`
+__httpcode=$(cat ${AE_HTTPCODE})
 __httpfirst=`echo $__httpcode | sed s'+^\(.\).*$+\1+'`
 if [ "$__httpfirst" = "4" ]; then
     fail "$__httpcode : ${AE_RESPONSE}"
