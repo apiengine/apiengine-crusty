@@ -1,4 +1,4 @@
-#!                                                               /bin/sh
+#!/bin/sh
 
 set -e
 
@@ -6,58 +6,8 @@ reset
 status r
 api r
 user c bob bob@builder.com orange
-user u bob bob@builder.com TRUE
-#user u bob bob@builder.com TRUE '{"name":"bobby"}'
+user u bob bob@framer.com true
 session d
 session c bob orange
 user d bob
 
-#:
-#
-# ?=not done
-# .=noop
-# *=done
-#                PGPD        RETURN                                                  auth errors  code url             CMD
-#
-#status          .*..                                                  {status}        .      .   200        status r                                                  /status
-#session         *...                                        {csrf, login*, id}        *      *   201        session c login|email password                            /session
-#session         .*..                                        {csrf, login*, id}        *      *   200        session r                                                 /session
-#session         .. *                                                    {csrf}        *      *   200  #id   session d                                                 /session/#id
-#api             .*..                                                     [api]        .      .   200        api r                                                     /api
-#user            *...                                         {csrf, login, id}        *      *   201        user c login email password [publicize, name, url]        /user
-#user            .?.. {login, gravatar, epoch, name*, email*, publicize*, url*}        .      .   204        user r login                                              /user/#login
-#user            ..?.                                                                                        user u login email publicize [password*, name*, url*]     /user/#UserKey
-#user            ...?                                                         .                   204        user d login                                              /user/#UserKey
-#password        ?...                                                                                                                                                  /passwordreset
-#password        .?..                                                                                                                                                  /passwordreset/#ResetKey
-#password        ?...                                                                                                                                                  /passwordreset/#ResetKey
-#api             .?..                                                                                                                                                  /user/#UserKey/api
-#api             ?...                                                                                                                                                  /user/#UserKey/api
-#api             .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey
-#api             ?...                                                                                                                                                  /user/#UserKey/api/#ApiKey
-#version         .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey
-#version         ...?                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey
-#version         ..?.                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey
-#resource        .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource
-#resource        ?...                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource
-#resource        .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey
-#resource        ...?                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey
-#resource        ..?.                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey
-#method          .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method
-#method          ?...                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method
-#method          .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey
-#method          ...?                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey
-#method          ..?.                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey
-#header          ...?                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey/requestheaders
-#header          ...?                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey/responseheaders
-#request         ...?                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey/requestbody
-#response        ...?                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey/responsebody
-#representation  .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/representation
-#representation  ?...                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/representation
-#representation  .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/representation/#RepresentationKey
-#representation  ...?                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/representation/#RepresentationKey
-#representation  ..?.                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/representation/#RepresentationKey
-#notify          .?..                                                                                                                                                  /user/#UserKey/notification
-#notify          .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/notification
-#notify          .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/notification
-#notify          .?..                                                                                                                                                  /user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/metod/#MethodKey/notification

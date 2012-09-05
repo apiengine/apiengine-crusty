@@ -1,4 +1,5 @@
-. Implement PUT for user.
+. Use -i on curl then strip out Location: and json.
+. How to deal with {?page,count}
 . Implement full spec for all possible cmd lines.
 . Process json "errors".  If it is not empty fail cmd.
 . user d should fail unless #login specified.

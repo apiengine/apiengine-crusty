@@ -8,4 +8,4 @@ files starting with
 ^ functionality
 _ pre <cmd> hooks
 % post command hooks
-, sed configuration
+, configuration
