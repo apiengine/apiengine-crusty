@@ -1,4 +1,4 @@
-#!/bin/sh
+#!                                                               \bin/sh
 
 set -e
 
@@ -6,7 +6,65 @@ reset
 status r
 api r
 user c bob bob@builder.com orange
-#user u bob bob@builder.com orange '{"name":"bobby"}'
+user u bob bob@builder.com TRUE
+#user u bob bob@builder.com TRUE '{"name":"bobby"}'
 session d
 session c bob orange
 user d bob
+
+#:
+#
+# ?=not done
+# .=noop
+# *=done
+#                GPDP   ARGS
+#
+#status          *...     0                                                                  \status                                                                                         StatusR         GET
+#
+#session         ?...                                                                        \session                                                                                        SessionsR       GET
+#session         .*..                                                                        \session                                                                                        SessionsR       POST
+#session         ..*.                                                                        \session/#Text                                                                                  SessionR        DELETE
+#api             *...                                                                        \api                                                                                            ApiSearchR      GET
+#
+#user            .*..                                                                        \user                                                                                           UsersR          POST
+#user            ?...                                                                        \user/#UserKey                                                                                  UserR           GET
+#user            ..?.                                                                        \user/#UserKey                                                                                  UserR           DELETE
+#user            ...?                                                                        \user/#UserKey                                                                                  UserR           PUT
+#
+#password        .?..                                                                        \passwordreset                                                                                  ResetsR         POST
+#password        ?...                                                                        \passwordreset/#ResetKey                                                                        ResetR          GET
+#password        .?..                                                                        \passwordreset/#ResetKey                                                                        ResetR          POST
+#
+#api             ?...                                                                        \user/#UserKey/api                                                                              ApisR           GET
+#api             .?..                                                                        \user/#UserKey/api                                                                              ApisR           POST
+#api             ?...                                                                        \user/#UserKey/api/#ApiKey                                                                      ApiR            GET
+#api             .?..                                                                        \user/#UserKey/api/#ApiKey                                                                      ApiR            POST
+#version         ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey                                                          VersionR        GET
+#version         ..?.                                                                        \user/#UserKey/api/#ApiKey/#VersionKey                                                          VersionR        DELETE
+#version         ...?                                                                        \user/#UserKey/api/#ApiKey/#VersionKey                                                          VersionR        PUT
+#
+#resource        ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource                                                 ResourcesR      GET
+#resource        .?..                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource                                                 ResourcesR      POST
+#resource        ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey                                    ResourceR       GET
+#resource        ..?.                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey                                    ResourceR       DELETE
+#resource        ...?                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey                                    ResourceR       PUT
+#method          ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method                             MethodsR        GET
+#method          .?..                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method                             MethodsR        POST
+#method          ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey                  MethodR         GET
+#method          ..?.                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey                  MethodR         DELETE
+#method          ...?                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey                  MethodR         PUT
+#header          ..?.                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey/requestheaders   ReqHeadersR     PUT
+#header          ..?.                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey/responseheaders  ResHeadersR     PUT
+#request         ..?.                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey/requestbody      ReqBodyR        PUT
+#response        ..?.                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/method/#MethodKey/responsebody     ResBodyR        PUT
+#
+#representation  ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/representation                                           ReprsR          GET
+#representation  .?..                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/representation                                           ReprsR          POST
+#representation  ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/representation/#RepresentationKey                        ReprR           GET
+#representation  ..?.                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/representation/#RepresentationKey                        ReprR           DELETE
+#representation  ...?                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/representation/#RepresentationKey                        ReprR           PUT
+#
+#notify          ?...                                                                        \user/#UserKey/notification                                                                     NotifyUserR     GET
+#notify          ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/notification                                             NotifyApiR      GET
+#notify          ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/notification                       NotifyResourceR GET
+#notify          ?...                                                                        \user/#UserKey/api/#ApiKey/#VersionKey/resource/#ResourceKey/metod/#MethodKey/notification      NotifyMethodR   GET
