@@ -1,6 +1,7 @@
 . Implement PUT for user.
 . Implement full spec for all possible cmd lines.
 . Process json "errors".  If it is not empty fail cmd.
+. user d should fail unless #login specified.
 . Make README.  Include setting PATH.
 . Move into separate repository.
 . Replace `< file cat` with $(< file).
