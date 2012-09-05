@@ -1,14 +1,13 @@
 #!/bin/sh
 
-if [ -z ${APIENGINE} ]; then
-    echo "Set APIENGINE as path to apiengine-server/"
+if [ -z ${AE_CURL} ]; then
+    echo "Set AE_CURL as path to apiengine-server/"
     exit 1
 fi
 
 AE_CMD=${cmd}
 
-AE_CURL=${APIENGINE}/curl
-AE_GEN=${APIENGINE}/gen/curl
+AE_GEN=${AE_CURL}/gen
 AE_CF=${AE_GEN}/cookies
 AE_HOST=localhost
 AE_PORT=3000
