@@ -37,7 +37,7 @@
                                                                                             | representation r                                            /user/#user/api/#api/#version/representation/#representation
                                                                                             | representation d                                            /user/#user/api/#api/#version/representation/#representation
                                                                                             | representation u                                            /user/#user/api/#api/#version/representation/#representation
-                                                                                            | notify         r                                             /user/#user/notification
-                                                                                            | notify         r                                             /user/#user/api/#api/#version/notification
-                                                                                            | notify         r                                             /user/#user/api/#api/#version/resource/#resource/notification
-                                                                                            | notify         r                                             /user/#user/api/#api/#version/resource/#resource/metod/#method/notification
+                                                                                            | notify         r                                            /user/#user/notification
+                                                                                            | notify         r                                            /user/#user/api/#api/#version/notification
+                                                                                            | notify         r                                            /user/#user/api/#api/#version/resource/#resource/notification
+                                                                                            | notify         r                                            /user/#user/api/#api/#version/resource/#resource/metod/#method/notification
