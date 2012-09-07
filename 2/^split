@@ -1,22 +1,4 @@
 #!/bin/sh
 
-grep -q : matrix
-if [ $? = 0 ]; then
-    fail 'matrix contains separator character :'
-fi
-
-cat matrix                               | \
- sed -e '1d'                               \
-     -e 's/./:/154'                        \
-     -e 's/./:/111'                        \
-     -e 's/./:/109'                        \
-     -e 's/./:/93'                         \
-     -e 's/./:/87'                         \
-     -e 's/./:/80'                         \
-     -e 's/./:/75'                         \
-     -e 's/./:/52'                         \
-     -e 's/^/:/g'                          \
-     -e 's/$/:/g'                          \
-     -e 's/ *:/:/g'                        \
-     -e 's/: */:/g'                        \
-| cat
+_v=`< ${AE_COLLAPSED} cat | head -6 | tail -1`
+echo $_v | cut -d: -f7

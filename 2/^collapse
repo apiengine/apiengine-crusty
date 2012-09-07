@@ -6,6 +6,7 @@ if [ $? = 0 ]; then
 fi
 
 cat matrix                               | \
+grep -v '^#'                             | \
  sed -e '1d'                               \
      -e 's/./:/154'                        \
      -e 's/./:/111'                        \
@@ -19,4 +20,4 @@ cat matrix                               | \
      -e 's/$/:/g'                          \
      -e 's/ *:/:/g'                        \
      -e 's/: */:/g'                        \
-| cat
+> ${AE_COLLAPSED}

@@ -15,8 +15,9 @@ AE_PORT=3000
 AE_RESOURCE=${AE_CMD}
 AE_RESPONSE=${AE_GEN}/${AE_RESOURCE}_$$.out
 AE_HTTPCODE=${AE_GEN}/${AE_RESOURCE}_$$_httpcode.out
+AE_HTTPCODE=${AE_GEN}/${AE_RESOURCE}_$$_httpcode.out
 AE_SESSION=${AE_GEN}/session
-AE_MATRIX=matrix
+AE_COLLAPSED=${AE_GEN}/collapsed
 
 set_method $1
 AE_METHOD=$__
