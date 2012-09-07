@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set_method()
+http_method()
 {
       if [ "$1" = "c" ];      then __="POST"
     elif [ "$1" = "r" ];      then __="GET"
@@ -11,6 +11,6 @@ set_method()
     elif [ "$1" = "PUT" ];    then __=$1
     elif [ "$1" = "DELETE" ]; then __=$1
     else
-        usage "illegal crud method" "[args...]"
+        bomb_usage "illegal crud method" "[args...]"
     fi
 }

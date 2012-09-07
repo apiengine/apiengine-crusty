@@ -18,9 +18,9 @@ AE_HTTPCODE=${AE_GEN}/${AE_RESOURCE}_$$_httpcode.out
 AE_HTTPCODE=${AE_GEN}/${AE_RESOURCE}_$$_httpcode.out
 AE_SESSION=${AE_GEN}/session
 AE_COLLAPSED=${AE_GEN}/collapsed
+AE_FILTERED=${AE_GEN}/filtered
 
-set_method $1
-AE_METHOD=$__
+http_method $1; AE_METHOD=$__
 
 if [ -f ${HOME}/.ae/config ]; then
     . ${HOME}/.ae/config

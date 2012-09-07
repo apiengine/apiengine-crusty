@@ -1,4 +1,4 @@
-                                             RETURN               location auth errors code            CMD   T                                       ARGS URL
+                                           RESPONSE               location auth  error code            CMD   T                                       ARGS URL
                                            {status}                      .    .      .  200 | status         r  .                                         /status
                                    {csrf id login*}          /session/{id}    *      *  201 | session        c  login|email password                      /session
                                    {csrf id login*}                      .    *      *  200 | session        r  .                                         /session

@@ -8,6 +8,7 @@ cd $loc
 . :bomb
 . :http
 . :common $*
+. ^filter
 . ^collapse
 . ^split
 
