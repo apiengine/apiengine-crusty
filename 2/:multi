@@ -1,0 +1,23 @@
+#!/bin/sh
+
+multi_get() {
+    _pre=$1
+    shift
+    _multi=$@
+
+    i=0
+    for w in ${_multi}
+    do
+        eval ${_pre}_v_$i='"$w"'
+
+        (echo $w | grep -q "\*")
+        __=$?
+        if [ $__ = 0 ]; then
+            eval ${_pre}_o_$i="true"
+        else
+            eval ${_pre}_o_$i="false"
+        fi
+        i=`expr $i + 1`
+        eval ${_pre}_n=$i
+    done
+}

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+_lines=`wc -l ${AE_COLLAPSED} | cut -c7-8`
+if [ ${_lines} = 0 ]; then
+    bomb_fail "no entries for command ${AE_CMD}"
+fi
+
+cat ${AE_COLLAPSED} | while read __
+do
+    specs_split $__
+    multi_get "_args" ${_args}
+    echo ${_args_n}
+done

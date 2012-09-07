@@ -1,14 +1,13 @@
 #!/bin/sh
 
-grep -q : matrix
+grep -q : ${AE_FILTERED}
 if [ $? = 0 ]; then
     fail 'matrix contains separator character :'
 fi
 
-cat matrix                               | \
+cat ${AE_FILTERED}                       | \
 grep -v '^#'                             | \
- sed -e '1d'                               \
-     -e 's/./:/154'                        \
+ sed -e 's/./:/155'                        \
      -e 's/./:/111'                        \
      -e 's/./:/109'                        \
      -e 's/./:/93'                         \
