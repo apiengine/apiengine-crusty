@@ -8,8 +8,10 @@ cd $loc
 . :bomb
 . :http
 . :common $*
+. ^collapse
+. ^split
 
-AE_VARIANTS=`< ${AE_MATRIX} cat | grep "| ${AE_CMD}"` 
-echo variants: ${AE_VARIANTS}
+#AE_VARIANTS=`< ${AE_MATRIX} cat | grep "| ${AE_CMD}"` 
+#echo variants: ${AE_VARIANTS}
 
 shift
