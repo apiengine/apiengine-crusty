@@ -1,0 +1,15 @@
+#!/bin/sh
+
+loc=`dirname $0`
+cmd=`basename $0`
+
+cd $loc
+
+. :bomb
+. :http
+. :common $*
+
+AE_VARIANTS=`< ${AE_MATRIX} cat | grep "| ${AE_CMD}"` 
+echo variants: ${AE_VARIANTS}
+
+shift
