@@ -5,19 +5,28 @@ multi_get() {
     shift
     _multi=$@
 
-    i=0
+    m=0
+    o=0
     for w in ${_multi}
     do
-        eval ${_pre}_v_$i='"$w"'
-
         (echo $w | grep -q "\*")
-        __=$?
-        if [ $__ = 0 ]; then
-            eval ${_pre}_o_$i="true"
+        _optional=$?
+        if [ $_optional = 0 ]; then
+            eval ${_pre}_o_$i='"$w"'
+            o=`expr $o + 1`
         else
-            eval ${_pre}_o_$i="false"
+            eval ${_pre}_m_$i='"$w"'
+            m=`expr $m + 1`
         fi
-        i=`expr $i + 1`
-        eval ${_pre}_n=$i
+        eval ${_pre}_o='"$o"'
+        eval ${_pre}_m='"$m"'
     done
+}
+
+multi_cmdline_total() {
+    if [ $2 = 0 ]; then
+        __=$1
+    else
+        __=`expr $1 + 1`
+    fi
 }

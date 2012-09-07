@@ -5,6 +5,7 @@ if [ -z ${AE_CURL} ]; then
     exit 1
 fi
 
+AE_CRUD=$1
 AE_CMD=${cmd}
 
 AE_GEN=${AE_CURL}/gen
@@ -20,7 +21,7 @@ AE_SESSION=${AE_GEN}/session
 AE_COLLAPSED=${AE_GEN}/collapsed
 AE_FILTERED=${AE_GEN}/filtered
 
-http_method $1; AE_METHOD=$__
+http_method ${AE_CRUD}; AE_METHOD=$__
 
 if [ -f ${HOME}/.ae/config ]; then
     . ${HOME}/.ae/config
