@@ -27,6 +27,9 @@ line_locate() {
     if [ "${_line}" == "__not_found__" ]; then
         bomb_fail "no entry for [${AE_CMD} ${AE_CRUD}]"
     fi
+
+    specs_split ${_line}
+    param_build "_args" ${_args}
 }
 
 

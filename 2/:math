@@ -1,9 +1,7 @@
 #!/bin/sh
 
 math_inc() {
-    set -x
     val_peek "$1"
     __=`expr ${__} + 1`
     val_poke "$1" $__
-    set +x
 }

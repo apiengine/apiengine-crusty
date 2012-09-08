@@ -15,10 +15,11 @@ param_build() {
         (echo $w | grep -q "\*")
         _optional=$?
         if [ $_optional = 0 ]; then
-            val_poke ${_pre}_o_$i "$w"
+            # FIX rewrite these as array_expand
+            val_poke ${_pre}_o_$o "$w"
             o=`expr $o + 1`
         else
-            val_poke ${_pre}_m_$i "$w"
+            val_poke ${_pre}_m_$m "$w"
             m=`expr $m + 1`
         fi
         val_poke ${_pre}_o_n "$o"
