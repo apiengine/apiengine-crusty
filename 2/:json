@@ -39,18 +39,19 @@ json_inner() {
 json_merge() {
     # $1 left
     # $2 right
-    json_inner $1; __l=$__
-    json_inner $2; __r=$__
+    json_inner $1; _ll=$__
+    json_inner $2; _rr=$__
+    _merged="{$_ll,$_rr}"
 
     json_empty $1
-    __="{$__l,$__r}"
     if [ "$__" = "true" ]; then
-        __=$2
+        _merged=$2
     fi
     json_empty $2
     if [ "$__" = "true" ]; then
-        __=$1
+        _merged=$1
     fi
+    __=${_merged}
 }
 
 json_is() {
