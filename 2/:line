@@ -30,6 +30,7 @@ line_locate() {
 }
 
 
+# FIX robably lives somewhere else
 line_cmdline_match() {
     array_len "_args_m"; _alen=$__
     array_len "_cmdline"; _clen=$__
@@ -38,9 +39,8 @@ line_cmdline_match() {
     if [ "$__" = "true" ]; then
         math_inc "_alen"    
     fi
-bomb_fail "WORKING IN HERE $#"
-    if [ $1 != $2 ]; then
-        bomb_fail "incorrect parameter count: expected $2, provided $1"
+    if [ ${_alen} != ${_clen} ]; then
+        bomb_cmdfail "incorrect parameter count: expected ${_alen}, provided ${_clen}"
     fi
 }
 

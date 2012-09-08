@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# FIX split into core bomb and domain bomb
 bomb_usage() {
     __1=$1; shift
 
@@ -8,8 +9,12 @@ bomb_usage() {
 }
 
 bomb_fail() {
-    echo error: $1
+    echo error: $@
     exit 2
+}
+
+bomb_cmdfail() {
+    bomb_fail "${AE_CMD}:" "$1"
 }
 
 bomb_retok() {
