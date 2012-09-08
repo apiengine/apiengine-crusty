@@ -1,0 +1,9 @@
+#!/bin/sh
+
+i=0
+while [ $i != $# ]; do
+    n=`expr $i + 1`
+    eval _$i='$'$n
+    i=$n
+done
+_n=$i
