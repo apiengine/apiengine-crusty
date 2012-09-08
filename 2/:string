@@ -9,6 +9,15 @@ string_startswith() {
     fi
 }
 
+string_endswith() {
+    (echo $2 | grep -q "$1$")
+    if [ $? = 0 ]; then
+        __="true"
+    else
+        __="false"
+    fi
+}
+
 string_contains() {
     (echo $2 | grep -q "$1")
     if [ $? = 0 ]; then

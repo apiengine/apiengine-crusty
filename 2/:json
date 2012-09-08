@@ -1,16 +1,16 @@
 #!/bin/sh
 
-jsonmunge() {
+json_munge() {
     __=`echo $__ | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
     __=`echo $__ | sed s'+"true"+true+g' | sed s'+"false"+false+g'`
 }
 
-jsonv() {
+json_v() {
     __=`echo $__ | jshon -e $1`
     __=`echo $__ | sed s'+^"++g' | sed s'+"$++g'`
 }
 
-jsonadd() {
+json_add() {
     __t="|$1|:|$2|"
     if [ "$__" = "" ]; then
         __="{$__t}"
@@ -18,11 +18,25 @@ jsonadd() {
         __p=`echo $__ | sed s'+^.\(.*\).$+\1+'`
         __="{$__p,$__t}"
     fi
-    jsonmunge
+    json_munge
 }
 
-jsonmerge() {
+json_merge() {
     __a=`echo $1 | sed s'+^.\(.*\).$+\1+'`
     __b=`echo $2 | sed s'+^.\(.*\).$+\1+'`
     __="{$__a,$__b}"
+}
+
+json_is() {
+    echo "JSON: $1"
+    string_startswith "{" "$1"
+    _s=$__
+    string_endswith "}" "$1"
+    _e=$__
+    if [ "$_s" = "true" -a "$_e" = "true" ]; then
+        __="true"
+    else
+        __="false"
+    fi
+    # FIX [...] is valid json as well as {...}
 }

@@ -8,6 +8,7 @@ cd $loc
 . :bomb
 . :string
 . :http
+. :json
 . :specs
 . :params
 . :line
@@ -20,9 +21,7 @@ shift
 . ^cmdline
 
 line_locate
-#specs_split ${_line}
-#arams_get "_args" ${_args}
-#arams_match $# ${_args_m} ${_args_o}
+
 echo COUNT: $#
 echo LINE: ${_line}
 echo MANDATORY: ${_args_m}

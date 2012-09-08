@@ -37,12 +37,9 @@ param_last() {
 }
 
 params_match() {
-    echo $__n
     param_last "_cmdline"
-
-
-
-    echo $__
+    json_is "$__"
+    echo "json_is: $__"
 bomb_fail "WORKING IN HERE $#"
     if [ $1 != $2 ]; then
         bomb_fail "incorrect parameter count: expected $2, provided $1"
