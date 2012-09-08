@@ -1,14 +1,14 @@
 #!/bin/sh
 
 req_build() {
-    req_build_mandatory; _mandatory=$__
+    req_mandatory; _mandatory=$__
     echo "mandatory ${_mandatory}"
-    req_build_optional; _optional=$__
+    req_optional; _optional=$__
     json_merge ${_mandatory} ${_optional}
     _payload=$__
 }
 
-req_build_mandatory() {
+req_mandatory() {
     i=0
     _json="{}"
     array_len "__args_m"; len=$__
@@ -22,10 +22,10 @@ req_build_mandatory() {
     __=${_json}
 }
 
-req_build_optional() {
+req_optional() {
     # FIX the follow should be encapsulated in :param
     array_last "__cmdline"; _json=$__
-    json_is "$__"
+    json_is "${_json}"
     if [ "$__" = "true" ]; then
         __=${_json}
     else

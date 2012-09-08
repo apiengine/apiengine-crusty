@@ -39,7 +39,11 @@ json_inner() {
 json_merge() {
     # $1 left
     # $2 right
+    json_inner $1; __l=$__
+    json_inner $2; __r=$__
+
     json_empty $1
+    __="{$__l,$__r}"
     if [ "$__" = "true" ]; then
         __=$2
     fi
@@ -47,9 +51,6 @@ json_merge() {
     if [ "$__" = "true" ]; then
         __=$1
     fi
-    json_inner $1; __l=$__
-    json_inner $2; __r=$__
-    __="{$__l,$__r}"
 }
 
 json_is() {
@@ -69,7 +70,7 @@ json_is() {
 json_check() {
     # $1 json
     json_is $1
-    if [ "$__" != "true" ]; then
+    if [ "$__" = "false" ]; then
         bomb_fail "not json: $1"
     fi
 }

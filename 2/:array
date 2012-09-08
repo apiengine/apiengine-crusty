@@ -65,7 +65,7 @@ array_bounds() {
     # $2 pos
     array_exists $1
     array_len $1; _len=$__
-    if [ ${_len} > $2 ]; then
+    if [ ${_len} -gt $2 ]; then
     else
         bomb_fail "index $2 out of bounds for array size ${_len}"
     fi
