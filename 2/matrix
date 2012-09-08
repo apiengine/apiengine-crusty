@@ -10,7 +10,7 @@
                                                   .                      .    .      .  204 | password       c  email                                      /passwordreset
                                      {token expiry}                      .    .      .  200 | password       r  key                                        /passwordreset/#key
                                                   .                      .    .      .  204 | password       c  key password                               /passwordreset/#ResetKey
-                                              [api]                      .    .      .  200 | api            r  .                                          /api
+                                              [api]                      .    .      .  200 | api            r                                             /api
                                                   . /user/{user}/api/{api}    .      .  201 | api            c  user api private [version*]                /user/#user/api
                                               [api]                      .    .      .  200 | api            r  user                                       /user/#user/api
 {user api version label index [resources] baseurl*} /user/{user}/api/{api}    .      .  201 | api            c  user api baseurl* label* index*            /user/#user/api/#api

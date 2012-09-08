@@ -13,10 +13,15 @@ line_locate() {
     do
         specs_split $__
         if [ "${_method}" = "${AE_CRUD}" ]; then 
-            if [ "${_line}" != "__not_found__" ]; then
-                bomb_fail "only one matching line allowed"
+            params_get "_args" ${_args}
+            params_match $# "_args"
+            __="true" # REMOVE
+            if [ "$__" = "true" ]; then
+                if [ "${_line}" != "__not_found__" ]; then
+                    bomb_fail "only one matching line allowed"
+                fi
+                _line=$__
             fi
-            _line=$__
         fi        
     done < ${AE_COLLAPSED}
     if [ "${_line}" == "__not_found__" ]; then

@@ -6,6 +6,7 @@ cmd=`basename $0`
 cd $loc
 
 . :bomb
+. :string
 . :http
 . :specs
 . :params
@@ -15,6 +16,11 @@ cd $loc
 . ^collapse
 
 shift
+
+
+string_startswith "{" "{hi there}"
+echo CONTAINS: $__
+exit 5
 
 line_available
 line_locate

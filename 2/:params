@@ -24,6 +24,7 @@ params_get() {
 }
 
 params_match() {
+bomb_fail "WORKING IN HERE"
     if [ $1 != $2 ]; then
         bomb_fail "incorrect parameter count: expected $2, provided $1"
     fi
