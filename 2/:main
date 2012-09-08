@@ -25,6 +25,4 @@ shift
 
 line_locate
 
-echo COUNT: $#
 echo LINE: ${_line}
-echo MANDATORY: ${_args_m}

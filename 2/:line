@@ -10,9 +10,9 @@ line_available() {
 line_locate() {
     line_available
     _line="__not_found__"
-    while read __
+    while read _l
     do
-        specs_split $__
+        specs_split $_l
         if [ "${_method}" = "${AE_CRUD}" ]; then 
             param_build "_args" ${_args}
             line_cmdline_match "_args"
@@ -20,7 +20,7 @@ line_locate() {
                 if [ "${_line}" != "__not_found__" ]; then
                     bomb_fail "only one matching line allowed"
                 fi
-                _line=$__
+                _line=$_l
             fi
         fi        
     done < ${AE_COLLAPSED}
@@ -34,13 +34,17 @@ line_locate() {
 line_cmdline_match() {
     array_len "_args_m"; _alen=$__
     array_len "_cmdline"; _clen=$__
-    array_last "_cmdline"
-    json_is "$__"
-    if [ "$__" = "true" ]; then
-        math_inc "_alen"    
+    if [ ${_clen} != 0 ]; then
+        array_last "_cmdline"
+        json_is "$__"
+        if [ "$__" = "true" ]; then
+            math_inc "_alen"    
+        fi
     fi
-    if [ ${_alen} != ${_clen} ]; then
-        bomb_cmdfail "incorrect parameter count: expected ${_alen}, provided ${_clen}"
+    if [ ${_alen} = ${_clen} ]; then
+        __="true"
+    else
+        __="false"
     fi
 }
 
