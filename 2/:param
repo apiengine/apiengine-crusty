@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# FIX use array_* and value_*
 param_build() {
     _pre=$1
     shift
@@ -7,47 +8,20 @@ param_build() {
 
     m=0
     o=0
-    eval ${_pre}_o_n=0
-    eval ${_pre}_m_n=0
+    val_poke ${_pre}_o_n 0
+    val_poke ${_pre}_m_n 0
     for w in ${_params}
     do
         (echo $w | grep -q "\*")
         _optional=$?
         if [ $_optional = 0 ]; then
-            eval ${_pre}_o_$i='"$w"'
+            val_poke ${_pre}_o_$i "$w"
             o=`expr $o + 1`
         else
-            eval ${_pre}_m_$i='"$w"'
+            val_poke ${_pre}_m_$i "$w"
             m=`expr $m + 1`
         fi
-        eval ${_pre}_o_n='"$o"'
-        eval ${_pre}_m_n='"$m"'
+        val_poke ${_pre}_o_n "$o"
+        val_poke ${_pre}_m_n "$m"
     done
-}
-
-# FIX ... these are array specific only - move to :array
-param_get() {
-    eval __='${'$1_$2'}'
-}
-
-param_len() {
-    eval __='${'$1_n'}'
-}
-
-param_last() {
-    param_len $1
-    if [ $__ = 0 ]; then
-        bomb_fail "cannot get last argument when none exists"
-    fi
-    i=`expr $__ - 1`
-    param_get $1 $i
-}
-
-# FIX ... value specific, move to :value
-param_peek() {
-    eval __='${'$1'}'
-}
-
-param_poke() {
-    eval $1="$2"
 }

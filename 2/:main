@@ -6,6 +6,8 @@ cmd=`basename $0`
 cd $loc
 
 . :bomb
+. :val
+. :array
 . :math
 . :string
 . :http

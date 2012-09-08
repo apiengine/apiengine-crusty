@@ -31,9 +31,9 @@ line_locate() {
 
 
 line_cmdline_match() {
-    param_len "_args_m"; _alen=$__
-    param_len "_cmdline"; _clen=$__
-    param_last "_cmdline"
+    array_len "_args_m"; _alen=$__
+    array_len "_cmdline"; _clen=$__
+    array_last "_cmdline"
     json_is "$__"
     if [ "$__" = "true" ]; then
         math_inc "_alen"    

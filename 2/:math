@@ -2,8 +2,8 @@
 
 math_inc() {
     set -x
-    param_peek "$1"
+    val_peek "$1"
     __=`expr ${__} + 1`
-    param_poke "$1" $__
+    val_poke "$1" $__
     set +x
 }

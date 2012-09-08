@@ -1,0 +1,9 @@
+#!/bin/sh
+
+val_peek() {
+    eval __='${'$1'}'
+}
+
+val_poke() {
+    eval $1="$2"
+}

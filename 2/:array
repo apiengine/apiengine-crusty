@@ -1,0 +1,18 @@
+#!/bin/sh
+
+array_get() {
+    eval __='${'$1_$2'}'
+}
+
+array_len() {
+    eval __='${'$1_n'}'
+}
+
+array_last() {
+    array_len $1
+    if [ $__ = 0 ]; then
+        bomb_fail "cannot get last argument when none exists"
+    fi
+    i=`expr $__ - 1`
+    array_get $1 $i
+}
