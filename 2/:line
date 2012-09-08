@@ -9,24 +9,24 @@ line_available() {
 
 line_locate() {
     line_available
-    _line="__not_found__"
+    __line="__not_found__"
     while read _l; do
         specs_split $_l
         if [ "${__method}" = "${AE_CRUD}" ]; then 
             param_build "__args" ${__args}
             line_cmdline_match "__args"
             if [ "$__" = "true" ]; then
-                if [ "${_line}" != "__not_found__" ]; then
+                if [ "${__line}" != "__not_found__" ]; then
                     bomb_fail "only one matching line allowed"
                 fi
-                _line=$_l
+                __line=$_l
             fi
         fi        
     done < ${AE_COLLAPSED}
-    if [ "${_line}" == "__not_found__" ]; then
+    if [ "${__line}" == "__not_found__" ]; then
         bomb_fail "no entry for [${AE_CMD} ${AE_CRUD}]"
     fi
-    specs_split ${_line}
+    specs_split ${__line}
     param_build "__args" ${__args}
 }
 

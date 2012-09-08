@@ -2,10 +2,9 @@
 
 req_build() {
     req_mandatory; _mandatory=$__
-    echo "mandatory ${_mandatory}"
     req_optional; _optional=$__
     json_merge ${_mandatory} ${_optional}
-    _payload=$__
+    __payload=$__
 }
 
 req_mandatory() {
