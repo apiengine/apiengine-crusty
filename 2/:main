@@ -24,5 +24,4 @@ shift
 . ^cmdline
 
 line_locate
-
 echo LINE: ${_line}
