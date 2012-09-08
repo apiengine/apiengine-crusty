@@ -8,15 +8,18 @@ cd $loc
 . :bomb
 . :http
 . :specs
-. :multi
+. :params
 . :line
 . :common $*
 . ^filter
 . ^collapse
-. ^choose
 
 shift
 
+line_available
+line_locate
+specs_split ${_line}
+params_get "_args" ${_args}
 echo COUNT: $#
 echo LINE: ${_line}
-
+echo MANDATORY: ${_args_m}

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-line_available
-line_locate

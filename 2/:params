@@ -1,13 +1,13 @@
 #!/bin/sh
 
-multi_get() {
+params_get() {
     _pre=$1
     shift
-    _multi=$@
+    _params=$@
 
     m=0
     o=0
-    for w in ${_multi}
+    for w in ${_params}
     do
         (echo $w | grep -q "\*")
         _optional=$?
@@ -23,7 +23,8 @@ multi_get() {
     done
 }
 
-multi_cmdline_total() {
+# FIX: check this is actually needed.
+params_cmdline_total() {
     if [ $2 = 0 ]; then
         __=$1
     else

@@ -12,11 +12,9 @@ line_locate() {
     while read __
     do
         specs_split $__
-        multi_get "_args" ${_args}
         if [ "${_method}" = "${AE_CRUD}" ]; then 
             _line=$__
         fi        
     done < ${AE_COLLAPSED}
+    specs_split ${_line}
 }
-
-#multi_cmdline_total ${_args_m} ${_args_o}
