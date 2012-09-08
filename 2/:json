@@ -1,0 +1,28 @@
+#!/bin/sh
+
+jsonmunge() {
+    __=`echo $__ | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
+    __=`echo $__ | sed s'+"true"+true+g' | sed s'+"false"+false+g'`
+}
+
+jsonv() {
+    __=`echo $__ | jshon -e $1`
+    __=`echo $__ | sed s'+^"++g' | sed s'+"$++g'`
+}
+
+jsonadd() {
+    __t="|$1|:|$2|"
+    if [ "$__" = "" ]; then
+        __="{$__t}"
+    else
+        __p=`echo $__ | sed s'+^.\(.*\).$+\1+'`
+        __="{$__p,$__t}"
+    fi
+    jsonmunge
+}
+
+jsonmerge() {
+    __a=`echo $1 | sed s'+^.\(.*\).$+\1+'`
+    __b=`echo $2 | sed s'+^.\(.*\).$+\1+'`
+    __="{$__a,$__b}"
+}

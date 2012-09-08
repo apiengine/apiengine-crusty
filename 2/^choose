@@ -1,17 +1,4 @@
 #!/bin/sh
 
-_lines=`wc -l ${AE_COLLAPSED} | cut -c7-8`
-if [ ${_lines} = 0 ]; then
-    bomb_fail "no entries for command ${AE_CMD}"
-fi
-
-_line="__not_found__"
-cat ${AE_COLLAPSED} | while read __
-do
-    specs_split $__
-    multi_get "_args" ${_args}
-    if [ ${_method} = "${AE_CRUD}" ]; then 
-        multi_cmdline_total ${_args_m} ${_args_o}
-        echo $__
-    fi        
-done
+line_available
+line_locate

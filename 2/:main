@@ -9,9 +9,14 @@ cd $loc
 . :http
 . :specs
 . :multi
+. :line
 . :common $*
 . ^filter
 . ^collapse
 . ^choose
 
 shift
+
+echo COUNT: $#
+echo LINE: ${_line}
+
