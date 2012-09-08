@@ -8,14 +8,14 @@ line_available() {
 }
 
 line_locate() {
+    line_available
     _line="__not_found__"
     while read __
     do
         specs_split $__
         if [ "${_method}" = "${AE_CRUD}" ]; then 
             params_build "_args" ${_args}
-            params_match $# "_args"
-            __="true" # REMOVE
+            params_match "_args"
             if [ "$__" = "true" ]; then
                 if [ "${_line}" != "__not_found__" ]; then
                     bomb_fail "only one matching line allowed"

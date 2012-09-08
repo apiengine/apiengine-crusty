@@ -1,9 +1,11 @@
 #!/bin/sh
 
+# FIX delegate to :params_set
+# FIX needs to closely follow the hairy chested array pattern
 i=0
 while [ $i != $# ]; do
     n=`expr $i + 1`
-    eval _$i='$'$n
+    eval _cmdline_$i='$'$n
     i=$n
 done
-_n=$i
+_cmdline_n=$i

@@ -23,19 +23,28 @@ params_build() {
     done
 }
 
+param_get() {
+    eval __='${'$1_$2'}'
+}
+
+param_last() {
+    eval n='${'$1_n'}'
+    if [ $n = 0 ]; then
+        bomb_fail "cannot get last argument when none exists"
+    fi
+    i=`expr $n - 1`
+    param_get $1 $i
+}
+
 params_match() {
-    
+    echo $__n
+    param_last "_cmdline"
+
+
+
+    echo $__
 bomb_fail "WORKING IN HERE $#"
     if [ $1 != $2 ]; then
         bomb_fail "incorrect parameter count: expected $2, provided $1"
-    fi
-}
-
-# FIX: check this is actually needed.
-params_cmdline_total() {
-    if [ $2 = 0 ]; then
-        __=$1
-    else
-        __=`expr $1 + 1`
     fi
 }

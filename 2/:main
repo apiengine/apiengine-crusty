@@ -7,6 +7,7 @@ cd $loc
 
 . :bomb
 . :string
+. :cmdline
 . :http
 . :specs
 . :params
@@ -18,16 +19,6 @@ cd $loc
 shift
 
 . ^cmdline
-echo CMD#: $_n
-echo 'ARG[3]#': $_3
-exit 5
-
-#n=4
-#eval v='$'${n}''
-#echo V=$v
-#string_startswith "{" "{hi there}"
-#echo CONTAINS: $__
-#exit 5
 
 line_locate
 #specs_split ${_line}
