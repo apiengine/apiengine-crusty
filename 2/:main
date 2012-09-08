@@ -17,16 +17,22 @@ cd $loc
 
 shift
 
-
-string_startswith "{" "{hi there}"
-echo CONTAINS: $__
+. ^cmdline
+echo CMD#: $_n
+echo 'ARG[3]#': $_3
 exit 5
 
-line_available
+#n=4
+#eval v='$'${n}''
+#echo V=$v
+#string_startswith "{" "{hi there}"
+#echo CONTAINS: $__
+#exit 5
+
 line_locate
-specs_split ${_line}
-params_get "_args" ${_args}
-params_match $# ${_args_m} ${_args_o}
+#specs_split ${_line}
+#arams_get "_args" ${_args}
+#arams_match $# ${_args_m} ${_args_o}
 echo COUNT: $#
 echo LINE: ${_line}
 echo MANDATORY: ${_args_m}

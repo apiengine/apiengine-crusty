@@ -13,7 +13,7 @@ line_locate() {
     do
         specs_split $__
         if [ "${_method}" = "${AE_CRUD}" ]; then 
-            params_get "_args" ${_args}
+            params_build "_args" ${_args}
             params_match $# "_args"
             __="true" # REMOVE
             if [ "$__" = "true" ]; then
