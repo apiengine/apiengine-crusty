@@ -5,3 +5,9 @@ math_inc() {
     __=`expr ${__} + 1`
     val_poke "$1" $__
 }
+
+math_dec() {
+    val_peek "$1"
+    __=`expr ${__} - 1`
+    val_poke "$1" $__
+}

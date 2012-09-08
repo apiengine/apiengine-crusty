@@ -1,34 +1,59 @@
 #!/bin/sh
 
+# FIX probably not needed any more
 json_munge() {
-    __=`echo $__ | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
-    __=`echo $__ | sed s'+"true"+true+g' | sed s'+"false"+false+g'`
+    # $1 mungee
+    __=`echo $1 | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
+#    __=`echo $__ | sed s'+"true"+true+g' | sed s'+"false"+false+g'`
 }
 
 json_v() {
-    __=`echo $__ | jshon -e $1`
-    __=`echo $__ | sed s'+^"++g' | sed s'+"$++g'`
+    # $1 json
+    # $2 key
+    json_check $1
+    __=`echo $2 | jshon -e ${_json}`
+    __=`echo $2 | sed s'+^"++g' | sed s'+"$++g'`
 }
 
 json_add() {
-    __t="|$1|:|$2|"
-    if [ "$__" = "" -o "$__" = "{}" ]; then
-        __="{$__t}"
+    # $1 json
+    # $2 key
+    # $3 value
+    json_check $1
+    json_munge "|$2|:|$3|"; _p=$__
+    json_empty $1
+    if [ "$__" = "true" ]; then
+        __="{${_p}}"
     else
-        __p=`echo $__ | sed s'+^.\(.*\).$+\1+'`
-        __="{$__p,$__t}"
+        json_inner $1; _inner=$__
+        __="{${_inner},${_p}}"
     fi
-    json_munge
+}
+
+json_inner() {
+    # $1 json
+    json_check $1
+    __=`echo $1 | sed s'+^{\(.*\)}$+\1+'`
 }
 
 json_merge() {
-    __a=`echo $1 | sed s'+^{\(.*\)}$+\1+'`
-    __b=`echo $2 | sed s'+^{\(.*\)}$+\1+'`
-    __="{$__a,$__b}"
-    json_munge
+    # $1 left
+    # $2 right
+    json_empty $1
+    if [ "$__" = "true" ]; then
+        __=$2
+    fi
+    json_empty $2
+    if [ "$__" = "true" ]; then
+        __=$1
+    fi
+    json_inner $1; __l=$__
+    json_inner $2; __r=$__
+    __="{$__l,$__r}"
 }
 
 json_is() {
+    # $1 json
     string_startswith "{" "$1"
     _s=$__
     string_endswith "}" "$1"
@@ -39,4 +64,23 @@ json_is() {
         __="false"
     fi
     # FIX [...] is valid json as well as {...}
+}
+
+json_check() {
+    # $1 json
+    json_is $1
+    if [ "$__" != "true" ]; then
+        bomb_fail "not json: $1"
+    fi
+}
+
+json_empty() {
+    # $1 json
+    json_check $1
+    json_inner $1
+    if [ "$__" = "" ]; then
+        __="true"
+    else
+        __="false"
+    fi
 }

@@ -10,12 +10,11 @@ line_available() {
 line_locate() {
     line_available
     _line="__not_found__"
-    while read _l
-    do
+    while read _l; do
         specs_split $_l
-        if [ "${_method}" = "${AE_CRUD}" ]; then 
-            param_build "_args" ${_args}
-            line_cmdline_match "_args"
+        if [ "${__method}" = "${AE_CRUD}" ]; then 
+            param_build "__args" ${__args}
+            line_cmdline_match "__args"
             if [ "$__" = "true" ]; then
                 if [ "${_line}" != "__not_found__" ]; then
                     bomb_fail "only one matching line allowed"
@@ -27,18 +26,17 @@ line_locate() {
     if [ "${_line}" == "__not_found__" ]; then
         bomb_fail "no entry for [${AE_CMD} ${AE_CRUD}]"
     fi
-
     specs_split ${_line}
-    param_build "_args" ${_args}
+    param_build "__args" ${__args}
 }
 
 
 # FIX robably lives somewhere else
 line_cmdline_match() {
-    array_len "_args_m"; _alen=$__
-    array_len "_cmdline"; _clen=$__
+    array_len "__args_m"; _alen=$__
+    array_len "__cmdline"; _clen=$__
     if [ ${_clen} != 0 ]; then
-        array_last "_cmdline"
+        array_last "__cmdline"
         json_is "$__"
         if [ "$__" = "true" ]; then
             math_inc "_alen"    
@@ -50,4 +48,3 @@ line_cmdline_match() {
         __="false"
     fi
 }
-

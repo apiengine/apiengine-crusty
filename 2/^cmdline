@@ -5,7 +5,7 @@
 i=0
 while [ $i != $# ]; do
     n=`expr $i + 1`
-    eval _cmdline_$i='$'$n
+    eval __cmdline_$i='$'$n
     i=$n
 done
-_cmdline_n=$i
+__cmdline_n=$i

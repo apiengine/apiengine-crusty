@@ -1,18 +1,72 @@
 #!/bin/sh
 
 array_get() {
-    eval __='${'$1_$2'}'
+    # $1 name
+    # $2 pos
+    array_bounds $1 $2
+    val_peek $1_$2
+}
+
+array_put() {
+    # $1 name
+    # $2 pos
+    # $3 value
+    array_bounds $1 $2
+    val_poke $1_$2 "$3"
 }
 
 array_len() {
-    eval __='${'$1_n'}'
+    # $1 name
+    val_peek $1_n
+}
+
+array_exists() {
+    # $1 name
+    array_len $1
+    if [ "$__" = "" ]; then
+        bomb_fail "non-existent array $1"
+    fi
+}
+
+# FIX complete
+array_append() {
+    # $1 name
+    # $2 value
+    array_exists $1
+    array_len $1; _len=$__; _pos=$__
+    math_inc _len
+    array_set_len $1 ${_len}
+    array_put $1 ${_pos} $2
 }
 
 array_last() {
-    array_len $1
-    if [ $__ = 0 ]; then
-        bomb_fail "cannot get last argument when none exists"
+    # $1 name
+    array_exists $1
+    array_len $1; _len=$__
+    math_dec "_len"
+    array_get $1 ${_len}
+}
+
+# internal use only
+array_set_len() {
+    # $1 name
+    # $2 value
+    val_poke $1_n "$2"
+}
+
+array_create() {
+    # FIX consider forcing destroy first if already used
+    # $1 name
+    array_set_len $1 0
+}
+
+array_bounds() {
+    # $1 name
+    # $2 pos
+    array_exists $1
+    array_len $1; _len=$__
+    if [ ${_len} > $2 ]; then
+    else
+        bomb_fail "index $2 out of bounds for array size ${_len}"
     fi
-    i=`expr $__ - 1`
-    array_get $1 $i
 }

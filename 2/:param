@@ -2,27 +2,22 @@
 
 # FIX use array_* and value_*
 param_build() {
+    # $1 array name prefix
     _pre=$1
     shift
+    # $@ parameters
     _params=$@
 
-    m=0
-    o=0
-    val_poke ${_pre}_o_n 0
-    val_poke ${_pre}_m_n 0
+    array_create ${_pre}_m
+    array_create ${_pre}_o
     for w in ${_params}
     do
         (echo $w | grep -q "\*")
         _optional=$?
         if [ $_optional = 0 ]; then
-            # FIX rewrite these as array_expand
-            val_poke ${_pre}_o_$o "$w"
-            o=`expr $o + 1`
+            array_append ${_pre}_o "$w"
         else
-            val_poke ${_pre}_m_$m "$w"
-            m=`expr $m + 1`
+            array_append ${_pre}_m "$w"
         fi
-        val_poke ${_pre}_o_n "$o"
-        val_poke ${_pre}_m_n "$m"
     done
 }

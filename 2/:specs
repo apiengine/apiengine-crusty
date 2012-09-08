@@ -1,25 +1,25 @@
 #!/bin/sh
 
 specs_split() {
-    _response=`echo $@ | cut -d: -f2`
-    _location=`echo $@ | cut -d: -f3`
-    _auth=`    echo $@ | cut -d: -f4`
-    _error=`   echo $@ | cut -d: -f5`
-    _code=`    echo $@ | cut -d: -f6`
-    _cmd=`     echo $@ | cut -d: -f7`
-    _method=`  echo $@ | cut -d: -f8`
-    _args=`    echo $@ | cut -d: -f9`
-    _url=`     echo $@ | cut -d: -f10`
+    __response=`echo $@ | cut -d: -f2`
+    __location=`echo $@ | cut -d: -f3`
+    __auth=`    echo $@ | cut -d: -f4`
+    __error=`   echo $@ | cut -d: -f5`
+    __code=`    echo $@ | cut -d: -f6`
+    __cmd=`     echo $@ | cut -d: -f7`
+    __method=`  echo $@ | cut -d: -f8`
+    __args=`    echo $@ | cut -d: -f9`
+    __url=`     echo $@ | cut -d: -f10`
 }
 
 specs_show() {
-    echo "_response: $_response"
-    echo "_location: $_location"
-    echo "_auth    : $_auth"
-    echo "_error   : $_error"
-    echo "_code    : $_code"
-    echo "_cmd     : $_cmd"
-    echo "_method  : $_method"
-    echo "_args    : $_args"
-    echo "_url     : $_url"
+    echo "__response: $__response"
+    echo "__location: $__location"
+    echo "__auth    : $__auth"
+    echo "__error   : $__error"
+    echo "__code    : $__code"
+    echo "__cmd     : $__cmd"
+    echo "__method  : $__method"
+    echo "__args    : $__args"
+    echo "__url     : $__url"
 }

@@ -25,6 +25,6 @@ shift
 . ^cmdline
 
 line_locate
-req_build
 echo LINE: ${_line}
+req_build
 echo PAYLOAD: ${_payload}

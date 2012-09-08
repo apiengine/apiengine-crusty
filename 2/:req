@@ -2,6 +2,7 @@
 
 req_build() {
     req_build_mandatory; _mandatory=$__
+    echo "mandatory ${_mandatory}"
     req_build_optional; _optional=$__
     json_merge ${_mandatory} ${_optional}
     _payload=$__
@@ -10,12 +11,11 @@ req_build() {
 req_build_mandatory() {
     i=0
     _json="{}"
-    array_len "_args_m"; len=$__
+    array_len "__args_m"; len=$__
     while [ "$i" != "${len}" ]; do
-        array_get "_args_m" $i; _k=$__
-        array_get "_cmdline" $i;_v=$__
-        __=${_json}
-        json_add "$_k" "$_v"
+        array_get "__args_m" $i; _k=$__
+        array_get "__cmdline" $i; _v=$__
+        json_add "${_json}" "$_k" "$_v"
         _json=$__
         math_inc "i"
     done
@@ -24,7 +24,7 @@ req_build_mandatory() {
 
 req_build_optional() {
     # FIX the follow should be encapsulated in :param
-    array_last "_cmdline"; _json=$__
+    array_last "__cmdline"; _json=$__
     json_is "$__"
     if [ "$__" = "true" ]; then
         __=${_json}
