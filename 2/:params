@@ -23,6 +23,12 @@ params_get() {
     done
 }
 
+params_match() {
+    if [ $1 != $2 ]; then
+        bomb_fail "incorrect parameter count: expected $2, provided $1"
+    fi
+}
+
 # FIX: check this is actually needed.
 params_cmdline_total() {
     if [ $2 = 0 ]; then

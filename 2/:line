@@ -3,7 +3,7 @@
 line_available() {
     _lines=`wc -l ${AE_COLLAPSED} | cut -c7-8`
     if [ ${_lines} = 0 ]; then
-        bomb_fail "no entries for command ${AE_CMD}"
+        bomb_fail "no entries for [${AE_CMD}]"
     fi
 }
 
@@ -13,8 +13,13 @@ line_locate() {
     do
         specs_split $__
         if [ "${_method}" = "${AE_CRUD}" ]; then 
+            if [ "${_line}" != "__not_found__" ]; then
+                bomb_fail "only one matching line allowed"
+            fi
             _line=$__
         fi        
     done < ${AE_COLLAPSED}
-    specs_split ${_line}
+    if [ "${_line}" == "__not_found__" ]; then
+        bomb_fail "no entry for [${AE_CMD} ${AE_CRUD}]"
+    fi
 }
