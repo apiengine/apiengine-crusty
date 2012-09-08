@@ -1,12 +1,14 @@
 #!/bin/sh
 
-params_build() {
+param_build() {
     _pre=$1
     shift
     _params=$@
 
     m=0
     o=0
+    eval ${_pre}_o_n=0
+    eval ${_pre}_m_n=0
     for w in ${_params}
     do
         (echo $w | grep -q "\*")
@@ -18,30 +20,34 @@ params_build() {
             eval ${_pre}_m_$i='"$w"'
             m=`expr $m + 1`
         fi
-        eval ${_pre}_o='"$o"'
-        eval ${_pre}_m='"$m"'
+        eval ${_pre}_o_n='"$o"'
+        eval ${_pre}_m_n='"$m"'
     done
 }
 
+# FIX ... these are array specific only - move to :array
 param_get() {
     eval __='${'$1_$2'}'
 }
 
+param_len() {
+    eval __='${'$1_n'}'
+}
+
 param_last() {
-    eval n='${'$1_n'}'
-    if [ $n = 0 ]; then
+    param_len $1
+    if [ $__ = 0 ]; then
         bomb_fail "cannot get last argument when none exists"
     fi
-    i=`expr $n - 1`
+    i=`expr $__ - 1`
     param_get $1 $i
 }
 
-params_match() {
-    param_last "_cmdline"
-    json_is "$__"
-    echo "json_is: $__"
-bomb_fail "WORKING IN HERE $#"
-    if [ $1 != $2 ]; then
-        bomb_fail "incorrect parameter count: expected $2, provided $1"
-    fi
+# FIX ... value specific, move to :value
+param_peek() {
+    eval __='${'$1'}'
+}
+
+param_poke() {
+    eval $1="$2"
 }

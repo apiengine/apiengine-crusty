@@ -6,11 +6,12 @@ cmd=`basename $0`
 cd $loc
 
 . :bomb
+. :math
 . :string
 . :http
 . :json
 . :specs
-. :params
+. :param
 . :line
 . :common $*
 . ^filter

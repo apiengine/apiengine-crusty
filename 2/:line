@@ -14,8 +14,8 @@ line_locate() {
     do
         specs_split $__
         if [ "${_method}" = "${AE_CRUD}" ]; then 
-            params_build "_args" ${_args}
-            params_match "_args"
+            param_build "_args" ${_args}
+            line_cmdline_match "_args"
             if [ "$__" = "true" ]; then
                 if [ "${_line}" != "__not_found__" ]; then
                     bomb_fail "only one matching line allowed"
@@ -28,3 +28,19 @@ line_locate() {
         bomb_fail "no entry for [${AE_CMD} ${AE_CRUD}]"
     fi
 }
+
+
+line_cmdline_match() {
+    param_len "_args_m"; _alen=$__
+    param_len "_cmdline"; _clen=$__
+    param_last "_cmdline"
+    json_is "$__"
+    if [ "$__" = "true" ]; then
+        math_inc "_alen"    
+    fi
+bomb_fail "WORKING IN HERE $#"
+    if [ $1 != $2 ]; then
+        bomb_fail "incorrect parameter count: expected $2, provided $1"
+    fi
+}
+

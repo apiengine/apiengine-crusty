@@ -28,7 +28,6 @@ json_merge() {
 }
 
 json_is() {
-    echo "JSON: $1"
     string_startswith "{" "$1"
     _s=$__
     string_endswith "}" "$1"
