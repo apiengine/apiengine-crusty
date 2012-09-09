@@ -1,0 +1,20 @@
+#!/bin/sh
+
+
+auth_checks() {
+    __response=`cat < ${AE_RESPONSE}`
+
+    json_v ${__response} "auth"; local auth=$__
+
+    if [ "$auth" = "true" ]; then
+        json_v ${__response} "csrf"; local csrf=$__
+        json_v ${__response}   "id"; local   id=$__
+        local r="{}"
+        json_add ${r}   "id"   ${id}; local r=$__
+        json_add ${r} "csrf" ${csrf}; local r=$__
+        > ${AE_SESSION} echo $__
+        echo "authenticated."
+    else
+        session_invalidate
+    fi
+}

@@ -33,6 +33,7 @@ json_merge() {
 }
 
 json_v() {
+    # FIX consider fail if does not exist
     local json=$1
     local k=$2
     json_check_ ${json}

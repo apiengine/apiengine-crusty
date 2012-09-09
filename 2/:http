@@ -14,3 +14,29 @@ http_method() {
         bomb_usage "illegal crud method" "[args...]"
     fi
 }
+
+http_payload() {
+    > ${AE_RESPONSE} echo '{"error":"seems there was no return value!"}'
+
+    if [ "${AE_METHOD}" = "POST" -o "${AE_METHOD}" = "PUT" ]; then
+        AE_POST="-d ${__payload}"
+    fi
+}
+
+http_code() {
+    local code=`cat ${AE_HTTPCODE}`
+
+    if [ "${code}" = "000" ]; then
+        bomb_fail "looks like the server is not up... : ${code} : ${AE_RESPONSE}"
+    fi
+
+    if [ "${code}" = "500" ]; then
+        bomb_fail "looks like an internal server error ... : ${code} : ${AE_RESPONSE}"
+    fi
+
+    string_startswith "${code}" "4"
+    if [ "$__" = "true" ]; then
+        bomb_fail "$__httpcode : ${AE_RESPONSE}"
+    fi
+# FIX hit it here.    
+}

@@ -1,3 +1,7 @@
 #!/bin/sh
 
-grep "| ${AE_CMD}" matrix > ${AE_FILTERED}
+< matrix cat                   | \
+         grep    "| ${AE_CMD}" | \
+         grep -v "^#"          | \
+         cat                     \
+> ${AE_FILTERED}

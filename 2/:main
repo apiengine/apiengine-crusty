@@ -19,6 +19,8 @@ cd $loc
 . :url
 . :util
 . :hooks
+. :session
+. :auth
 . :common $*
 . ^filter
 . ^collapse
@@ -33,6 +35,7 @@ line_locate
  req_build
  url_build
 
+http_payload
 . ^cookie
 
 echo LINE: ${__line}
@@ -40,15 +43,18 @@ echo PAYLOAD: ${__payload}
 echo URL: ${__url}
 
 set -x
-> ${AE_HTTPCODE} curly \
-    ${AE_COOKIES} \
-    ${AE_CSRF} \
-    -s \
-    -X ${AE_METHOD} \
-    ${AE_POST} \
-    -o ${AE_RESPONSE} \
-    -w %{http_code} \
+> ${AE_HTTPCODE} curl                      \
+    ${AE_COOKIES}                          \
+    ${AE_CSRF}                             \
+    -s                                     \
+    -X ${AE_METHOD}                        \
+    ${AE_POST}                             \
+    -o ${AE_RESPONSE}                      \
+    -w %{http_code}                        \
     ${AE_HOST}:${AE_PORT}/${AE_RESOURCE}
 set +x
 
 hooks_post ${AE_CMD} $*
+
+http_code
+auth_checks
