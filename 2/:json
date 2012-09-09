@@ -43,14 +43,12 @@ json_v() {
 
 json_is() {
     local json=$1
-    string_startswith "{" "${json}"; local s=$__
-    string_endswith "}" "${json}"  ; local e=$__
-    if [ "${s}" = "true" -a "${e}" = "true" ]; then
+    local type=`echo ${json} | jshon -t`
+    if [ $? = 0 ]; then
         __="true"
     else
         __="false"
     fi
-    # FIX [...] is valid json as well as {...}
 }
 
 #
