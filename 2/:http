@@ -23,23 +23,28 @@ http_payload() {
     fi
 }
 
+http_fail() {
+    bomb_fail $@ : ${__response}
+    # FIX working here
+}
+
 http_code() {
     local code=`cat ${AE_HTTPCODE}`
 
     if [ "${code}" = "000" ]; then
-        bomb_fail "looks like the server is not up... : ${code} : ${AE_RESPONSE}"
+        http_fail "looks like the server is not up... : ${code}"
     fi
 
     if [ "${code}" = "500" ]; then
-        bomb_fail "looks like an internal server error ... : ${code} : ${AE_RESPONSE}"
+        http_fail "looks like an internal server error ... : ${code}"
     fi
 
     string_startswith "${code}" "4"
     if [ "$__" = "true" ]; then
-        bomb_fail "${code} : ${AE_RESPONSE}"
+        http_fail "${code}"
     fi
 
     if [ "${code}" != "${__code}" ]; then
-        bomb_fail "got ${code} expected ${__code} : ${AE_RESPONSE}"
+        http_fail "got ${code} expected ${__code}"
     fi
 }

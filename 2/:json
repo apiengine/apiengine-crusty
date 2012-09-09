@@ -32,24 +32,6 @@ json_merge() {
     __=${merged}
 }
 
-json_pretty() {
-    local json=$1
-    __=`echo "[${json}]" | jshon -e 1`
-}
-
-json_v() {
-    # FIX consider fail if does not exist
-    local json=$1
-    local k=$2
-    json_check_ ${json}
-    (echo ${json} | jshon -Q -e ${k} > /dev/null)
-    if [ $? != 0 ]; then
-        bomb_fail "json element with key \"${k}\" does not exist"
-    fi
-    local v=`echo ${json} | jshon -e ${k}`
-    __=`echo ${v} | sed s'+^"++g' | sed s'+"$++g'`
-}
-
 json_is() {
     local json=$1
     (echo ${json} | jshon -Q -t > /dev/null)
@@ -58,6 +40,36 @@ json_is() {
     else
         __="false"
     fi
+}
+
+json_contains() {
+    local json=$1
+    local k=$2
+    json_check_ "${json}"
+    (echo ${json} | jshon -Q -e ${k} > /dev/null)
+    if [ $? = 0 ]; then
+        __="true"
+    else
+        __="false"
+    fi
+}
+
+json_v() {
+    # FIX consider fail if does not exist
+    local json=$1
+    local k=$2
+    json_check_ "${json}"
+    json_contains ${json} ${k}
+    if [ $__ = "false" ]; then
+        bomb_fail "json key \"${k}\" does not exist in ${json}"
+    fi
+    local v=`echo ${json} | jshon -e ${k}`
+    __=`echo ${v} | sed s'+^"++g' | sed s'+"$++g'`
+}
+
+json_pretty() {
+    local json=$1
+    __=`echo "[${json}]" | jshon -e 1`
 }
 
 #
@@ -70,7 +82,7 @@ json_inner_() {
 
 json_check_() {
     local json=$1
-    json_is ${json}
+    json_is "${json}"
     if [ "$__" = "false" ]; then
         bomb_fail "not json: ${json}"
     fi

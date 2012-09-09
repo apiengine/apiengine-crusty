@@ -21,6 +21,7 @@ cd $loc
 . :hooks
 . :session
 . :auth
+. :response
 . :common $*
 . ^filter
 . ^collapse
@@ -53,13 +54,10 @@ http_payload
     -w %{http_code}                        \
     ${AE_HOST}:${AE_PORT}/${AE_RESOURCE}
 
-http_code
-
 # FIX move out
-__response=`cat < ${AE_RESPONSE}`
-json_pretty ${__response}
-echo "json: $__"
+response_get
+json_pretty \"${__response}\"
 
+http_code
 hooks_post ${AE_CMD} $*
-
 auth_checks
