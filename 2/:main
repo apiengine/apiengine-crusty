@@ -54,6 +54,11 @@ set -x
     ${AE_HOST}:${AE_PORT}/${AE_RESOURCE}
 set +x
 
+# FIX move out
+__response=`cat < ${AE_RESPONSE}`
+json_pretty ${__response}
+echo "json: $__"
+
 hooks_post ${AE_CMD} $*
 
 http_code

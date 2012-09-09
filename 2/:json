@@ -32,6 +32,11 @@ json_merge() {
     __=${merged}
 }
 
+json_pretty() {
+    local json=$1
+    __=`echo "[${json}]" | jshon -e 1`
+}
+
 json_v() {
     # FIX consider fail if does not exist
     local json=$1

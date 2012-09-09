@@ -2,8 +2,6 @@
 
 
 auth_checks() {
-    __response=`cat < ${AE_RESPONSE}`
-
     authable; local authable=$__
 
     if [ ${authable} = "true" ]; then
