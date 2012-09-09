@@ -8,25 +8,24 @@ req_build() {
 }
 
 req_mandatory() {
-    i=0
-    _json="{}"
-    array_len "__args_m"; len=$__
-    while [ "$i" != "${len}" ]; do
-        array_get "__args_m" $i; _k=$__
-        array_get "__cmdline" $i; _v=$__
-        json_add "${_json}" "$_k" "$_v"
-        _json=$__
+    local i=0
+    local json="{}"
+    array_len "__args__m"; local len=$__
+    while [ "${i}" != "${len}" ]; do
+        array_get "__args__m" $i; local k=$__
+        array_get "__cmdline" $i; local v=$__
+        json_add "${json}" "${k}" "${v}"; json=$__
         math_inc "i"
     done
-    __=${_json}
+    __=${json}
 }
 
 req_optional() {
     # FIX the following should be encapsulated in :param
-    array_last "__cmdline"; _json=$__
-    json_is "${_json}"
+    array_last "__cmdline"; local json=$__
+    json_is "${json}"
     if [ "$__" = "true" ]; then
-        __=${_json}
+        __=${json}
     else
         __="{}"
     fi

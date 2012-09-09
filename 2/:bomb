@@ -2,9 +2,9 @@
 
 # FIX split into core bomb and domain bomb
 bomb_usage() {
-    __1=$1; shift
-
-    echo "$__1 : usage : ${AE_CMD} {c,r,u,d} $*"
+    local msg=$1
+    shift
+    echo "${msg} : usage : ${AE_CMD} {c,r,u,d} $*"
     exit 1
 }
 

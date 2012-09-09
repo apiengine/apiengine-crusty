@@ -1,72 +1,86 @@
 #!/bin/sh
 
 array_get() {
-    # $1 name
-    # $2 pos
-    array_bounds $1 $2
-    val_peek $1_$2
+    local name=$1
+    local pos=$2
+    array_bounds ${name} ${pos}
+    val_peek ${name}_${pos}
 }
 
 array_put() {
-    # $1 name
-    # $2 pos
-    # $3 value
-    array_bounds $1 $2
-    val_poke $1_$2 "$3"
+    local name=$1
+    local pos=$2
+    local val=$3
+    array_bounds ${name} $2
+    val_poke ${name}_${pos} "${val}"
 }
 
 array_len() {
-    # $1 name
-    val_peek $1_n
+    local name=$1
+    val_peek ${name}_n
 }
 
 array_exists() {
-    # $1 name
-    array_len $1
-    if [ "$__" = "" ]; then
-        bomb_fail "non-existent array $1"
+    local name=$1
+    array_len ${name}
+    if [ "$__" = "" -o "$__" = "\?" ]; then
+        bomb_fail "non-existent array ${name}"
     fi
 }
 
-# FIX complete
+array_non_existent() {
+    local name=$1
+    array_len ${name}
+    if [ "$__" != "" -a "$__" = "\?" ]; then
+        bomb_fail "array not destroyed ${name}"
+    fi
+}
+
 array_append() {
-    # $1 name
-    # $2 value
-    array_exists $1
-    array_len $1; _len=$__; _pos=$__
-    math_inc _len
-    array_set_len $1 ${_len}
-    array_put $1 ${_pos} $2
+    local name=$1
+    local val=$2
+    array_exists ${name}
+    array_len ${name} 
+    local len=$__
+    local pos=$__
+    math_inc "len"
+    array_set_len ${name} ${len}
+    array_put ${name} ${pos} ${val}
 }
 
 array_last() {
-    # $1 name
-    array_exists $1
-    array_len $1; _len=$__
-    math_dec "_len"
-    array_get $1 ${_len}
+    local name=$1
+    array_exists ${name}
+    array_len $1; local len=$__
+    math_dec "len"
+    array_get $1 ${len}
 }
 
-# internal use only
-array_set_len() {
-    # $1 name
-    # $2 value
-    val_poke $1_n "$2"
+array_set_len() { # internal use only
+    local name=$1
+    local val=$2
+    val_poke ${name}_n "${val}"
 }
 
 array_create() {
-    # FIX consider forcing destroy first if already used
-    # $1 name
-    array_set_len $1 0
+    local name=$1
+    array_non_existent ${name}
+    array_set_len ${name} 0
+}
+
+array_destroy() {
+    local name=$1
+    array_exists ${name}
+    array_set_len ${name} "?"
 }
 
 array_bounds() {
-    # $1 name
-    # $2 pos
-    array_exists $1
-    array_len $1; _len=$__
-    if [ ${_len} -gt $2 ]; then
+    local name=$1
+    local pos=$2
+    array_exists ${name}
+    array_len ${name}; local len=$__
+    if [ ${len} -gt $2 ]; then
     else
-        bomb_fail "index $2 out of bounds for array size ${_len}"
+        bomb_fail "index ${pos} out of bounds for array size ${len}"
     fi
 }

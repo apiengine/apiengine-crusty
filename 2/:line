@@ -1,48 +1,50 @@
 #!/bin/sh
 
 line_available() {
-    _lines=`wc -l ${AE_COLLAPSED} | cut -c7-8`
-    if [ ${_lines} = 0 ]; then
+    local lines="`wc -l ${AE_COLLAPSED} | cut -c7-8`"
+    if [ ${lines} = 0 ]; then
         bomb_fail "no entries for [${AE_CMD}]"
     fi
 }
 
 line_locate() {
     line_available
-    __line="__not_found__"
-    while read _l; do
-        specs_split $_l
+    local line="__not_found__"
+    local l=""
+    while read l; do
+        specs_split ${l}
         if [ "${__method}" = "${AE_CRUD}" ]; then 
             param_build "__args" ${__args}
             line_cmdline_match "__args"
             if [ "$__" = "true" ]; then
-                if [ "${__line}" != "__not_found__" ]; then
+                if [ "${line}" != "__not_found__" ]; then
                     bomb_fail "only one matching line allowed"
                 fi
-                __line=$_l
+                line=${l}
             fi
         fi        
     done < ${AE_COLLAPSED}
-    if [ "${__line}" == "__not_found__" ]; then
+    if [ "${line}" == "__not_found__" ]; then
         bomb_fail "no entry for [${AE_CMD} ${AE_CRUD}]"
     fi
-    specs_split ${__line}
+    specs_split ${line}
     param_build "__args" ${__args}
+    __line=${line}
 }
 
 
 # FIX robably lives somewhere else
 line_cmdline_match() {
-    array_len "__args_m"; _alen=$__
-    array_len "__cmdline"; _clen=$__
-    if [ ${_clen} != 0 ]; then
+    array_len "__args__m"; local alen=$__
+    array_len "__cmdline"; local clen=$__
+    if [ ${clen} != 0 ]; then
         array_last "__cmdline"
         json_is "$__"
         if [ "$__" = "true" ]; then
-            math_inc "_alen"    
+            math_inc "alen"    
         fi
     fi
-    if [ ${_alen} = ${_clen} ]; then
+    if [ ${alen} = ${clen} ]; then
         __="true"
     else
         __="false"

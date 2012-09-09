@@ -2,22 +2,31 @@
 
 # FIX use array_* and value_*
 param_build() {
-    # $1 array name prefix
-    _pre=$1
+    local pre=$1
     shift
-    # $@ parameters
-    _params=$@
 
-    array_create ${_pre}_m
-    array_create ${_pre}_o
-    for w in ${_params}
+    array_create ${pre}
+    array_create ${pre}_opt
+    array_create ${pre}__m
+    array_create ${pre}__o
+
+    local w=""
+
+    for w in $@
     do
-        (echo $w | grep -q "\*")
-        _optional=$?
-        if [ $_optional = 0 ]; then
-            array_append ${_pre}_o "$w"
+        array_append ${pre} ${w}
+
+        param_optional ${w}; local opt=$__
+        array_append ${pre}_opt ${opt}
+
+        if [ "${opt}" = "true" ]; then
+            array_append ${pre}__o ${w}
         else
-            array_append ${_pre}_m "$w"
+            array_append ${pre}__m ${w}
         fi
     done
+}
+
+param_optional() {
+    string_contains "\*" $1
 }

@@ -24,12 +24,12 @@ url_injectable() {
 }
 
 url_parameters() {
-    array_len "__args_m"; _ulen=$__
-    i=0
-    while [ $i != ${_ulen} ]; do
-        array_get "__args_m" $i; _name=$__
-        array_get "__cmdline" $i; _val=$__
-        eval _${_name}_=${_val} 
-        i=`expr $i + 1`
+    array_len "__args__m"; local len=$__
+    local i=0
+    while [ ${i} != ${len} ]; do
+        array_get "__args__m" $i; local name=$__
+        array_get "__cmdline" $i; local val=$__
+        eval _${name}_=${val} 
+        math_inc "i"
     done
 }

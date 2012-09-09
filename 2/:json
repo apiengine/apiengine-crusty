@@ -2,65 +2,62 @@
 
 # FIX probably not needed any more
 json_munge() {
-    # $1 mungee
-    __=`echo $1 | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
-#    __=`echo $__ | sed s'+"true"+true+g' | sed s'+"false"+false+g'`
+    local mungee=$1
+    __=`echo ${mungee} | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
+    # =`echo $__ | sed s'+"true"+true+g' | sed s'+"false"+false+g'`
 }
 
 json_v() {
-    # $1 json
-    # $2 key
-    json_check $1
-    __=`echo $2 | jshon -e ${_json}`
-    __=`echo $2 | sed s'+^"++g' | sed s'+"$++g'`
+    local json=$1
+    local k=$2
+    json_check ${json}
+    local v=`echo ${json} | jshon -e ${k}`
+    __=`echo ${v} | sed s'+^"++g' | sed s'+"$++g'`
 }
 
 json_add() {
-    # $1 json
-    # $2 key
-    # $3 value
-    json_check $1
-    json_munge "|$2|:|$3|"; _p=$__
-    json_empty $1
+    local json=$1
+    local k=$2
+    local v=$3
+    json_check ${json}
+    json_munge "|${k}|:|${v}|"; local p=$__
+    json_empty ${json}
     if [ "$__" = "true" ]; then
-        __="{${_p}}"
+        __="{${p}}"
     else
-        json_inner $1; _inner=$__
-        __="{${_inner},${_p}}"
+        json_inner ${json}; local inner=$__
+        __="{${inner},${p}}"
     fi
 }
 
 json_inner() {
-    # $1 json
-    json_check $1
-    __=`echo $1 | sed s'+^{\(.*\)}$+\1+'`
+    local json=$1
+    json_check ${json}
+    __=`echo ${json} | sed s'+^{\(.*\)}$+\1+'`
 }
 
 json_merge() {
-    # $1 left
-    # $2 right
-    json_inner $1; _ll=$__
-    json_inner $2; _rr=$__
-    _merged="{$_ll,$_rr}"
-
-    json_empty $1
+    local l=$1
+    local r=$2
+    json_inner ${l}; local ll=$__
+    json_inner ${r}; local rr=$__
+    local merged="{${ll},${rr}}"
+    json_empty ${l}
     if [ "$__" = "true" ]; then
-        _merged=$2
+        merged=${r}
     fi
-    json_empty $2
+    json_empty ${r}
     if [ "$__" = "true" ]; then
-        _merged=$1
+        merged=${l}
     fi
-    __=${_merged}
+    __=${merged}
 }
 
 json_is() {
-    # $1 json
-    string_startswith "{" "$1"
-    _s=$__
-    string_endswith "}" "$1"
-    _e=$__
-    if [ "$_s" = "true" -a "$_e" = "true" ]; then
+    local json=$1
+    string_startswith "{" "${json}"; local s=$__
+    string_endswith "}" "${json}"  ; local e=$__
+    if [ "${s}" = "true" -a "${e}" = "true" ]; then
         __="true"
     else
         __="false"
@@ -69,17 +66,17 @@ json_is() {
 }
 
 json_check() {
-    # $1 json
-    json_is $1
+    local json=$1
+    json_is ${json}
     if [ "$__" = "false" ]; then
-        bomb_fail "not json: $1"
+        bomb_fail "not json: ${json}"
     fi
 }
 
 json_empty() {
-    # $1 json
-    json_check $1
-    json_inner $1
+    local json=$1
+    json_check ${json}
+    json_inner ${json}
     if [ "$__" = "" ]; then
         __="true"
     else
