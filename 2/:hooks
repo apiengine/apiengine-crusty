@@ -1,0 +1,13 @@
+#!/bin/sh
+
+hooks_pre() {
+    if [ -x _$1 ]; then
+        . _$1 $*
+    fi
+}
+
+hooks_post() {
+    if [ -x %$1 ]; then
+        . %$1 $*
+    fi
+}

@@ -32,6 +32,14 @@ json_merge() {
     __=${merged}
 }
 
+json_v() {
+    local json=$1
+    local k=$2
+    json_check_ ${json}
+    local v=`echo ${json} | jshon -e ${k}`
+    __=`echo ${v} | sed s'+^"++g' | sed s'+"$++g'`
+}
+
 json_is() {
     local json=$1
     string_startswith "{" "${json}"; local s=$__
@@ -45,14 +53,6 @@ json_is() {
 }
 
 #
-
-json_v_() {
-    local json=$1
-    local k=$2
-    json_check_ ${json}
-    local v=`echo ${json} | jshon -e ${k}`
-    __=`echo ${v} | sed s'+^"++g' | sed s'+"$++g'`
-}
 
 json_inner_() {
     local json=$1
@@ -79,9 +79,9 @@ json_empty_() {
     fi
 }
 
-# FIX probably not needed any more
 json_munge_() {
     local mungee=$1
     __=`echo ${mungee} | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
+    # for boolean types.  perhaps mod backend.
     # =`echo $__ | sed s'+"true"+true+g' | sed s'+"false"+false+g'`
 }

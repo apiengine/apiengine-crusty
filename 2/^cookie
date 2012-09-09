@@ -1,0 +1,8 @@
+#!/bin/sh
+
+AE_COOKIES="-b ${AE_CF} -c ${AE_CF}"
+#if [ -f ${AE_CF} ]; then
+#    AE_COOKIES="-b ${AE_CF} -c ${AE_CF}"
+#else
+#    AE_COOKIES="-c ${AE_CF}"
+#fi

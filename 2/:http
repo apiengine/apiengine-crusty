@@ -2,7 +2,6 @@
 
 http_method() {
     local crud=$1
-
       if [ "${crud}" = "c" ];      then __="POST"
     elif [ "${crud}" = "r" ];      then __="GET"
     elif [ "${crud}" = "u" ];      then __="PUT"
