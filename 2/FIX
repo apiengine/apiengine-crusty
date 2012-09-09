@@ -1,3 +1,4 @@
+. if fail and response is json, output it instead of file reference
 . check return codes matches expected
 . sort all commented lines in the matrix
 . install and user guide, especially jshon jasshon
