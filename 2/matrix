@@ -1,24 +1,24 @@
                                            RESPONSE               location auth  error code            CMD   T                                        ARGS URL
-                                           {status}                      .    .      .  200 | status         r                                             /status
+                                           {status}                      .    *      .  200 | status         r                                             /status
 #                                  {csrf id login*}          /session/{id}    *      *  201 | session        c  login|email password                       /session
                                    {csrf id login*}          /session/{id}    *      *  201 | session        c  login password                             /session
                                    {csrf id login*}                      .    *      *  200 | session        r                                             /session
                                              {csrf}                      .    *      *  200 | session        d                                             /session/#session
                                     {csrf login id}           /user/{user}    *      *  201 | user           c  login email password publicize* name* url* /user
-{login gravatar epoch name* email* publicize* url*}                      .    .      .  204 | user           r  login|email                                /user/#login
-                                                  .                      .    .      .  204 | user           u  login email publicize password* name* url* /user/#login  
-                                                  .                      .    .      .  204 | user           d  login                                      /user/#login  
-                                                  .                      .    .      .  204 | password       c  email                                      /passwordreset
-                                     {token expiry}                      .    .      .  200 | password       r  key                                        /passwordreset/#key
-                                                  .                      .    .      .  204 | password       c  key password                               /passwordreset/#key
-                                              [api]                      .    .      .  200 | api            r                                             /api
-                                                  . /user/{user}/api/{api}    .      .  201 | api            c  user api private [version*]                /user/#user/api
-                                              [api]                      .    .      .  200 | api            r  user                                       /user/#user/api
-{user api version label index [resources] baseurl*} /user/{user}/api/{api}    .      .  201 | api            c  user api baseurl* label* index*            /user/#user/api/#api
-                                              [api]                      .    .      .  200 | api            r  user api                                   /user/#user/api/#api
-{user api version label index [resources] baseurl*}                      .    .      .  200 | version        r  user api version                           /user/#user/api/#api/#version
-                                                  .                      .    .      .  204 | version        u  user api version label index               /user/#user/api/#api/#version
-                                                  .                      .    .      .  204 | version        d  user api version                           /user/#user/api/#api/#version
+{login gravatar epoch name* email* publicize* url*}                      .    *      .  204 | user           r  login|email                                /user/#login
+                                                  .                      .    *      .  204 | user           u  login email publicize password* name* url* /user/#login  
+                                                  .                      .    *      .  204 | user           d  login                                      /user/#login  
+                                                  .                      .    *      .  204 | password       c  email                                      /passwordreset
+                                     {token expiry}                      .    *      .  200 | password       r  key                                        /passwordreset/#key
+                                                  .                      .    *      .  204 | password       c  key password                               /passwordreset/#key
+                                              [api]                      .           .  200 | api            r                                             /api
+                                                  . /user/{user}/api/{api}    *      .  201 | api            c  user api private [version*]                /user/#user/api
+                                              [api]                      .    *      .  200 | api            r  user                                       /user/#user/api
+{user api version label index [resources] baseurl*} /user/{user}/api/{api}    *      .  201 | api            c  user api baseurl* label* index*            /user/#user/api/#api
+                                              [api]                      .    *      .  200 | api            r  user api                                   /user/#user/api/#api
+{user api version label index [resources] baseurl*}                      .    *      .  200 | version        r  user api version                           /user/#user/api/#api/#version
+                                                  .                      .           .  204 | version        u  user api version label index               /user/#user/api/#api/#version
+                                                  .                      .           .  204 | version        d  user api version                           /user/#user/api/#api/#version
 #                                                                                           | resource       r                                             /user/#user/api/#api/#version/resource
 #                                                                                           | resource       c                                             /user/#user/api/#api/#version/resource
 #                                                                                           | resource       r                                             /user/#user/api/#api/#version/resource/#resource
