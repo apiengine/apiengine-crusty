@@ -5,13 +5,14 @@
                                    {csrf id login*}                      .    *      *  200 | session        r                                             /session
                                              {csrf}                      .    *      *  200 | session        d                                             /session/#session
                                     {csrf login id}           /user/{user}    *      *  201 | user           c  login email password publicize* name* url* /user
-{login gravatar epoch name* email* publicize* url*}                      .    *      .  204 | user           r  login|email                                /user/#login
+{login gravatar epoch name* email* publicize* url*}                      .    *      .  204 | user           r  login                                      /user/#login
+#{login gravatar epoch name* email* publicize* url*}                      .    *      .  204 | user           r  login|email                                /user/#login
                                                   .                      .    *      .  204 | user           u  login email publicize password* name* url* /user/#login  
                                                   .                      .    *      .  204 | user           d  login                                      /user/#login  
                                                   .                      .    *      .  204 | password       c  email                                      /passwordreset
                                      {token expiry}                      .    *      .  200 | password       r  key                                        /passwordreset/#key
                                                   .                      .    *      .  204 | password       c  key password                               /passwordreset/#key
-                                              [api]                      .           .  200 | api            r                                             /api
+                                              [api]                      .           .  209 | api            r                                             /api
                                                   . /user/{user}/api/{api}    *      .  201 | api            c  user api private [version*]                /user/#user/api
                                               [api]                      .    *      .  200 | api            r  user                                       /user/#user/api
 {user api version label index [resources] baseurl*} /user/{user}/api/{api}    *      .  201 | api            c  user api baseurl* label* index*            /user/#user/api/#api

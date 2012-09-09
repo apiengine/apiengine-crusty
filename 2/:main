@@ -38,11 +38,10 @@ line_locate
 http_payload
 . ^cookie
 
-echo LINE: ${__line}
-echo PAYLOAD: ${__payload}
-echo URL: ${__url}
+#echo LINE: ${__line}
+#echo PAYLOAD: ${__payload}
+#echo URL: ${__url}
 
-set -x
 > ${AE_HTTPCODE} curl                      \
     ${AE_COOKIES}                          \
     ${AE_CSRF}                             \
@@ -52,7 +51,8 @@ set -x
     -o ${AE_RESPONSE}                      \
     -w %{http_code}                        \
     ${AE_HOST}:${AE_PORT}/${AE_RESOURCE}
-set +x
+
+http_code
 
 # FIX move out
 __response=`cat < ${AE_RESPONSE}`
@@ -61,5 +61,4 @@ echo "json: $__"
 
 hooks_post ${AE_CMD} $*
 
-http_code
 auth_checks
