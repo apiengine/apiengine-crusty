@@ -43,7 +43,6 @@ http_payload
 #echo PAYLOAD: ${__payload}
 #echo URL: ${__url}
 
-set -x
 > ${AE_HTTPCODE} curl                      \
     ${AE_COOKIES}                          \
     ${AE_CSRF}                             \
@@ -53,7 +52,6 @@ set -x
     -o ${AE_RESPONSE}                      \
     -w %{http_code}                        \
     ${AE_HOST}:${AE_PORT}/${AE_RESOURCE}
-set +x
 
 http_code
 

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 auth_checks() {
     authable; local authable=$__
 

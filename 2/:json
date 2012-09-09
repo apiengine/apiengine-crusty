@@ -42,6 +42,7 @@ json_v() {
     local json=$1
     local k=$2
     json_check_ ${json}
+echo "FAIL WITH INFORMATION IF KEY DOES NOT EXIST"
     local v=`echo ${json} | jshon -e ${k}`
     __=`echo ${v} | sed s'+^"++g' | sed s'+"$++g'`
 }
