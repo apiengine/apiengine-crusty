@@ -16,7 +16,7 @@ param_build() {
     do
         array_append ${pre} ${w}
 
-        param_optional ${w}; local opt=$__
+        _param_optional ${w}; local opt=$__
         array_append ${pre}_opt ${opt}
 
         if [ "${opt}" = "true" ]; then
@@ -27,6 +27,6 @@ param_build() {
     done
 }
 
-param_optional() {
+_param_optional() {
     string_contains "\*" $1
 }

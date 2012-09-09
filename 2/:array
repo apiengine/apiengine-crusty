@@ -3,7 +3,7 @@
 array_get() {
     local name=$1
     local pos=$2
-    array_bounds ${name} ${pos}
+    array_bounds_ ${name} ${pos}
     val_peek ${name}_${pos}
 }
 
@@ -11,7 +11,7 @@ array_put() {
     local name=$1
     local pos=$2
     local val=$3
-    array_bounds ${name} $2
+    array_bounds_ ${name} $2
     val_poke ${name}_${pos} "${val}"
 }
 
@@ -20,7 +20,41 @@ array_len() {
     val_peek ${name}_n
 }
 
-array_exists() {
+array_append() {
+    local name=$1
+    local val=$2
+    array_exists_ ${name}
+    array_len ${name} 
+    local len=$__
+    local pos=$__
+    math_inc "len"
+    array_set_len_ ${name} ${len}
+    array_put ${name} ${pos} ${val}
+}
+
+array_last() {
+    local name=$1
+    array_exists_ ${name}
+    array_len $1; local len=$__
+    math_dec "len"
+    array_get $1 ${len}
+}
+
+array_create() {
+    local name=$1
+    array_non_existent_ ${name}
+    array_set_len_ ${name} 0
+}
+
+array_destroy() {
+    local name=$1
+    array_exists_ ${name}
+    array_set_len_ ${name} "?"
+}
+
+#
+
+array_exists_() {
     local name=$1
     array_len ${name}
     if [ "$__" = "" -o "$__" = "\?" ]; then
@@ -28,7 +62,7 @@ array_exists() {
     fi
 }
 
-array_non_existent() {
+array_non_existent_() {
     local name=$1
     array_len ${name}
     if [ "$__" != "" -a "$__" = "\?" ]; then
@@ -36,48 +70,16 @@ array_non_existent() {
     fi
 }
 
-array_append() {
-    local name=$1
-    local val=$2
-    array_exists ${name}
-    array_len ${name} 
-    local len=$__
-    local pos=$__
-    math_inc "len"
-    array_set_len ${name} ${len}
-    array_put ${name} ${pos} ${val}
-}
-
-array_last() {
-    local name=$1
-    array_exists ${name}
-    array_len $1; local len=$__
-    math_dec "len"
-    array_get $1 ${len}
-}
-
-array_set_len() { # internal use only
+array_set_len_() { # internal use only
     local name=$1
     local val=$2
     val_poke ${name}_n "${val}"
 }
 
-array_create() {
-    local name=$1
-    array_non_existent ${name}
-    array_set_len ${name} 0
-}
-
-array_destroy() {
-    local name=$1
-    array_exists ${name}
-    array_set_len ${name} "?"
-}
-
-array_bounds() {
+array_bounds_() {
     local name=$1
     local pos=$2
-    array_exists ${name}
+    array_exists_ ${name}
     array_len ${name}; local len=$__
     if [ ${len} -gt $2 ]; then
     else
