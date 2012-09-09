@@ -63,7 +63,10 @@ json_v() {
     if [ $__ = "false" ]; then
         bomb_fail "json key \"${k}\" does not exist in ${json}"
     fi
-    local v=`echo ${json} | jshon -e ${k}`
+    local v=
+    v=`echo ${json} | jshon -e ${k}`
+    # jshon formats to include line feeds ... nuke back
+    v=`echo $v | tr '\n' ' ' | sed 's/ //g'`
     __=`echo ${v} | sed s'+^"++g' | sed s'+"$++g'`
 }
 

@@ -24,8 +24,18 @@ http_payload() {
 }
 
 http_fail() {
-    bomb_fail $@ : ${__response}
-    # FIX working here
+    json_is ${__response}
+    if [ "$__" = "true" ]; then 
+        json_contains ${__response} "errors"
+        if [ "$__" = "true" ]; then
+            json_v ${__response} "errors"
+            bomb_fail $@ : $__
+        else
+            bomb_fail $@ : ${__response}
+        fi
+    else
+        bomb_fail $@ : ${AE_RESPONSE}
+    fi
 }
 
 http_code() {
@@ -39,7 +49,7 @@ http_code() {
         http_fail "looks like an internal server error ... : ${code}"
     fi
 
-    string_startswith "${code}" "4"
+    string_startswith ${code} "4"
     if [ "$__" = "true" ]; then
         http_fail "${code}"
     fi

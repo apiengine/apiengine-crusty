@@ -4,12 +4,9 @@ auth_checks() {
     authable; local authable=$__
 
     if [ ${authable} = "true" ]; then
-echo "______1"
         json_v ${__response} "auth"; local auth=$__
-echo "______2"
     
         if [ "$auth" = "true" ]; then
-echo "______3"
             json_v "${__response}" "csrf"; local csrf=$__
             json_v "${__response}"   "id"; local   id=$__
             local r="{}"
