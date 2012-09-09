@@ -1,8 +1,8 @@
                                            RESPONSE               location auth  error code            CMD   T                                        ARGS URL
-                                           {status}                      .    .      .  200 | status         r  .                                          /status
+                                           {status}                      .    .      .  200 | status         r                                             /status
                                    {csrf id login*}          /session/{id}    *      *  201 | session        c  login|email password                       /session
-                                   {csrf id login*}                      .    *      *  200 | session        r  .                                          /session
-                                             {csrf}                      .    *      *  200 | session        d  .                                          /session/#id
+                                   {csrf id login*}                      .    *      *  200 | session        r                                             /session
+                                             {csrf}                      .    *      *  200 | session        d                                             /session/#id
                                     {csrf login id}           /user/{user}    *      *  201 | user           c  login email password publicize* name* url* /user
 {login gravatar epoch name* email* publicize* url*}                      .    .      .  204 | user           r  login|email                                /user/#login
                                                   .                      .    .      .  204 | user           u  login email publicize password* name* url* /user/#login  

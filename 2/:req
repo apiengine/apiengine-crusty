@@ -5,6 +5,7 @@ req_build() {
     req_optional; _optional=$__
     json_merge ${_mandatory} ${_optional}
     __payload=$__
+    echo "PICK UP HERE..."
 }
 
 req_mandatory() {
