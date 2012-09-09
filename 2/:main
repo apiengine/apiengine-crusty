@@ -50,10 +50,10 @@ set -x
     ${AE_CSRF}                             \
     -s                                     \
     -X ${AE_METHOD}                        \
-    ${AE_POST}                             \
+    ${AE_DATA}                             \
     -o ${AE_RESPONSE}                      \
     -w %{http_code}                        \
-    ${AE_HOST}:${AE_PORT}/${AE_RESOURCE}
+    ${AE_HOST}:${AE_PORT}${__url}
 set +x
 
 response_get

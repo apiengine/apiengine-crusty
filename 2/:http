@@ -19,7 +19,7 @@ http_payload() {
     > ${AE_RESPONSE} echo '{"error":"seems there was no return value!"}'
 
     if [ "${AE_METHOD}" = "POST" -o "${AE_METHOD}" = "PUT" ]; then
-        AE_POST="-d ${__payload}"
+        AE_DATA="-d ${__payload}"
     fi
 }
 
