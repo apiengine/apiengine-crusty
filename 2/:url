@@ -4,10 +4,9 @@ url_build() {
     url_injectable ${__url}; _injectable=$__
     url_parameters
 
-echo "1"
 echo "INJECTABLE: ${_injectable}"
     eval __url=${_injectable}
-echo "2"
+echo "INJECTED: ${__url}"
 }
 
 url_injectable() {

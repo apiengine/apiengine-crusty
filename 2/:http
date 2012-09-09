@@ -34,7 +34,7 @@ http_code() {
         bomb_fail "looks like an internal server error ... : ${code} : ${AE_RESPONSE}"
     fi
 
-    string_startswith "4" "${code}"
+    string_startswith "${code}" "4"
     if [ "$__" = "true" ]; then
         bomb_fail "${code} : ${AE_RESPONSE}"
     fi

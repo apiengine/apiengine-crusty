@@ -28,5 +28,5 @@ param_build() {
 }
 
 _param_optional() {
-    string_contains "\*" $1
+    string_contains $1 "*"
 }
