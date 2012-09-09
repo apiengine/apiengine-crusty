@@ -5,7 +5,6 @@ req_build() {
     req_optional; _optional=$__
     json_merge ${_mandatory} ${_optional}
     __payload=$__
-    echo "PICK UP HERE..."
 }
 
 req_mandatory() {
@@ -23,7 +22,7 @@ req_mandatory() {
 }
 
 req_optional() {
-    # FIX the follow should be encapsulated in :param
+    # FIX the following should be encapsulated in :param
     array_last "__cmdline"; _json=$__
     json_is "${_json}"
     if [ "$__" = "true" ]; then

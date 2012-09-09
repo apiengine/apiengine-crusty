@@ -16,6 +16,7 @@ cd $loc
 . :param
 . :line
 . :req
+. :url
 . :common $*
 . ^filter
 . ^collapse
@@ -25,6 +26,8 @@ shift
 . ^cmdline
 
 line_locate
-echo LINE: ${__line}
 req_build
+url_build
+echo LINE: ${__line}
 echo PAYLOAD: ${__payload}
+echo URL: ${__url}
