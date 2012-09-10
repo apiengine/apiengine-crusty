@@ -42,7 +42,7 @@ http_code() {
     local code=`cat ${AE_HTTPCODE}`
 
     if [ "${code}" = "000" ]; then
-        http_fail "looks like the server is not up... : ${code}"
+        http_fail "server down or cable loose ... : ${code}"
     fi
 
     if [ "${code}" = "500" ]; then

@@ -40,11 +40,10 @@ http_payload
 . ^cookie
 . ^session
 
-echo LINE: ${__line}
-echo PAYLOAD: ${__payload}
-echo URL: ${__url}
+#echo LINE: ${__line}
+#echo PAYLOAD: ${__payload}
+#echo URL: ${__url}
 
-set -x
 > ${AE_HTTPCODE} curl                      \
     ${AE_COOKIES}                          \
     ${AE_CSRF}                             \
@@ -54,7 +53,6 @@ set -x
     -o ${AE_RESPONSE}                      \
     -w %{http_code}                        \
     ${AE_HOST}:${AE_PORT}${__url}
-set +x
 
 response_get
 

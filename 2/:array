@@ -81,7 +81,8 @@ array_bounds_() {
     local pos=$2
     array_exists_ ${name}
     array_len ${name}; local len=$__
-    if [ ${len} -gt $2 ]; then
+    if [ ${len} -gt ${pos} ]; then
+        true
     else
         bomb_fail "index ${pos} out of bounds for array size ${len}"
     fi
