@@ -11,7 +11,7 @@ array_put() {
     local name=$1
     local pos=$2
     local val=$3
-    array_bounds_ ${name} $2
+    array_bounds_ ${name} ${pos}
     val_poke ${name}_${pos} "${val}"
 }
 

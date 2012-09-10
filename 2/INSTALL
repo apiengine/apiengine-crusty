@@ -1,3 +1,5 @@
+THIS IS JUST RANDOM NOTES AT THE MOMENT:
+
 cd tmp
 
 # jansson:
@@ -7,10 +9,13 @@ ln -s jansson-2.3.1 jansson
 cd jansson
 ./configure
 make
-export JANSSON=${HOME}/eval/jansson
-export LD_LIBRARY_PATH=${JANSSON}/src/.libs:${LD_LIBRARY_PATH}
+export JANSSON_HOME=${HOME}/eval/jansson
+export LD_LIBRARY_PATH=${JANSSON_HOME}/src/.libs:${LD_LIBRARY_PATH}  # OSX DYLD_LIBRA...
 
 # jshon:
 curl -o jshon.tar.gz http://kmkeen.com/jshon/jshon.tar.gz
 tar zxf jshon.tar.gz
-export JSHON=${HOME}/eval/jshon
+patch < jshon.patch
+export JSHON_HOME=${HOME}/eval/jshon
+
+export PATH=${JSHON_HOME}:${PATH}
