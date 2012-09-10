@@ -1,3 +1,4 @@
+. {?page,count}
 . matrix column URL is RESOURCE
 . sort the cheat which maps spaces in json to underscores
 . if fail and response is json, output it instead of file reference

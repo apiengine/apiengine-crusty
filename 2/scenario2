@@ -1,6 +1,10 @@
 #!/bin/sh
 
-status
+status r
 api r
 api r thomasdavis
 api r thomasdavis ApiEngine
+resource r thomasdavis ApiEngine 1
+resource r thomasdavis ApiEngine 1 8
+method r thomasdavis ApiEngine 1 8
+method r thomasdavis ApiEngine 1 8 POST
