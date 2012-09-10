@@ -26,9 +26,13 @@ http_payload() {
 http_fail() {
     json_is ${__response}
     if [ "$__" = "true" ]; then 
-        json_contains ${__response} "errors"
-        if [ "$__" = "true" ]; then
+        json_contains ${__response} "errors"; local errors=$__
+        json_contains ${__response} "error"; local error=$__
+        if [ "${errors}" = "true" ]; then
             json_v ${__response} "errors"
+            bomb_fail $@ : $__
+        elif [ "${error}" = "true" ]; then
+            json_v ${__response} "error"
             bomb_fail $@ : $__
         else
             bomb_fail $@ : ${__response}

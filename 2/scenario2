@@ -1,0 +1,6 @@
+#!/bin/sh
+
+status
+api r
+api r thomasdavis
+api r thomasdavis ApiEngine
