@@ -40,7 +40,7 @@ http_payload
 . ^cookie
 . ^session
 
-#echo LINE: ${__line}
+echo LINE: ${__line}
 #echo PAYLOAD: ${__payload}
 #echo URL: ${__url}
 

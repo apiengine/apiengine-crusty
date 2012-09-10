@@ -4,9 +4,9 @@
                                    {csrf id login*}          /session/{id}    *      *  201 | session        c  login password                             /session
 #                                  {csrf id login*}          /session/{id}    *      *  201 | session        c  login password                             /session
                                    {csrf id login*}                      .    *      *  200 | session        r                                             /session
-#                                            {csrf}                      .    *      *  200 | session        d                                             /session/#session
+                                             {csrf}                      .    *      *  200 | session        d                                             /session/#session
 #                                   {csrf login id}           /user/{user}    *      *  201 | user           c  login email password publicize* name* url* /user
-#{login gravatar epoch name* email* publicize* url*}                      .           .  200 | user           r  login                                      /user/#login
+{login gravatar epoch name* email* publicize* url*}                      .           .  200 | user           r  login                                      /user/#login
 #{login gravatar epoch name* email* publicize* url*}                      .    *      .  204 | user           r  login|email                                /user/#login
 #                                                 .                      .    *      .  204 | user           u  login email publicize password* name* url* /user/#login  
 #                                                 .                      .    *      .  204 | user           d  login                                      /user/#login  
