@@ -1,0 +1,16 @@
+cd tmp
+
+# jansson:
+curl -o jansson-2.3.1.tar.gz http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz
+tar zxf jansson-2.3.1.tar.gz
+ln -s jansson-2.3.1 jansson
+cd jansson
+./configure
+make
+export JANSSON=${HOME}/eval/jansson
+export LD_LIBRARY_PATH=${JANSSON}/src/.libs:${LD_LIBRARY_PATH}
+
+# jshon:
+curl -o jshon.tar.gz http://kmkeen.com/jshon/jshon.tar.gz
+tar zxf jshon.tar.gz
+export JSHON=${HOME}/eval/jshon
