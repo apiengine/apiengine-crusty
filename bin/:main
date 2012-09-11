@@ -1,9 +1,17 @@
 #!/bin/sh
 
-loc=`dirname $0`
-cmd=`basename $0`
+AE_API=`dirname $0`
+AE_CMD=`basename $0`
 
-cd $loc
+cd ${AE_API}
+
+[ ! -f matrix ] && echo "matrix file missing at `pwd`" && exit 5
+
+AE_MATRIX="${AE_API}/matrix"
+AE_BIN=`readlink ${AE_CMD} | xargs dirname`
+
+cd $AE_BIN
+
 
 . :bomb
 . :val

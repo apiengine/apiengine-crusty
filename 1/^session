@@ -1,6 +1,0 @@
-#!/bin/sh
-
-if [ -f ${AE_SESSION} ]; then
-    __=`< ${AE_SESSION} cat`; jsonv csrf;
-    AE_CSRF="-H \"X-CSRF-Token:$__\""
-fi

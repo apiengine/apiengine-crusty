@@ -1,7 +1,0 @@
-#!/bin/sh
-
-invalidate() {
-    rm -f ${AE_SESSION}
-    echo "dethenticated."
-}
-

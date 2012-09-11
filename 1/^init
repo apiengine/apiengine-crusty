@@ -1,7 +1,0 @@
-#!/bin/sh
-
-> ${AE_RESPONSE} echo '{"error":"seems there was no return value!"}'
-
-if [ "${AE_METHOD}" = "POST" -o "${AE_METHOD}" = "PUT" ]; then
-    AE_POST="-d ${AE_REQUEST}"
-fi

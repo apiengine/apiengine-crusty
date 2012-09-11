@@ -1,9 +1,0 @@
-. {?page,count}
-. matrix column URL is RESOURCE
-. sort the cheat which maps spaces in json to underscores
-. if fail and response is json, output it instead of file reference
-. sort all commented lines in the matrix
-. install and user guide, especially jshon jasshon
-
-* used local keywork | namespace all variables based on their module
-* checks done | check return codes matches expected

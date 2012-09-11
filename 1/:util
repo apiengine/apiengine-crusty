@@ -1,5 +1,0 @@
-#!/bin/sh
-
-urlencode() {
-    __=`echo $__ | sed -f ,urlsed`
-}
