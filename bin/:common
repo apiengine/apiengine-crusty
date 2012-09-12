@@ -1,14 +1,5 @@
 #!/bin/sh
 
-CRUSTY_API=`dirname $0`
-CRUSTY_API=`cd ${CRUSTY_API}; pwd`
-CRUSTY_CMD=`basename $0`
-CRUSTY_BIN=`readlink ${CRUSTY_CMD} | xargs dirname`
-CRUSTY_BIN=`cd $CRUSTY_BIN; pwd`
-
-cd ${CRUSTY_BIN}
-PATH=${CRUSTY_BIN}:${PATH}
-
 CRUSTY_MATRIX=${CRUSTY_API}/matrix
 CRUSTY_CRUD=$1
 
