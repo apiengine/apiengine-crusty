@@ -4,15 +4,18 @@ For installation define the location AE_EXTERNALS to point at where you want
 jshon and jansson to reside.  Morgan for example likes to build third party
 tools in the directory /home/morgan/eval and so he will define:
 
-    $ export AE_EXTERNALS=/home/morgan/eval
+    $ export AE_EXT=/home/morgan/eval
 
-Just make sure the $AE_EXTERNALS directory exists.
+IMPORTANT: This process assumes "crusty" has already been downloaded and
+           that $AE_EXT/crusty where is resides.  If "crusty" resides
+           somewhere else, just link it in:
 
+    $ ln -s /home/morgan/some/where/else/crusty $AE_EXT/crusty
 
 jansson
 -------
 
-    $ cd $AE_EXTERNALS
+    $ cd $AE_EXT
     $ curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | \
     > tar zxf -
     $ ln -s jansson* jansson
@@ -23,17 +26,26 @@ jansson
 jshon
 -----
 
+    $ cd $AE_EXT
+    $ curl http://kmkeen.com/jshon/jshon.tar.gz | \
+    > tar zxf -
+    $ cd jshon
+    $ export C_INCLUDE_PATH=$AE_EXT/jansson/src
+    $ export LIBRARY_PATH=$AE_EXT/jansson/src/.libs
+    $ make
+
+
+
+
+export DYLD_LIBRARY_PATH=$AE_EXT/jansson/src/.libs
+export LD_LIBRARY_PATH=$AE_EXT/jansson/src/.libs
+
+
+
+
+
+
 TODO
-
-
-
-
-
-
-
-
-
-
 
 
 THIS IS JUST RANDOM NOTES AT THE MOMENT:
@@ -51,7 +63,6 @@ export JANSSON_HOME=${HOME}/eval/jansson
 export LD_LIBRARY_PATH=${JANSSON_HOME}/src/.libs:${LD_LIBRARY_PATH}  # OSX DYLD_LIBRA...
 
 # jshon:
-curl -o jshon.tar.gz http://kmkeen.com/jshon/jshon.tar.gz
 tar zxf jshon.tar.gz
 patch < jshon.patch
 export JSHON_HOME=${HOME}/eval/jshon
