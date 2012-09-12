@@ -1,10 +1,10 @@
 #!/bin/sh
 
 session_csrf() {
-    if [ -f ${AE_SESSION} ]; then
-        local json=`< ${AE_SESSION} cat`
+    if [ -f ${CRUSTY_SESSION} ]; then
+        local json=`< ${CRUSTY_SESSION} cat`
         json_v ${json} "csrf"; local csrf=$__
-        AE_CSRF="-H \"X-CSRF-Token:${csrf}\""
+        CRUSTY_CSRF="-H \"X-CSRF-Token:${csrf}\""
     fi
 }
 

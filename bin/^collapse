@@ -1,11 +1,11 @@
 #!/bin/sh
 
-grep -q : ${AE_FILTERED}
+grep -q : ${CRUSTY_FILTERED}
 if [ $? = 0 ]; then
-    fail 'matrix contains separator character :'
+    fail '${CRUSTY_MATRIX} contains separator character :'
 fi
 
-cat ${AE_FILTERED}                       | \
+cat ${CRUSTY_FILTERED}                       | \
 grep -v '^#'                             | \
  sed -e 's/./:/155'                        \
      -e 's/./:/111'                        \
@@ -19,4 +19,4 @@ grep -v '^#'                             | \
      -e 's/$/:/g'                          \
      -e 's/ *:/:/g'                        \
      -e 's/: */:/g'                        \
-> ${AE_COLLAPSED}
+> ${CRUSTY_COLLAPSED}

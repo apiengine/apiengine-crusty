@@ -16,10 +16,10 @@ http_method() {
 }
 
 http_payload() {
-    > ${AE_RESPONSE} echo '{"error":"seems there was no return value!"}'
+    > ${CRUSTY_RESPONSE} echo '{"error":"seems there was no return value!"}'
 
-    if [ "${AE_METHOD}" = "POST" -o "${AE_METHOD}" = "PUT" ]; then
-        AE_DATA="-d ${__payload}"
+    if [ "${CRUSTY_METHOD}" = "POST" -o "${CRUSTY_METHOD}" = "PUT" ]; then
+        CRUSTY_DATA="-d ${__payload}"
     fi
 }
 
@@ -38,12 +38,12 @@ http_fail() {
             bomb_fail $@ : ${__response}
         fi
     else
-        bomb_fail $@ : ${AE_RESPONSE}
+        bomb_fail $@ : ${CRUSTY_RESPONSE}
     fi
 }
 
 http_code() {
-    local code=`cat ${AE_HTTPCODE}`
+    local code=`cat ${CRUSTY_HTTPCODE}`
 
     if [ "${code}" = "000" ]; then
         http_fail "server down or cable loose ... : ${code}"

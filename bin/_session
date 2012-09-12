@@ -1,14 +1,14 @@
 #!/bin/sh
 
 _session_url_variable() {
-    __=`< ${AE_SESSION} cat`
+    __=`< ${CRUSTY_SESSION} cat`
     json_v $__ "id"
     util_urlencode $__
     _session_=$__
 }
 
-if [ "${AE_METHOD}" = "DELETE" ]; then
-    if [ ! -f ${AE_SESSION} ]; then
+if [ "${CRUSTY_METHOD}" = "DELETE" ]; then
+    if [ ! -f ${CRUSTY_SESSION} ]; then
         bomb_fail "no active session to delete."
     fi
 

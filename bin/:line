@@ -1,9 +1,9 @@
 #!/bin/sh
 
 line_available() {
-    local lines="`wc -l ${AE_COLLAPSED} | cut -c7-8`"
+    local lines="`wc -l ${CRUSTY_COLLAPSED} | cut -c7-8`"
     if [ ${lines} = 0 ]; then
-        bomb_fail "no entries for [${AE_CMD}]"
+        bomb_fail "no entries for [${CRUSTY_CMD}]"
     fi
 }
 
@@ -13,7 +13,7 @@ line_locate() {
     local l=""
     while read l; do
         specs_split ${l}
-        if [ "${__method}" = "${AE_CRUD}" ]; then 
+        if [ "${__method}" = "${CRUSTY_CRUD}" ]; then 
             param_build "__args" ${__args}
             line_cmdline_match "__args"
             if [ "$__" = "true" ]; then
@@ -23,9 +23,9 @@ line_locate() {
                 line=${l}
             fi
         fi        
-    done < ${AE_COLLAPSED}
+    done < ${CRUSTY_COLLAPSED}
     if [ "${line}" == "__not_found__" ]; then
-        bomb_fail "no entry for [${AE_CMD} ${AE_CRUD}]"
+        bomb_fail "no entry for [${CRUSTY_CMD} ${CRUSTY_CRUD}]"
     fi
     specs_split ${line}
     param_build "__args" ${__args}

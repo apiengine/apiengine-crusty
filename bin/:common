@@ -1,23 +1,23 @@
 #!/bin/sh
 
-AE_CRUD=$1
+CRUSTY_CRUD=$1
 
-AE_GEN=${AE_API}/gen
-AE_CF=${AE_GEN}/cookies
-AE_HOST=localhost
-AE_PORT=3000
+CRUSTY_GEN=${CRUSTY_API}/gen
+CRUSTY_CF=${CRUSTY_GEN}/cookies
+CRUSTY_HOST=localhost
+CRUSTY_PORT=3000
 
-AE_RESPONSE=${AE_GEN}/${AE_CMD}_$$.out
-AE_HTTPCODE=${AE_GEN}/${AE_CMD}_$$_httpcode.out
-AE_HTTPCODE=${AE_GEN}/${AE_CMD}_$$_httpcode.out
-AE_SESSION=${AE_GEN}/session
-AE_COLLAPSED=${AE_GEN}/collapsed
-AE_FILTERED=${AE_GEN}/filtered
+CRUSTY_RESPONSE=${CRUSTY_GEN}/${CRUSTY_CMD}_$$.out
+CRUSTY_HTTPCODE=${CRUSTY_GEN}/${CRUSTY_CMD}_$$_httpcode.out
+CRUSTY_HTTPCODE=${CRUSTY_GEN}/${CRUSTY_CMD}_$$_httpcode.out
+CRUSTY_SESSION=${CRUSTY_GEN}/session
+CRUSTY_COLLAPSED=${CRUSTY_GEN}/collapsed
+CRUSTY_FILTERED=${CRUSTY_GEN}/filtered
 
-http_method ${AE_CRUD}; AE_METHOD=$__
+http_method ${CRUSTY_CRUD}; CRUSTY_METHOD=$__
 
-if [ -f ${HOME}/.apiengine/config ]; then
-    . ${HOME}/.apiengine/config
+if [ -f ${HOME}/.crusty/config ]; then
+    . ${HOME}/.crusty/config
 fi 
 
-mkdir -p ${AE_GEN}
+mkdir -p ${CRUSTY_GEN}

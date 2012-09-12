@@ -12,7 +12,7 @@ auth_checks() {
             local r="{}"
             json_add ${r}   "id"   ${id}; local r=$__
             json_add ${r} "csrf" ${csrf}; local r=$__
-            > ${AE_SESSION} echo $__
+            > ${CRUSTY_SESSION} echo $__
             echo "authenticated."
         else
             session_invalidate

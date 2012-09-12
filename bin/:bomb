@@ -4,7 +4,7 @@
 bomb_usage() {
     local msg=$1
     shift
-    echo "${msg} : usage : ${AE_CMD} {c,r,u,d} $*"
+    echo "${msg} : usage : ${CRUSTY_CMD} {c,r,u,d} $*"
     exit 1
 }
 
@@ -14,7 +14,7 @@ bomb_fail() {
 }
 
 bomb_cmdfail() {
-    bomb_fail "${AE_CMD}:" "$1"
+    bomb_fail "${CRUSTY_CMD}:" "$1"
 }
 
 bomb_retok() {

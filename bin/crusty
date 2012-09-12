@@ -1,16 +1,16 @@
 #!/bin/sh
 
-AE_API=`dirname $0`
-AE_CMD=`basename $0`
+CRUSTY_API=`dirname $0`
+CRUSTY_CMD=`basename $0`
 
-cd ${AE_API}
+cd ${CRUSTY_API}
 
 [ ! -f matrix ] && echo "matrix file missing at `pwd`" && exit 5
 
-AE_MATRIX="${AE_API}/matrix"
-AE_BIN=`readlink ${AE_CMD} | xargs dirname`
+CRUSTY_MATRIX="${CRUSTY_API}/matrix"
+CRUSTY_BIN=`readlink ${CRUSTY_CMD} | xargs dirname`
 
-cd $AE_BIN
+cd $CRUSTY_BIN
 
 
 . :bomb
@@ -38,7 +38,7 @@ shift
 
 . ^cmdline
 
-hooks_pre ${AE_CMD} $*
+hooks_pre ${CRUSTY_CMD} $*
 
 line_locate
  req_build
@@ -53,21 +53,21 @@ echo LINE: ${__line}
 #echo URL: ${__url}
 
 set -x
-> ${AE_HTTPCODE} curl                      \
-    ${AE_COOKIES}                          \
-    ${AE_CSRF}                             \
+> ${CRUSTY_HTTPCODE} curl                      \
+    ${CRUSTY_COOKIES}                          \
+    ${CRUSTY_CSRF}                             \
     -s                                     \
-    -X ${AE_METHOD}                        \
-    ${AE_DATA}                             \
-    -o ${AE_RESPONSE}                      \
+    -X ${CRUSTY_METHOD}                        \
+    ${CRUSTY_DATA}                             \
+    -o ${CRUSTY_RESPONSE}                      \
     -w %{http_code}                        \
-    ${AE_HOST}:${AE_PORT}${__url}
+    ${CRUSTY_HOST}:${CRUSTY_PORT}${__url}
 set +x
 
 response_get
 
 http_code
-hooks_post ${AE_CMD} $*
+hooks_post ${CRUSTY_CMD} $*
 auth_checks
 
 echo "[${__response}]" | jshon -e 1

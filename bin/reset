@@ -1,2 +1,2 @@
 #!/bin/sh
-rm -rf ${AE_CURL}/gen/*
+rm -rf ${CRUSTY_CURL}/gen/*

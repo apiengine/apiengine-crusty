@@ -2,6 +2,6 @@
 
 response_get() {
     # FIX replace all response spaces with underscores until arg passing sorted
-    __response=`< ${AE_RESPONSE} cat | sed 's/ /_/g'`
+    __response=`< ${CRUSTY_RESPONSE} cat | sed 's/ /_/g'`
 }
 
