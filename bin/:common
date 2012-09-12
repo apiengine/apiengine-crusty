@@ -16,8 +16,8 @@ AE_FILTERED=${AE_GEN}/filtered
 
 http_method ${AE_CRUD}; AE_METHOD=$__
 
-if [ -f ${HOME}/.ae/config ]; then
-    . ${HOME}/.ae/config
+if [ -f ${HOME}/.apiengine/config ]; then
+    . ${HOME}/.apiengine/config
 fi 
 
 mkdir -p ${AE_GEN}

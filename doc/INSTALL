@@ -1,70 +1,44 @@
-There are 2 external tools to setup - jshon and jansson.
+#!/bin/sh
 
-For installation define the location AE_EXTERNALS to point at where you want
-jshon and jansson to reside.  Morgan for example likes to build third party
-tools in the directory /home/morgan/eval and so he will define:
+set -e
 
-    $ export AE_EXT=/home/morgan/eval
+CRUSTY_HOME=$HOME/.crusty
 
-IMPORTANT: This process assumes "crusty" has already been downloaded and
-           that $AE_EXT/crusty where is resides.  If "crusty" resides
-           somewhere else, just link it in:
+[ ! -f $CRUSTY_HOME ] && echo "creating $CRUSTY_HOME" && mkdir -p $CRUSTY_HOME
 
-    $ ln -s /home/morgan/some/where/else/crusty $AE_EXT/crusty
+if [ ! -f $CRUSTY_HOME/jansson ]; then
+    echo "installing jansson..."
+    cd $CRUSTY_HOME
+    curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | tar zxf -
+    ln -s jansson* jansson
+    cd jansson
+    ./configure
+    make
+fi
 
-jansson
--------
+if [ ! -f $CRUSTY_HOME/jshon ]; then
+    echo "installing jshon..."
+    cd $CRUSTY_HOME
+    curl http://kmkeen.com/jshon/jshon.tar.gz | \
+    tar zxf -
+    cd jshon
+    export C_INCLUDE_PATH=$CRUSTY_HOME/jansson/src
+    export LIBRARY_PATH=$CRUSTY_HOME/jansson/src/.libs
+    make
+fi
 
-    $ cd $AE_EXT
-    $ curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | \
-    > tar zxf -
-    $ ln -s jansson* jansson
-    $ cd jansson
-    $ ./configure
-    $ make
-
-jshon
------
-
-    $ cd $AE_EXT
-    $ curl http://kmkeen.com/jshon/jshon.tar.gz | \
-    > tar zxf -
-    $ cd jshon
-    $ export C_INCLUDE_PATH=$AE_EXT/jansson/src
-    $ export LIBRARY_PATH=$AE_EXT/jansson/src/.libs
-    $ make
-
-
-
-
-export DYLD_LIBRARY_PATH=$AE_EXT/jansson/src/.libs
-export LD_LIBRARY_PATH=$AE_EXT/jansson/src/.libs
-
-
-
-
-
-
-TODO
-
-
-THIS IS JUST RANDOM NOTES AT THE MOMENT:
-
-cd tmp
-
-# jansson:
-curl -o jansson-2.3.1.tar.gz http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz
-tar zxf jansson-2.3.1.tar.gz
-ln -s jansson-2.3.1 jansson
-cd jansson
-./configure
-make
-export JANSSON_HOME=${HOME}/eval/jansson
-export LD_LIBRARY_PATH=${JANSSON_HOME}/src/.libs:${LD_LIBRARY_PATH}  # OSX DYLD_LIBRA...
-
-# jshon:
-tar zxf jshon.tar.gz
-patch < jshon.patch
-export JSHON_HOME=${HOME}/eval/jshon
-
-export PATH=${JSHON_HOME}:${PATH}
+echo; echo; echo; echo; echo
+echo 'BRILLIANT!'
+echo
+echo 'now add the following lines to your ~/.profile or equivalent:'
+echo
+[ "`uname -s`" = "Darwin" ] && sprinkle=DY
+echo '    export CRUSTY_HOME='${CRUSTY_HOME}
+echo '    export PATH=$CRUSTY_HOME/jshon:$PATH'
+echo '    export '$sprinkle'LD_LIBRARY_PATH=$CRUSTY_HOME/jansson/src/.libs'
+echo
+echo 'then check jshon runs:'
+echo
+echo '    echo '\''{"msg":"rockin"}'\'' | jshon -e msg'
+echo
+echo 'time to move on to CONFIGURATION...'
