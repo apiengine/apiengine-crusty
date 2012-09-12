@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 [ -z $AE_EXT ] && echo 'Set AE_EXT to point to install directory for jshon/jansson' && exit 1
 
 mkdir -p $AE_EXT
@@ -24,12 +26,17 @@ export LIBRARY_PATH=$AE_EXT/jansson/src/.libs
 make
 
 echo; echo; echo; echo; echo
-echo "BRILLIANT..."
-echo; echo; echo; echo; echo
-echo "now add the following lines to your ~/.profile or equivalent:"
+echo 'BRILLIANT!'
+echo
+echo 'now add the following lines to your ~/.profile or equivalent:'
 echo
 [ "`uname -s`" = "Darwin" ] && sprinkle=DY
 echo '    export AE_EXT='${AE_EXT}
 echo '    export PATH=$AE_EXT/jshon:$PATH'
 echo '    export '$sprinkle'LD_LIBRARY_PATH=$AE_EXT/jansson/src/.libs'
 echo
+echo 'then check jshon runs:'
+echo
+echo '    echo '\''{"msg":"rockin"}'\'' | jshon -e msg'
+echo
+echo 'time to move on to CONFIGURATION...'
