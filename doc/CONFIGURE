@@ -1,13 +1,28 @@
 There are 3 parts to configuration:
 
-    Setting your PATHs.
+    Setting your PATHs
     Creating your API calls
     Defining the structure of your API calls
 
 Throughout this document we're going to use as an example the66bus.com as
 the domain with /status, /session and /driver as the REST resources we want
-to smash with "crusty".
+to smash with "crusty".  Morgan is the driver of the bus.
 
 Setting your PATHs
 ------------------
+
+So, you have some REST apis you want to make calls against.  Head in api/ and
+create a directory for your domain.  In Morgan's case he would create:
+
+    $ mkdir api/the66bus.com
+
+All the commands to poke the REST services at your domain will reside within
+this directory.  So next we add a PATH in your .profile, .bash_profile, .zshrc
+or equivalent:
+
+    export PATH=/home/morgan/repos/apiengine-crusty/api:$PATH
+
+Creating your API calls
+-----------------------
+
 

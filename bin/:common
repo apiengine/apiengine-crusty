@@ -1,5 +1,15 @@
 #!/bin/sh
 
+CRUSTY_API=`dirname $0`
+CRUSTY_API=`cd ${CRUSTY_API}; pwd`
+CRUSTY_CMD=`basename $0`
+CRUSTY_BIN=`readlink ${CRUSTY_CMD} | xargs dirname`
+CRUSTY_BIN=`cd $CRUSTY_BIN; pwd`
+
+cd ${CRUSTY_BIN}
+PATH=${CRUSTY_BIN}:${PATH}
+
+CRUSTY_MATRIX=${CRUSTY_API}/matrix
 CRUSTY_CRUD=$1
 
 CRUSTY_GEN=${CRUSTY_API}/gen
@@ -14,10 +24,12 @@ CRUSTY_SESSION=${CRUSTY_GEN}/session
 CRUSTY_COLLAPSED=${CRUSTY_GEN}/collapsed
 CRUSTY_FILTERED=${CRUSTY_GEN}/filtered
 
-http_method ${CRUSTY_CRUD}; CRUSTY_METHOD=$__
-
 if [ -f ${HOME}/.crusty/config ]; then
     . ${HOME}/.crusty/config
 fi 
+
+[ ! -f ${CRUSTY_MATRIX} ] && echo "matrix file missing at ${CRUSTY_API}" && exit 5
+
+http_method ${CRUSTY_CRUD}; CRUSTY_METHOD=$__
 
 mkdir -p ${CRUSTY_GEN}

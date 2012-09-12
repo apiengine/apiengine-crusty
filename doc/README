@@ -1,9 +1,10 @@
 Welcome to "crusty", a command line tool for accessing RESTful APIs using curl.
 
-There are 2 main steps to get up and running - installation and configuration:
+You will need to INSTALL and then CONFIGURE for the REST calls you want to
+make:
 
-    doc/INSTALL
-    doc/CONFIGURE
+    INSTALL
+    CONFIGURE
 
 Installation covers setting up jshon and jansson, third party tools for JSON
 processing.  Configuration covers defining calls to the API you want to talk

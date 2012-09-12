@@ -1,14 +1,11 @@
 #!/bin/sh
 
-CRUSTY_API=`dirname $0`; CRUSTY_API=`cd ${CRUSTY_API}; pwd`
+CRUSTY_API=`dirname $0` 
+CRUSTY_API=`cd ${CRUSTY_API}; pwd`
 CRUSTY_CMD=`basename $0`
-cd ${CRUSTY_API}
-
-CRUSTY_MATRIX="${CRUSTY_API}/matrix"
-[ ! -f ${CRUSTY_MATRIX} ] && echo "matrix file missing at ${CRUSTY_API}" && exit 5
-
-CRUSTY_BIN=`readlink ${CRUSTY_CMD} | xargs dirname`; CRUSTY_BIN=`cd $CRUSTY_BIN; pwd`
-cd ${CRUSTY_BIN}
+CRUSTY_BIN=`readlink ${CRUSTY_CMD} | xargs dirname`
+CRUSTY_BIN=`cd $CRUSTY_BIN; pwd` 
+PATH=${CRUSTY_BIN}:${PATH}
 
 . :bomb
 . :val
@@ -53,11 +50,11 @@ set -x
 > ${CRUSTY_HTTPCODE} curl                      \
     ${CRUSTY_COOKIES}                          \
     ${CRUSTY_CSRF}                             \
-    -s                                     \
+    -s                                         \
     -X ${CRUSTY_METHOD}                        \
     ${CRUSTY_DATA}                             \
     -o ${CRUSTY_RESPONSE}                      \
-    -w %{http_code}                        \
+    -w %{http_code}                            \
     ${CRUSTY_HOST}:${CRUSTY_PORT}${__url}
 set +x
 
