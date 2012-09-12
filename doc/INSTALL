@@ -3,28 +3,34 @@
 set -e
 
 CRUSTY_HOME=$HOME/.crusty
+CRUSTY_DEPS=$CRUSTY_HOME/.deps
 
 [ ! -f $CRUSTY_HOME ] && echo "creating $CRUSTY_HOME" && mkdir -p $CRUSTY_HOME
 
-if [ ! -f $CRUSTY_HOME/jansson ]; then
+if [ ! -f $CRUSTY_DEPS/jansson ]; then
     echo "installing jansson..."
-    cd $CRUSTY_HOME
-    curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | tar zxf -
+    mkdir -p $CRUSTY_DEPS; cd $CRUSTY_DEPS
+    curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | tar zx-
     ln -s jansson* jansson
     cd jansson
     ./configure
     make
 fi
 
-if [ ! -f $CRUSTY_HOME/jshon ]; then
+if [ ! -f $CRUSTY_DEPS/jshon ]; then
     echo "installing jshon..."
-    cd $CRUSTY_HOME
-    curl http://kmkeen.com/jshon/jshon.tar.gz | \
-    tar zxf -
+    mkdir -p $CRUSTY_DEPS; cd $CRUSTY_DEPS
+    curl http://kmkeen.com/jshon/jshon.tar.gz |  tar zxf -
     cd jshon
-    export C_INCLUDE_PATH=$CRUSTY_HOME/jansson/src
-    export LIBRARY_PATH=$CRUSTY_HOME/jansson/src/.libs
+    export C_INCLUDE_PATH=$CRUSTY_DEPS/jansson/src
+    export LIBRARY_PATH=$CRUSTY_DEPS/jansson/src/.libs
     make
+fi
+
+if [ ! -f $CRUSTY_HOME/config ]; then
+    echo "installing config..."
+    echo "CRUSTY_PORT=80" >> $CRUSTY_HOME/config
+    echo "CRUSTY_HOST=localhost" >> $CRUSTY_HOME/config
 fi
 
 echo; echo; echo; echo; echo
@@ -34,8 +40,8 @@ echo 'now add the following lines to your ~/.profile or equivalent:'
 echo
 [ "`uname -s`" = "Darwin" ] && sprinkle=DY
 echo '    export CRUSTY_HOME='${CRUSTY_HOME}
-echo '    export PATH=$CRUSTY_HOME/jshon:$PATH'
-echo '    export '$sprinkle'LD_LIBRARY_PATH=$CRUSTY_HOME/jansson/src/.libs'
+echo '    export PATH=$CRUSTY_HOME/.deps/jshon:$PATH'
+echo '    export '$sprinkle'LD_LIBRARY_PATH=$CRUSTY_HOME/.deps/jansson/src/.libs'
 echo
 echo 'then check jshon runs:'
 echo
