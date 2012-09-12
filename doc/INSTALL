@@ -5,9 +5,10 @@ set -e
 CRUSTY_HOME=$HOME/.crusty
 CRUSTY_DEPS=$CRUSTY_HOME/.deps
 
-[ ! -f $CRUSTY_HOME ] && echo "creating $CRUSTY_HOME" && mkdir -p $CRUSTY_HOME
+[ -d $CRUSTY_HOME ] && echo "looks like you"\'"re already installed in $CRUSTY_HOME" && exit 1
+[ ! -d $CRUSTY_HOME ] && echo "creating $CRUSTY_HOME" && mkdir -p $CRUSTY_HOME
 
-if [ ! -f $CRUSTY_DEPS/jansson ]; then
+if [ ! -d $CRUSTY_DEPS/jansson ]; then
     echo "installing jansson..."
     mkdir -p $CRUSTY_DEPS; cd $CRUSTY_DEPS
     curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | tar zx-
@@ -17,7 +18,7 @@ if [ ! -f $CRUSTY_DEPS/jansson ]; then
     make
 fi
 
-if [ ! -f $CRUSTY_DEPS/jshon ]; then
+if [ ! -d $CRUSTY_DEPS/jshon ]; then
     echo "installing jshon..."
     mkdir -p $CRUSTY_DEPS; cd $CRUSTY_DEPS
     curl http://kmkeen.com/jshon/jshon.tar.gz |  tar zxf -
@@ -43,7 +44,7 @@ echo '    export CRUSTY_HOME='${CRUSTY_HOME}
 echo '    export PATH=$CRUSTY_HOME/.deps/jshon:$PATH'
 echo '    export '$sprinkle'LD_LIBRARY_PATH=$CRUSTY_HOME/.deps/jansson/src/.libs'
 echo
-echo 'then check jshon runs:'
+echo 'open a NEW TERMINAL and check jshon runs:'
 echo
 echo '    echo '\''{"msg":"rockin"}'\'' | jshon -e msg'
 echo
