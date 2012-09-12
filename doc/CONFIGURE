@@ -1,0 +1,13 @@
+There are 3 parts to configuration:
+
+    Setting your PATHs.
+    Creating your API calls
+    Defining the structure of your API calls
+
+Throughout this document we're going to use as an example the66bus.com as
+the domain with /status, /session and /driver as the REST resources we want
+to smash with "crusty".
+
+Setting your PATHs
+------------------
+

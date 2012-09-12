@@ -1,3 +1,41 @@
+There are 2 external tools to setup - jshon and jansson.
+
+For installation define the location AE_EXTERNALS to point at where you want
+jshon and jansson to reside.  Morgan for example likes to build third party
+tools in the directory /home/morgan/eval and so he will define:
+
+    $ export AE_EXTERNALS=/home/morgan/eval
+
+Just make sure the $AE_EXTERNALS directory exists.
+
+
+jansson
+-------
+
+    $ cd $AE_EXTERNALS
+    $ curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | \
+    > tar zxf -
+    $ ln -s jansson* jansson
+    $ cd jansson
+    $ ./configure
+    $ make
+
+jshon
+-----
+
+TODO
+
+
+
+
+
+
+
+
+
+
+
+
 THIS IS JUST RANDOM NOTES AT THE MOMENT:
 
 cd tmp
