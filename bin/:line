@@ -24,7 +24,7 @@ line_locate() {
             fi
         fi        
     done < ${CRUSTY_COLLAPSED}
-    if [ "${line}" == "__not_found__" ]; then
+    if [ "${line}" = "__not_found__" ]; then
         bomb_fail "no entry for [${CRUSTY_CMD} ${CRUSTY_CRUD}]"
     fi
     specs_split ${line}
