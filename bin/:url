@@ -1,6 +1,6 @@
 #!/bin/sh
 
-url_build() {
+url() {
     url_injectable ${__url}; _injectable=$__
     url_parameters
     eval __url=${_injectable}

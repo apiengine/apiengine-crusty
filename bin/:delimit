@@ -1,0 +1,18 @@
+#!/bin/sh
+
+delimit() {
+    cat ${CRUSTY_FILTERED}            | \
+    grep -v '^#'                      | \
+    sed -e 's/./:/'${__cmd__}           \
+        -e 's/./:/'${__method__}        \
+        -e 's/./:/'${__args__}          \
+        -e 's/./:/'${__url__}           \
+        -e 's/./:/'${__code__}          \
+        -e 's/./:/'${__auth__}          \
+        -e 's/./:/'${__location__}      \
+        -e 's/./:/'${__response__}      \
+        -e 's/$/:/g'                    \
+        -e 's/ *:/:/g'                  \
+        -e 's/: */:/g'                  \
+    > ${CRUSTY_COLLAPSED}
+}

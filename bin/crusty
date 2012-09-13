@@ -21,12 +21,14 @@ PATH=${CRUSTY_BIN}:${PATH}
 . :url
 . :util
 . :hooks
+. :columns
+. :positions
+. :filter
+. :delimit
 . :session
 . :auth
 . :response
 . :common $*
-. ^filter
-. ^collapse
 
 shift
 
@@ -34,9 +36,14 @@ shift
 
 hooks_pre ${CRUSTY_CMD} $*
 
-line_locate
- req_build
- url_build
+columns
+positions
+filter
+delimit
+
+line
+req
+url
 
 http_payload
 . ^cookie

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+filter() {
+    < ${CRUSTY_MATRIX} cat                                       | \
+                       grep    "^.\{1\}${CRUSTY_CMD}" | \
+                       grep -v "^#"                              | \
+                       cat                                         \
+    > ${CRUSTY_FILTERED}
+}

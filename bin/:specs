@@ -1,25 +1,39 @@
 #!/bin/sh
 
-specs_split() {
-    __response=`echo $@ | cut -d: -f2`
-    __location=`echo $@ | cut -d: -f3`
-    __auth=`    echo $@ | cut -d: -f4`
-    __error=`   echo $@ | cut -d: -f5`
-    __code=`    echo $@ | cut -d: -f6`
-    __cmd=`     echo $@ | cut -d: -f7`
-    __method=`  echo $@ | cut -d: -f8`
-    __args=`    echo $@ | cut -d: -f9`
-    __url=`     echo $@ | cut -d: -f10`
+
+
+specs() {
+    local name
+    local cut
+    local i
+
+    # FIX in need of some Mast3rful love...
+
+    __0=`echo $@ | cut -d: -f2`
+    __1=`echo $@ | cut -d: -f3`
+    __2=`echo $@ | cut -d: -f4`
+    __3=`echo $@ | cut -d: -f5`
+    __4=`echo $@ | cut -d: -f6`
+    __5=`echo $@ | cut -d: -f7`
+    __6=`echo $@ | cut -d: -f8`
+    __7=`echo $@ | cut -d: -f9`
+    __8=`echo $@ | cut -d: -f10`
+
+    i=0; cut=2
+    for name in ${__columns}; do
+        cut=`expr ${i} + 2`
+        eval '__'${name}'=${__'${i}'}'
+        i=`expr ${i} + 1`
+    done
 }
 
 specs_show() {
-    echo "__response: $__response"
-    echo "__location: $__location"
+    echo "__args    : $__args"
     echo "__auth    : $__auth"
-    echo "__error   : $__error"
     echo "__code    : $__code"
     echo "__cmd     : $__cmd"
+    echo "__location: $__location"
     echo "__method  : $__method"
-    echo "__args    : $__args"
+    echo "__response: $__response"
     echo "__url     : $__url"
 }

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+positions() {
+    local field
+    local var
+    local span
+    local pos
+
+    for var in ${__columns}; do
+        field=`echo ${var} | tr [a-z] [A-Z]`
+        span=`echo ${__header} | sed 's/^.*|\(_*'${field}'_*\)|.*$/\1/'`
+        pos=`echo ${__header} | awk '{print index($0, "'${span}'")}'`
+        pos=`expr $pos - 1`
+        eval "__${var}__=$pos"
+    done
+}
+
+positions_show() {
+    local pos
+    for field in ${__columns}; do
+        eval 'pos=${'__${field}__'}'
+        echo ${field}:${pos}
+    done
+}

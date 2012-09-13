@@ -1,6 +1,6 @@
 #!/bin/sh
 
-req_build() {
+req() {
     req_mandatory; _mandatory=$__
     req_optional; _optional=$__
     json_merge ${_mandatory} ${_optional}

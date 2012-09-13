@@ -1,6 +1,6 @@
 There are 3 parts to configuration:
 
-    Setting your PATHs
+    Specifying your domain
     Creating your API calls
     Defining the structure of your API calls
 
@@ -8,21 +8,47 @@ Throughout this document we're going to use as an example the66bus.com as
 the domain with /status, /session and /driver as the REST resources we want
 to smash with "crusty".  Morgan is the driver of the bus.
 
-Setting your PATHs
-------------------
+Specifying your domain
+----------------------
 
-So, you have some REST apis you want to make calls against.  Head in api/ and
-create a directory for your domain.  In Morgan's case he would create:
+So, you have some REST apis you want to make calls against.  Head in to api/ 
+and create a directory for your domain.  In Morgan's case he would create:
 
     $ mkdir api/the66bus.com
 
-All the commands to poke the REST services at your domain will reside within
-this directory.  So next we add a PATH in your .profile, .bash_profile, .zshrc
-or equivalent:
-
-    export PATH=/home/morgan/repos/apiengine-crusty/api:$PATH
+All the commands to poke the REST services at your domain should reside within
+this directory.
 
 Creating your API calls
 -----------------------
 
+Create your calls by simply linking your calls to the "crusty" binary.  For 
+Morgan, he do the following.
 
+    $ cd api/the66bus.com
+    $ ln -s ../../bin/crusty status
+    $ ln -s ../../bin/crusty session
+    $ ln -s ../../bin/crusty driver
+
+Running any of these commands produces:
+
+    $ ./driver
+    matrix file missing at /home/dev/work/apiengine-crusty/api/the66bus.com
+
+This message indicates that we need create a file called "matrix".  The
+"matrix" is the primary way of specifying individual call resources, methods,
+url parameters, return codes and payloads.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    export PATH=/home/morgan/repos/apiengine-crusty/api/the66bus.com:$PATH

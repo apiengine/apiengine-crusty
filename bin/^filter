@@ -1,7 +1,0 @@
-#!/bin/sh
-
-< ${CRUSTY_MATRIX} cat                   | \
-               grep    "| ${CRUSTY_CMD}" | \
-               grep -v "^#"          | \
-               cat                     \
-> ${CRUSTY_FILTERED}
