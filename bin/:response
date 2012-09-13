@@ -1,5 +1,12 @@
 #!/bin/sh
 
+response() {
+    json_contains ${__response} "CRUSTY_NO_RETURN"
+    if [ "$__" = "false" ]; then
+        echo "[${__response}]" | jshon -e 1
+    fi
+}
+
 response_get() {
     # FIX replace all response spaces with underscores until arg passing sorted
     __response=`< ${CRUSTY_RESPONSE} cat | sed 's/ /_/g'`

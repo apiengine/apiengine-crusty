@@ -1,2 +1,3 @@
- session        c      login password                             /session                                                                         201       /session/{id}           {csrf id login*}
- session        r                                                 /session                                                                         200  *                            {csrf id login*}
+ resource       r      user api version                           /user/#user/api/#api/#version/resource                                           200                                                                               
+ resource       r      user api version resource                  /user/#user/api/#api/#version/resource/#resource                                 200                                                                                         
+ resource       u      user api version resource                  /user/#user/api/#api/#version/resource/#resource                                 204                                                                                              
