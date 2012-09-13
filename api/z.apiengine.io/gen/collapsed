@@ -1,5 +1,2 @@
-:session:c:login|email password:/session#:201::/session/{id}:{csrf id login*}:
 :session:c:login password:/session:201::/session/{id}:{csrf id login*}:
-:session:c:login password:/session#:201::/session/{id}:{csrf id login*}:
 :session:r::/session:200:*::{csrf id login*}:
-:session:d::/session/#session:200:*::{csrf}:
