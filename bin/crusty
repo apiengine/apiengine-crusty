@@ -21,6 +21,7 @@ PATH=${CRUSTY_BIN}:${PATH}
 . :url
 . :util
 . :hooks
+. :version
 . :columns
 . :positions
 . :filter
@@ -36,6 +37,7 @@ shift
 
 hooks_pre ${CRUSTY_CMD} $*
 
+version
 columns
 positions
 filter
