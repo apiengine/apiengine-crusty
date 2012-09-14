@@ -3,5 +3,5 @@
 columns() {
     local header
     __header=`< ${CRUSTY_MATRIX} head -2 | tail -1`
-    __columns=`echo ${__header} | sed 's/_//g' | sed 's/|/ /g' | tr [A-Z] [a-z]`
+    __columns=`echo ${__header} | sed 's/_//g' | sed 's/|/ /g' | tr \[A-Z\] \[a-z\]`
 }

@@ -7,7 +7,7 @@ positions() {
     local pos
 
     for var in ${__columns}; do
-        field=`echo ${var} | tr [a-z] [A-Z]`
+        field=`echo ${var} | tr \[a-z\] \[A-Z\]`
         span=`echo ${__header} | sed 's/^.*|\(_*'${field}'_*\)|.*$/\1/'`
         pos=`echo ${__header} | awk '{print index($0, "'${span}'")}'`
         pos=`expr $pos - 1`
