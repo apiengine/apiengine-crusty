@@ -23,7 +23,7 @@ specs() {
     for name in ${__columns}; do
         cut=`expr ${i} + 2`
         eval '__'${name}'=${__'${i}'}'
-        i=`expr ${i} + 1`
+        math_inc "i"
     done
     specs_check
 }

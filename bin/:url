@@ -1,9 +1,13 @@
 #!/bin/sh
 
+# NO LONGER USED!!!!!!!!!!!!!!!!!!!!!!!
+
 url() {
-    url_injectable ${__url}; _injectable=$__
+    bomb_fail "NO LONGER USED"
+    local injectable
+    url_injectable ${__url}; injectable=$__
     url_parameters
-    eval __url=${_injectable}
+    eval __url=${injectable}
 }
 
 url_injectable() {

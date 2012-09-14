@@ -45,7 +45,7 @@ delimit
 
 line
 req
-url
+#url
 
 http_payload
 . ^cookie

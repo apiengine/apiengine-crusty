@@ -1,10 +1,15 @@
 #!/bin/sh
 
 req() {
+    local injectable
+
     req_mandatory; _mandatory=$__
     req_optional; _optional=$__
     json_merge ${_mandatory} ${_optional}
     __payload=$__
+
+    url_injectable ${__url}; injectable=$__
+    eval __url=${injectable}
 }
 
 req_mandatory() {
@@ -14,7 +19,16 @@ req_mandatory() {
     while [ "${i}" != "${len}" ]; do
         array_get "__args__m" $i; local k=$__
         array_get "__cmdline" $i; local v=$__
-        json_add "${json}" "${k}" "${v}"; json=$__
+        
+        # encode in URL or PAYLOAD ... not both
+        string_contains ${__url} "#${k}"
+        if [ "$__" = "true" ]; then
+            #echo "........................URL (${k})"
+            eval _${k}_=${v}
+        else
+            #echo ".......................JSON (${k})"
+            json_add "${json}" "${k}" "${v}"; json=$__
+        fi
         math_inc "i"
     done
     __=${json}
