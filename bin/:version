@@ -1,0 +1,9 @@
+#!/bin/sh
+
+version() {
+    local version
+    version=`< ${CRUSTY_MATRIX} head -1`
+    if [ "${version}" != "# v=100" ]; then
+        bomb_fail "crusty only supports v=100 matrix files"
+    fi
+}
