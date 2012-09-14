@@ -1,4 +1,4 @@
-# version=100
+# v=100
 |CMD___________|METHOD|ARGS______________________________________|URL_____________________________________________________________________________|CODE|AUTH|LOCATION_______________|RESPONSE____________________________________________|
  status         r                                                 /status                                                                          200                               {status}                      
  session        c      login password                             /session                                                                         201       /session/{id}           {csrf id login*}
