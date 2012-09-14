@@ -10,7 +10,7 @@ param_build() {
     array_create ${pre}__m
     array_create ${pre}__o
 
-    local w=""
+    local w
 
     for w in $@
     do

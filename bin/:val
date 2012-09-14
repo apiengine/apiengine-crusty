@@ -4,6 +4,10 @@ val_peek() {
     eval __='${'$1'}'
 }
 
+val_peek_possibly_empty() {
+    eval __='${'$1':-}'
+}
+
 val_poke() {
     eval $1="$2"
 }

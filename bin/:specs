@@ -9,19 +9,18 @@ specs() {
 
     # FIX in need of some Mast3rful love...
 
-    __0=`echo $@ | cut -d: -f2`
-    __1=`echo $@ | cut -d: -f3`
-    __2=`echo $@ | cut -d: -f4`
-    __3=`echo $@ | cut -d: -f5`
-    __4=`echo $@ | cut -d: -f6`
-    __5=`echo $@ | cut -d: -f7`
-    __6=`echo $@ | cut -d: -f8`
-    __7=`echo $@ | cut -d: -f9`
-    __8=`echo $@ | cut -d: -f10`
+    __0=`echo "$@" | cut -d: -f2`
+    __1=`echo "$@" | cut -d: -f3`
+    __2=`echo "$@" | cut -d: -f4`
+    __3=`echo "$@" | cut -d: -f5`
+    __4=`echo "$@" | cut -d: -f6`
+    __5=`echo "$@" | cut -d: -f7`
+    __6=`echo "$@" | cut -d: -f8`
+    __7=`echo "$@" | cut -d: -f9`
+    __8=`echo "$@" | cut -d: -f10`
 
-    i=0; cut=2
+    i=0
     for name in ${__columns}; do
-        cut=`expr ${i} + 2`
         eval '__'${name}'=${__'${i}'}'
         math_inc "i"
     done

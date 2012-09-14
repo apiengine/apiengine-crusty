@@ -17,7 +17,7 @@ array_put() {
 
 array_len() {
     local name=$1
-    val_peek ${name}_n
+    val_peek_possibly_empty ${name}_n
 }
 
 array_append() {
