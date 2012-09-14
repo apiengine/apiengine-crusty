@@ -25,6 +25,15 @@ specs() {
         eval '__'${name}'=${__'${i}'}'
         i=`expr ${i} + 1`
     done
+    specs_check
+}
+
+specs_check() {
+    local code
+    code=`echo $__code | sed 's/[0-9][0-9][0-9]/___/'`
+    if [ "${code}" != "___" ]; then
+        bomb_fail "no http return code defined in matrix"
+    fi
 }
 
 specs_show() {
