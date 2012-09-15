@@ -42,16 +42,11 @@ positions
 filter
 delimit
 
-echo 0
-
 line
-echo 0.6
 req
 
-echo 1
 http_payload
 . ^cookie
-echo 2
 . ^session
 
 #echo LINE: ${__line}
@@ -59,8 +54,6 @@ echo 2
 #echo URL: ${__url}
 echo ${__url} ${__payload}
 
-echo 3
-set -x
 > ${CRUSTY_HTTPCODE} curl                      \
     ${CRUSTY_COOKIES}                          \
     ${CRUSTY_CSRF}                             \
@@ -70,12 +63,9 @@ set -x
     -o ${CRUSTY_RESPONSE}                      \
     -w %{http_code}                            \
     ${CRUSTY_HOST}:${CRUSTY_PORT}${__url}
-set +x
 
-echo 4
 response_get
 
-echo 5
 http_code
 hooks_post ${CRUSTY_CMD} $*
 auth_checks

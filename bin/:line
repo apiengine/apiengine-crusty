@@ -1,35 +1,28 @@
 #!/bin/sh
 
 line() {
-echo ".1"
     line_available
     local line="__not_found__"
     local l=""
-echo ".2"
     while read l; do
         specs "${l}"
         if [ "${__method}" = "${CRUSTY_CRUD}" ]; then 
             param_build "__args" "${__args}"
-echo ".3"
             line_cmdline_match "__args"
             if [ "$__" = "true" ]; then
-echo ".35"
                 if [ "${line}" != "__not_found__" ]; then
                     bomb_fail "only one matching line allowed"
                 fi
                 line=${l}
             fi
-echo ".4"
         fi        
     done < ${CRUSTY_COLLAPSED}
-echo ".5"
     if [ "${line}" = "__not_found__" ]; then
         bomb_fail "no entry for [${CRUSTY_CMD} ${CRUSTY_CRUD}]"
     fi
     specs ${line}
     param_build "__args" ${__args}
     __line=${line}
-echo ".6"
 }
 
 line_available() {
@@ -41,27 +34,18 @@ line_available() {
 
 # FIX robably lives somewhere else
 line_cmdline_match() {
-echo "..1"
     array_len "__args__m"; local alen=$__
-echo "..2"
     array_len "__cmdline"; local clen=$__
-echo "..3"
     if [ ${clen} != 0 ]; then
-echo "..40"
         array_last "__cmdline"
-echo "..411"
         json_is "$__"
-echo "..41"
         if [ "$__" = "true" ]; then
             math_inc "alen"    
         fi
-echo "..42"
     fi
-echo "..5"
     if [ ${alen} = ${clen} ]; then
         __="true"
     else
         __="false"
     fi
-echo "..6"
 }
