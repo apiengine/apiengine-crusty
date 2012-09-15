@@ -105,6 +105,6 @@ json_empty_() {
 json_munge_() {
     local mungee=$1
     __=`echo ${mungee} | sed s'+'\''+\"+g' | sed s'+|+\"+g'`
-    # for boolean types.  perhaps mod backend.
-    # =`echo $__ | sed s'+"true"+true+g' | sed s'+"false"+false+g'`
+    # FIX for boolean types.  perhaps mod backend.
+    __=`echo $__ | sed s'+:"true"+:true+g' | sed s'+:"false"+:false+g'`
 }

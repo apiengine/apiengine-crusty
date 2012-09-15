@@ -13,7 +13,7 @@
  password       r      key                                        /passwordreset/#key                                                              200                               {token expiry}
 #password       c      key password                               /passwordreset/#key                                                              204                                
  api            r                                                 /api                                                                             200                               [api]
-#api            c      user api private [version*]                /user/#user/api                                                                  201       /user/{user}/api/{api}  
+ api            c      user name private [version*]               /user/#user/api                                                                  201       /user/{user}/api/{api}  
  api            r      user                                       /user/#user/api                                                                  200                               [api]
 #api            c      user api baseurl* label* index*            /user/#user/api/#api                                                             201       /user/{user}/api/{api}  {user api version label index [resources] baseurl*} 
  api            r      user api                                   /user/#user/api/#api                                                             200                               [api]

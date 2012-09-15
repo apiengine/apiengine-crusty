@@ -54,6 +54,7 @@ http_payload
 #echo URL: ${__url}
 echo ${__url} ${__payload}
 
+set -x
 > ${CRUSTY_HTTPCODE} curl                      \
     ${CRUSTY_COOKIES}                          \
     ${CRUSTY_CSRF}                             \
@@ -63,6 +64,7 @@ echo ${__url} ${__payload}
     -o ${CRUSTY_RESPONSE}                      \
     -w %{http_code}                            \
     ${CRUSTY_HOST}:${CRUSTY_PORT}${__url}
+set +x
 
 response_get
 
