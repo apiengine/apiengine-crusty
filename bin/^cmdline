@@ -4,8 +4,8 @@
 # FIX needs to closely follow the hairy chested array pattern
 i=0
 while [ $i != $# ]; do
-    n=`expr $i + 1`
-    eval __cmdline_$i='$'$n
-    i=$n
+    n=$i
+    math_inc "i"
+    eval __cmdline_$n='$'$i
 done
 __cmdline_n=$i

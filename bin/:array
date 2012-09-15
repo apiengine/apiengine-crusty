@@ -34,10 +34,15 @@ array_append() {
 
 array_last() {
     local name=$1
+echo "_1"
     array_exists_ ${name}
+echo "_2"
     array_len $1; local len=$__
+echo "_3"
     math_dec "len"
+echo "_4"
     array_get $1 ${len}
+echo "_5"
 }
 
 array_create() {

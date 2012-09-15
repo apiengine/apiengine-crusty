@@ -10,7 +10,7 @@ positions() {
         field=`echo ${var} | tr \[a-z\] \[A-Z\]`
         span=`echo ${__header} | sed 's/^.*|\(_*'${field}'_*\)|.*$/\1/'`
         pos=`echo ${__header} | awk '{print index($0, "'${span}'")}'`
-        pos=`expr $pos - 1`
+        math_dec "pos"
         eval "__${var}__=$pos"
     done
 }

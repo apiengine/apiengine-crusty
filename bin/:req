@@ -8,7 +8,7 @@ req() {
     json_merge ${_mandatory} ${_optional}
     __payload=$__
 
-    url_injectable ${__url}; injectable=$__
+    req_injectable ${__url}; injectable=$__
     eval __url=${injectable}
 }
 
@@ -44,4 +44,8 @@ req_optional() {
         __="{}"
     fi
     # FIX validate each optional field
+}
+
+req_injectable() {
+    __=`echo $1 | sed 's,/#\([^/]*\),/${_\1_},g'`
 }

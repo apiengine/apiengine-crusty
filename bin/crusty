@@ -18,7 +18,6 @@ PATH=${CRUSTY_BIN}:${PATH}
 . :param
 . :line
 . :req
-. :url
 . :util
 . :hooks
 . :version
@@ -43,17 +42,24 @@ positions
 filter
 delimit
 
+echo 0
+
 line
+echo 0.6
 req
 
+echo 1
 http_payload
 . ^cookie
+echo 2
 . ^session
 
 #echo LINE: ${__line}
 #echo PAYLOAD: ${__payload}
 #echo URL: ${__url}
+echo ${__url} ${__payload}
 
+echo 3
 set -x
 > ${CRUSTY_HTTPCODE} curl                      \
     ${CRUSTY_COOKIES}                          \
@@ -66,8 +72,10 @@ set -x
     ${CRUSTY_HOST}:${CRUSTY_PORT}${__url}
 set +x
 
+echo 4
 response_get
 
+echo 5
 http_code
 hooks_post ${CRUSTY_CMD} $*
 auth_checks

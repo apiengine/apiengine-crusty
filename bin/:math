@@ -2,12 +2,20 @@
 
 math_inc() {
     val_peek "$1"
-    __=`expr ${__} + 1`
+    __=`echo "${__} + 1" | bc`
     val_poke "$1" $__
 }
 
 math_dec() {
     val_peek "$1"
-    __=`expr ${__} - 1`
+    __=`echo "${__} - 1" | bc`
     val_poke "$1" $__
+}
+
+math_add() {
+    local l
+    local r
+    val_peek "$1"; l=$__
+    val_peek "$2"; r=$__
+    __=`echo "${l} + ${r}" | bc`
 }
