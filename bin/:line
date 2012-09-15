@@ -7,9 +7,7 @@ line() {
     while read l; do
         specs "${l}"
         if [ "${__method}" = "${CRUSTY_CRUD}" ]; then 
-echo "ARGS: ${__args}"
             param_build "__args" "${__args}"
-echo "2"
             line_cmdline_match "__args"
             if [ "$__" = "true" ]; then
                 if [ "${line}" != "__not_found__" ]; then
@@ -38,7 +36,6 @@ line_available() {
 line_cmdline_match() {
     array_len "__args__m"; local alen=$__
     array_len "__cmdline"; local clen=$__
-echo "args__m: ${alen}"
     if [ ${clen} != 0 ]; then
         array_last "__cmdline"
         json_is "$__"

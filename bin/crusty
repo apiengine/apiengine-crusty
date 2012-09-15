@@ -45,7 +45,6 @@ delimit
 
 line
 req
-#url
 
 http_payload
 . ^cookie
@@ -61,7 +60,7 @@ set -x
     ${CRUSTY_CSRF}                             \
     -s                                         \
     -X ${CRUSTY_METHOD}                        \
-    ${CRUSTY_DATA}                             \
+    ${CRUSTY_DATA:-}                           \
     -o ${CRUSTY_RESPONSE}                      \
     -w %{http_code}                            \
     ${CRUSTY_HOST}:${CRUSTY_PORT}${__url}
