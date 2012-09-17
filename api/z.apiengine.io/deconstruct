@@ -2,6 +2,15 @@
 
 status r
 session c cog orange
+resource d cog Api_Engine 1 34
+resource d cog Api_Engine 1 33
+resource d cog Api_Engine 1 32
+resource d cog Api_Engine 1 31
+resource d cog Api_Engine 1 30
+resource d cog Api_Engine 1 29
+resource d cog Api_Engine 1 28
+resource d cog Api_Engine 1 27
+resource d cog Api_Engine 1 26
 resource d cog Api_Engine 1 25
 resource d cog Api_Engine 1 24
 resource d cog Api_Engine 1 23
