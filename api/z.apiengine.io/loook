@@ -1,5 +1,10 @@
-#!/bin/sh
+#!/bin/sh -e
 
 api r cog Api_Engine
 version r cog Api_Engine 1
 resource r cog Api_Engine 1
+resource r cog Api_Engine 2
+resource r cog Api_Engine 3
+resource r cog Api_Engine 4
+resource r cog Api_Engine 5
+resource r cog Api_Engine 6
