@@ -2,10 +2,16 @@
 
 req() {
     local injectable
+    local mandatory
+    local optional
 
-    req_mandatory; _mandatory=$__
-    req_optional; _optional=$__
-    json_merge ${_mandatory} ${_optional}
+    req_mandatory; mandatory=$__
+
+    req_optional 
+    json_munge_ $__
+    optional=$__
+
+    json_merge ${mandatory} ${optional}
     __payload=$__
 
     req_injectable ${__url}; injectable=$__
@@ -35,8 +41,9 @@ req_mandatory() {
 }
 
 req_optional() {
+    local json
     # FIX the following should be encapsulated in :param
-    array_last "__cmdline"; local json=$__
+    array_last "__cmdline"; json=$__
     json_is "${json}"
     if [ "$__" = "true" ]; then
         __=${json}

@@ -57,7 +57,7 @@ echo ${__url} ${__payload}
 set -x
 > ${CRUSTY_HTTPCODE} curl                      \
     ${CRUSTY_COOKIES}                          \
-    ${CRUSTY_CSRF}                             \
+    ${CRUSTY_CSRF:-}                           \
     -s                                         \
     -X ${CRUSTY_METHOD}                        \
     ${CRUSTY_DATA:-}                           \

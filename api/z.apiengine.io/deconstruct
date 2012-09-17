@@ -1,0 +1,5 @@
+#!/bin/sh
+
+status r
+session c cog orange
+user d cog

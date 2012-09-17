@@ -34,6 +34,8 @@ line_available() {
 
 # FIX robably lives somewhere else
 line_cmdline_match() {
+    local alen
+    local clen
     array_len "__args__m"; local alen=$__
     array_len "__cmdline"; local clen=$__
     if [ ${clen} != 0 ]; then

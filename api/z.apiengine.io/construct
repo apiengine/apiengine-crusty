@@ -1,0 +1,9 @@
+#!/bin/sh
+
+status r
+user c cog cog@apiengine.io orange '{"publicize":"true","name":"The_Big_Cog","url":"http://apiengine.io/spinning/cogs"}'
+
+#api r thomasdavis ApiEngine
+resource r thomasdavis ApiEngine 1
+resource r thomasdavis ApiEngine 1 8
+method r thomasdavis ApiEngine 1 8

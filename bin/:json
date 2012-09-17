@@ -29,6 +29,7 @@ json_merge() {
     if [ "$__" = "true" ]; then
         merged=${l}
     fi
+    json_munge_ ${merged}
     __=${merged}
 }
 
