@@ -2,4 +2,7 @@
 
 status r
 session c cog orange
+resource d cog Api_Engine 1 1
+version d cog Api_Engine 1
+api d cog Api_Engine
 user d cog

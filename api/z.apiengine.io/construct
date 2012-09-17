@@ -2,8 +2,12 @@
 
 status r
 user c cog cog@apiengine.io orange '{"publicize":"true","name":"The_Big_Cog","url":"http://apiengine.io/spinning/cogs"}'
+api c cog Api_Engine false '{"version":{"baseurl":"http://z.apiengine.io/cog/","label":"cog_api","index":"an_index_of_some_flavour"}}'
+# automagically creates "version":"1"
+resource c cog Api_Engine 1 /status Status '{"tag":"#status,#availability,#ok,#health","description":"status_of_the_system"}'
+resource c cog Api_Engine 1 /session Status '{"tag":"#session,#login","description":"create_a_session_for_specified_user"}'
 
 #api r thomasdavis ApiEngine
-resource r thomasdavis ApiEngine 1
-resource r thomasdavis ApiEngine 1 8
-method r thomasdavis ApiEngine 1 8
+#resource r thomasdavis ApiEngine 1
+#resource r thomasdavis ApiEngine 1 8
+#method r thomasdavis ApiEngine 1 8

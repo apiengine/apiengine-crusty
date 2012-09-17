@@ -1,0 +1,5 @@
+#!/bin/sh
+
+api r cog Api_Engine
+version r cog Api_Engine 1
+resource r cog Api_Engine 1
