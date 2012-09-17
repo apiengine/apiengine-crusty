@@ -1,9 +1,18 @@
 #!/bin/sh -e
 
+# STATUS
 status r
+
+# USERS
 user c cog cog@apiengine.io orange '{"publicize":"true","name":"The_Big_Cog","url":"http://apiengine.io/spinning/cogs"}'
+
+# APIS
+# FIX automagically creates "version":"1" - discuss - perhaps should require explicit version creation
 api c cog Api_Engine false '{"version":{"baseurl":"http://z.apiengine.io/cog/","label":"cog_api","index":"an_index_of_some_flavour"}}'
-# automagically creates "version":"1"
+
+# RESOURCES
+# FIX: Want the following to be "resource c cog Api_Engine 0.6 ...
+# FIX: 4 req/res body/header apis
 resource c cog Api_Engine 1 /status                                                                             Status             '{"tag":"#status,#inspect,#health","description":"status_of_the_system"}'
 resource c cog Api_Engine 1 /session                                                                            Session            '{"tag":"#session,#login,#create,#new","description":"create_a_session_for_specified_user"}'
 resource c cog Api_Engine 1 /session                                                                            Session            '{"tag":"#session,#login,#inspect","description":"obtain_details_about_the_current_session"}'
@@ -43,5 +52,7 @@ resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation     
 resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#view,#inspect,#representation","description":"obtain_representation_details"}'
 resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#modify,#representation","description":"modify_a_representation"}'
 resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#delete,#representation","description":"delete_a_representation"}'
-#
-# TODO: 4 req/res body/header apis
+
+# METHODS
+
+
