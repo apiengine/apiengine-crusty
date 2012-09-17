@@ -22,12 +22,12 @@
 # FOLLOWING CAUSES A 500
 #version        u      user api version baseurl index                           /user/#user/api/#api/#version                                                    204                                                                      
  version        d      user api version                                         /user/#user/api/#api/#version                                                    204                                                                      
-# marker...
  resource       r      user api version                                         /user/#user/api/#api/#version/resource                                           200                                                                               
  resource       c      user api version resource label tag* description*        /user/#user/api/#api/#version/resource                                           201                             
  resource       r      user api version resource                                /user/#user/api/#api/#version/resource/#resource                                 200                                                                                         
  resource       d      user api version resource                                /user/#user/api/#api/#version/resource/#resource                                 204                               
  resource       u      user api version resource                                /user/#user/api/#api/#version/resource/#resource                                 204                                                                                              
+# marker...
  method         r      user api version resource                                /user/#user/api/#api/#version/resource/#resource/method                          200                                                                                                                                                                           
 #method         c                                                               /user/#user/api/#api/#version/resource/#resource/method                                                                                                                                  
  method         r      user api version resource method                         /user/#user/api/#api/#version/resource/#resource/method/#method                  200                                                                                                                                                                                   
