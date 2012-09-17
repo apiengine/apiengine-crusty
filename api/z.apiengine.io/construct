@@ -38,5 +38,10 @@ resource c cog Api_Engine 1 /user/{user}/notification                           
 resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                       Notification       '{"tag":"#api,#version,#notify,#notification","description":"obtain_api_notifications"}'
 resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                   Notification       '{"tag":"#resource,#notify,#notification","description":"obtain_resource_notifications"}'
 resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification   Notification       '{"tag":"#method,#notify,#notification","description":"obtain_method_notifications"}'
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation                                     Representation     '{"tag":"#list,#representation,#representations","description":"list_representations"}'
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation                                     Representation     '{"tag":"#create,#representation","description":"create_a_representation"}'
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#view,#inspect,#representation","description":"obtain_representation_details"}'
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#modify,#representation","description":"modify_a_representation"}'
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#delete,#representation","description":"delete_a_representation"}'
 #
-
+# TODO: 4 req/res body/header apis
