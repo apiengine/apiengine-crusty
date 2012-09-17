@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-api r cog Api_Engine
+api r cog
 version r cog Api_Engine 1
 resource r cog Api_Engine 1 1
 resource r cog Api_Engine 1 2
@@ -16,3 +16,10 @@ resource r cog Api_Engine 1 11
 resource r cog Api_Engine 1 12
 resource r cog Api_Engine 1 13
 resource r cog Api_Engine 1 14
+resource r cog Api_Engine 1 15
+resource r cog Api_Engine 1 16
+resource r cog Api_Engine 1 17
+resource r cog Api_Engine 1 18
+resource r cog Api_Engine 1 19
+resource r cog Api_Engine 1 20
+resource r cog Api_Engine 1 21
