@@ -9,7 +9,7 @@
  user           r      login                                                    /user/#login                                                                     200                               {login gravatar epoch name* email* publicize* url*}
  user           u      login email publicize password* name* url*               /user/#login                                                                     204  *                        
  user           d      login                                                    /user/#login                                                                     204
-#password       c      email                                                    /passwordreset                                                                   204                           
+ password       c      email                                                    /passwordreset                                                                   204                           
  password       r      key                                                      /passwordreset/#key                                                              200                               {token expiry}
 #password       c      key password                                             /passwordreset/#key                                                              204                                
  api            r                                                               /api                                                                             200                               [api]

@@ -4,14 +4,20 @@ status r
 user c cog cog@apiengine.io orange '{"publicize":"true","name":"The_Big_Cog","url":"http://apiengine.io/spinning/cogs"}'
 api c cog Api_Engine false '{"version":{"baseurl":"http://z.apiengine.io/cog/","label":"cog_api","index":"an_index_of_some_flavour"}}'
 # automagically creates "version":"1"
-resource c cog Api_Engine 1 /status            Status                '{"tag":"#status,#availability,#ok,#health","description":"status_of_the_system"}'
-resource c cog Api_Engine 1 /session           Session               '{"tag":"#session,#login","description":"create_a_session_for_specified_user"}'
-resource c cog Api_Engine 1 /session           Session               '{"tag":"#session,#login","description":"obtain_details_about_the_current_session"}'
-resource c cog Api_Engine 1 /session           Session               '{"tag":"#session,#logout","description":"trash_the_current_session"}'
-resource c cog Api_Engine 1 /user              User                  '{"tag":"#user,#account","description":"create_a_new_user_in_the_system"}'
-resource c cog Api_Engine 1 /users             User                  '{"tag":"#user,#users","description":"list_all_users_of_the_system"}'
-resource c cog Api_Engine 1 /users/{user}      Authenticated_User    '{"tag":"#user,#auth,#authenticated","description":"details_of_currently_authenticated_user"}'
-resource c cog Api_Engine 1 /users/{user}      Authenticated_User    '{"tag":"#user,#auth,#authenticated","description":"details_of_currently_authenticated_user"}'
+resource c cog Api_Engine 1 /status                Status                '{"tag":"#status,#availability,#ok,#health","description":"status_of_the_system"}'
+resource c cog Api_Engine 1 /session               Session               '{"tag":"#session,#login","description":"create_a_session_for_specified_user"}'
+resource c cog Api_Engine 1 /session               Session               '{"tag":"#session,#login","description":"obtain_details_about_the_current_session"}'
+resource c cog Api_Engine 1 /session               Session               '{"tag":"#session,#logout","description":"trash_the_current_session"}'
+resource c cog Api_Engine 1 /user                  User                  '{"tag":"#user,#account","description":"create_a_new_user_in_the_system"}'
+resource c cog Api_Engine 1 /users                 User                  '{"tag":"#user,#users","description":"list_all_users_of_the_system"}'
+resource c cog Api_Engine 1 /users/{user}          Authenticated_User    '{"tag":"#user,#auth,#authenticated","description":"details_of_currently_authenticated_user"}'
+resource c cog Api_Engine 1 /users/{user}          Authenticated_User    '{"tag":"#user,#modify","description":"change_profile_details_of_currently_authenticated_user"}'
+resource c cog Api_Engine 1 /users/{user}          Authenticated_User    '{"tag":"#user,#delete","description":"delete_currently_authenticated_user"}'
+resource c cog Api_Engine 1 /passwordreset         Credentials           '{"tag":"#password,#reset","description":"request_new_password"}'
+resource c cog Api_Engine 1 /passwordreset{token}  Credentials           '{"tag":"#password,#reset,#token","description":"get_the_new_password_token_expiry"}'
+resource c cog Api_Engine 1 /passwordreset{token}  Credentials           '{"tag":"#password,#reset,#token","description":"specify_new_password"}'
+resource c cog Api_Engine 1 /api                   Api                   '{"tag":"#api,#list","description":"specify_new_password"}'
+resource c cog Api_Engine 1 /user/{user}/api       Api                   '{"tag":"#api,#create,#new","description":"create_a_brand_spanking_new_api"}
 
 #api r thomasdavis ApiEngine
 #resource r thomasdavis ApiEngine 1
