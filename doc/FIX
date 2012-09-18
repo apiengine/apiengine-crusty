@@ -1,3 +1,4 @@
+. permit configurable matrix file name
 . role ,urlsed into :util
 . replace bunch of if statements with && or ||
 . {?page,count}

@@ -8,12 +8,14 @@ user c cog cog@apiengine.io orange '{"publicize":"true","name":"The_Big_Cog","ur
 
 # APIS
 # FIX automagically creates "version":"1" - discuss - perhaps should require explicit version creation
-api c cog Api_Engine false '{"version":{"baseurl":"http://z.apiengine.io/cog/","label":"cog_api","index":"an_index_of_some_flavour"}}'
+api c cog Api_Engine false '{"version":{"baseurl":"http://apiengine.io/cog/","label":"0.7","index":"some_markdown_for_v0.7"}}'
 
 # RESOURCES
 # FIX: Want the following to be "resource c cog Api_Engine 0.6 ...
 # FIX: 4 req/res body/header apis
 resource c cog Api_Engine 1 /status                                                                             Status             '{"tag":"#status,#inspect,#health","description":"status_of_the_system"}'
+#method c cog Api_Engine "0.7" /status GET Read
+#method c cog Api_Engine 1 1 GET Read
 resource c cog Api_Engine 1 /session                                                                            Session            '{"tag":"#session,#login,#create,#new","description":"create_a_session_for_specified_user"}'
 resource c cog Api_Engine 1 /session                                                                            Session            '{"tag":"#session,#login,#inspect","description":"obtain_details_about_the_current_session"}'
 resource c cog Api_Engine 1 /session                                                                            Session            '{"tag":"#session,#logout,#delete","description":"trash_the_current_session"}'
@@ -55,4 +57,4 @@ resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{rep
 
 # METHODS
 
-
+# TODO: Multiple methods per resource.

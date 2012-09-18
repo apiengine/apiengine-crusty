@@ -25,15 +25,23 @@ req_mandatory() {
     while [ "${i}" != "${len}" ]; do
         array_get "__args__m" $i; local k=$__
         array_get "__cmdline" $i; local v=$__
-        
-        # encode in URL or PAYLOAD ... not both
+        # FIX tidy this muck up
+        # FIX encode in URL or PAYLOAD ... not both
         string_contains ${__url} "#${k}"
         if [ "$__" = "true" ]; then
-            #echo "........................URL (${k})"
             eval _${k}_=${v}
         else
-            #echo ".......................JSON (${k})"
-            json_add "${json}" "${k}" "${v}"; json=$__
+            string_contains ${__url} "=${k}"
+            if [ "$__" = "true" ]; then
+                # FIX will need to tidy this indirection gumf
+                eval _indirect_${k}_=${v}
+                . ${CRUSTY_INDIRECTS}
+                indirects ${k}
+                v=$__
+                eval _${k}_=${v}
+            else
+                json_add "${json}" "${k}" "${v}"; json=$__
+            fi
         fi
         math_inc "i"
     done
@@ -54,5 +62,10 @@ req_optional() {
 }
 
 req_injectable() {
-    __=`echo $1 | sed 's,/#\([^/]*\),/${_\1_},g'`
+    local vv
+
+    vv=$1
+    vv=`echo ${vv} | sed 's,/#\([^/]*\),/${_\1_},g'`
+    vv=`echo ${vv} | sed 's,/=\([^/]*\),/${_\1_},g'`
+    __=${vv}
 }

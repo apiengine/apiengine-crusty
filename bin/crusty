@@ -52,9 +52,11 @@ http_payload
 #echo LINE: ${__line}
 #echo PAYLOAD: ${__payload}
 #echo URL: ${__url}
-echo ${__url} ${__payload}
+echo ${__url} ${__payload} >&2
 
-set -x
+#echo "ABORTING..."
+#exit
+
 > ${CRUSTY_HTTPCODE} curl                      \
     ${CRUSTY_COOKIES}                          \
     ${CRUSTY_CSRF:-}                           \
@@ -64,7 +66,6 @@ set -x
     -o ${CRUSTY_RESPONSE}                      \
     -w %{http_code}                            \
     ${CRUSTY_HOST}:${CRUSTY_PORT}${__url}
-set +x
 
 response_get
 
