@@ -43,9 +43,6 @@ resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                    
   method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    UPDATE    Update
   method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    DELETE    Delete
 
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#api,#view,#inspect,#version","description":"obtain_specific_version_of_an_api"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#modify,#version","description":"modify_a_version_of_an_api"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#delete,#version","description":"delete_version_of_an_api"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                           Resource           '{"tag":"#view,#resource,#call,#list","description":"obtain_resources_for_version"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                           Resource           '{"tag":"#create,#resource,#call","description":"create_a_resource"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                Resource           '{"tag":"#view,#resource,#inspect,#call","description":"obtain_details_of_specific_resource"}'
