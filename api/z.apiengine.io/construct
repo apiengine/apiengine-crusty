@@ -6,6 +6,12 @@
 
      api c cog Api_Engine false                                                                                                    '{"version":{"baseurl":"http://apiengine.io/cog/","label":"0.7","index":"some_markdown_for_v0.7"}}'
 
+resource c cog Api_Engine 1 /passwordreset                                                                      Password           '{"tag":"#password,#login","description":"password_reset"}'
+  method c cog Api_Engine 1 /passwordreset                                                                      POST     Create
+resource c cog Api_Engine 1 /passwordreset/{token}                                                              Credentials        '{"tag":"#password,#login","description":"password_reset"}'
+  method c cog Api_Engine 1 /passwordreset/{token}                                                              POST     Create
+  method c cog Api_Engine 1 /passwordreset/{token}                                                              GET      Read
+
 resource c cog Api_Engine 1 /status                                                                             Status             '{"tag":"#status","description":"general_system_status"}'
   method c cog Api_Engine 1 /status                                                                             GET      Read
 
@@ -22,9 +28,7 @@ resource c cog Api_Engine 1 /user/{user}                                        
   method c cog Api_Engine 1 /user/{user}                                                                        GET      Read
   method c cog Api_Engine 1 /user/{user}                                                                        UPDATE   Update
   method c cog Api_Engine 1 /user/{user}                                                                        DELETE   Delete
-#resource c cog Api_Engine 1 /passwordreset                                                                      Credentials        '{"tag":"#password,#reset","description":"request_new_password"}'
-#resource c cog Api_Engine 1 /passwordreset/{token}                                                              Credentials        '{"tag":"#password,#reset,#token,#get","description":"get_the_new_password_token_expiry"}'
-#resource c cog Api_Engine 1 /passwordreset/{token}                                                              Credentials        '{"tag":"#password,#reset,#token,#modify","description":"specify_new_password"}'
+
 #resource c cog Api_Engine 1 /api                                                                                Api                '{"tag":"#api,#list","description":"list_all_apis"}'
 #resource c cog Api_Engine 1 /user/{user}/api                                                                    Api                '{"tag":"#api,#create,#new","description":"create_a_brand_spanking_new_api"}'
 #resource c cog Api_Engine 1 /user/{user}/api                                                                    Api                '{"tag":"#api,#user,#list","description":"view_apis_for_a_user"}'

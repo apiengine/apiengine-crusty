@@ -3,16 +3,21 @@
      api r cog
  version r cog Api_Engine 1
 resource r cog Api_Engine 1 /status
-  method r cog Api_Engine 1 /status             GET
+  method r cog Api_Engine 1 /status                                  GET
 resource r cog Api_Engine 1 /session
-  method r cog Api_Engine 1 /session            POST
-  method r cog Api_Engine 1 /session            GET
+  method r cog Api_Engine 1 /session                                 POST
+  method r cog Api_Engine 1 /session                                 GET
 resource r cog Api_Engine 1 /session/{session}
-  method r cog Api_Engine 1 /session/{session}  DELETE
+  method r cog Api_Engine 1 /session/{session}                       DELETE
 resource r cog Api_Engine 1 /user
-  method r cog Api_Engine 1 /user               POST
-  method r cog Api_Engine 1 /user               GET
+  method r cog Api_Engine 1 /user                                    POST
+  method r cog Api_Engine 1 /user                                    GET
 resource r cog Api_Engine 1 /user/{user}
-  method r cog Api_Engine 1 /user/{user}        GET
-  method r cog Api_Engine 1 /user/{user}        UPDATE
-  method r cog Api_Engine 1 /user/{user}        DELETE
+  method r cog Api_Engine 1 /user/{user}                             GET
+  method r cog Api_Engine 1 /user/{user}                             UPDATE
+  method r cog Api_Engine 1 /user/{user}                             DELETE
+resource r cog Api_Engine 1 /passwordreset
+  method r cog Api_Engine 1 /passwordreset                           POST
+resource r cog Api_Engine 1 /passwordreset/{token}
+  method r cog Api_Engine 1 /passwordreset/{token}                   POST
+  method r cog Api_Engine 1 /passwordreset/{token}                   GET

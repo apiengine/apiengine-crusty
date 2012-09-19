@@ -2,59 +2,27 @@
 
   status r
  session c cog orange
+
   method d cog Api_Engine 1 /status             GET
 resource d cog Api_Engine 1 /status
-  method d cog Api_Engine 1 /session            POST
-  method d cog Api_Engine 1 /session            GET
+  method d cog Api_Engine 1 /session                    POST
+  method d cog Api_Engine 1 /session                    GET
 resource d cog Api_Engine 1 /session
-  method d cog Api_Engine 1 /session/{session}  DELETE
+  method d cog Api_Engine 1 /session/{session}          DELETE
 resource d cog Api_Engine 1 /session/{session}
-  method d cog Api_Engine 1 /user               POST
-  method d cog Api_Engine 1 /user               GET
+  method d cog Api_Engine 1 /user                       POST
+  method d cog Api_Engine 1 /user                       GET
 resource d cog Api_Engine 1 /user
-  method d cog Api_Engine 1 /user/{user}        GET
-  method d cog Api_Engine 1 /user/{user}        UPDATE
-  method d cog Api_Engine 1 /user/{user}        DELETE
+  method d cog Api_Engine 1 /user/{user}                GET
+  method d cog Api_Engine 1 /user/{user}                UPDATE
+  method d cog Api_Engine 1 /user/{user}                DELETE
 resource d cog Api_Engine 1 /user/{user}
-#resource d cog Api_Engine 1 40
-#resource d cog Api_Engine 1 39
-#resource d cog Api_Engine 1 38
-#resource d cog Api_Engine 1 37
-#resource d cog Api_Engine 1 36
-#resource d cog Api_Engine 1 35
-#resource d cog Api_Engine 1 34
-#resource d cog Api_Engine 1 33
-#resource d cog Api_Engine 1 32
-#resource d cog Api_Engine 1 31
-#resource d cog Api_Engine 1 30
-#resource d cog Api_Engine 1 29
-#resource d cog Api_Engine 1 28
-#resource d cog Api_Engine 1 27
-#resource d cog Api_Engine 1 26
-#resource d cog Api_Engine 1 25
-#resource d cog Api_Engine 1 24
-#resource d cog Api_Engine 1 23
-#resource d cog Api_Engine 1 22
-#resource d cog Api_Engine 1 21
-#resource d cog Api_Engine 1 20
-#resource d cog Api_Engine 1 19
-#resource d cog Api_Engine 1 18
-#resource d cog Api_Engine 1 17
-#resource d cog Api_Engine 1 16
-#resource d cog Api_Engine 1 15
-#resource d cog Api_Engine 1 14
-#resource d cog Api_Engine 1 13
-#resource d cog Api_Engine 1 12
-#resource d cog Api_Engine 1 11
-#resource d cog Api_Engine 1 10
-#resource d cog Api_Engine 1 9
-#resource d cog Api_Engine 1 8
-#resource d cog Api_Engine 1 7
-#resource d cog Api_Engine 1 6
-#resource d cog Api_Engine 1 5
-#resource d cog Api_Engine 1 4
-#resource d cog Api_Engine 1 3
-#resource d cog Api_Engine 1 2
+  method d cog Api_Engine 1 /passwordreset              POST
+resource d cog Api_Engine 1 /passwordreset
+  method d cog Api_Engine 1 /passwordreset/{token}      POST
+  method d cog Api_Engine 1 /passwordreset/{token}      GET
+resource d cog Api_Engine 1 /passwordreset/{token}
+
  version d cog Api_Engine 1
      api d cog Api_Engine
     user d cog
