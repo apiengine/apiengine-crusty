@@ -3,33 +3,40 @@
      api r cog
  version r cog Api_Engine 1
 resource r cog Api_Engine 1 /status
-  method r cog Api_Engine 1 /status                                  GET
+  method r cog Api_Engine 1 /status                                                                                                    GET
 resource r cog Api_Engine 1 /session
-  method r cog Api_Engine 1 /session                                 POST
-  method r cog Api_Engine 1 /session                                 GET
+  method r cog Api_Engine 1 /session                                                                                                   POST
+  method r cog Api_Engine 1 /session                                                                                                   GET
 resource r cog Api_Engine 1 /session/{session}
-  method r cog Api_Engine 1 /session/{session}                       DELETE
+  method r cog Api_Engine 1 /session/{session}                                                                                         DELETE
 resource r cog Api_Engine 1 /user
-  method r cog Api_Engine 1 /user                                    POST
-  method r cog Api_Engine 1 /user                                    GET
+  method r cog Api_Engine 1 /user                                                                                                      POST
+  method r cog Api_Engine 1 /user                                                                                                      GET
 resource r cog Api_Engine 1 /user/{user}
-  method r cog Api_Engine 1 /user/{user}                             GET
-  method r cog Api_Engine 1 /user/{user}                             UPDATE
-  method r cog Api_Engine 1 /user/{user}                             DELETE
+  method r cog Api_Engine 1 /user/{user}                                                                                               GET
+  method r cog Api_Engine 1 /user/{user}                                                                                               UPDATE
+  method r cog Api_Engine 1 /user/{user}                                                                                               DELETE
 resource r cog Api_Engine 1 /passwordreset
-  method r cog Api_Engine 1 /passwordreset                           POST
+  method r cog Api_Engine 1 /passwordreset                                                                                             POST
 resource r cog Api_Engine 1 /passwordreset/{token}
-  method r cog Api_Engine 1 /passwordreset/{token}                   POST
-  method r cog Api_Engine 1 /passwordreset/{token}                   GET
+  method r cog Api_Engine 1 /passwordreset/{token}                                                                                     POST
+  method r cog Api_Engine 1 /passwordreset/{token}                                                                                     GET
 resource r cog Api_Engine 1 /api
-  method r cog Api_Engine 1 /api                                     GET
+  method r cog Api_Engine 1 /api                                                                                                       GET
 resource r cog Api_Engine 1 /user/{user}/api
-  method r cog Api_Engine 1 /user/{user}/api                         POST
-  method r cog Api_Engine 1 /user/{user}/api                         GET
+  method r cog Api_Engine 1 /user/{user}/api                                                                                           POST
+  method r cog Api_Engine 1 /user/{user}/api                                                                                           GET
 resource r cog Api_Engine 1 /user/{user}/api/{api}
-  method r cog Api_Engine 1 /user/{user}/api/{api}                   POST
-  method r cog Api_Engine 1 /user/{user}/api/{api}                   DELETE
+  method r cog Api_Engine 1 /user/{user}/api/{api}                                                                                     POST
+  method r cog Api_Engine 1 /user/{user}/api/{api}                                                                                     DELETE
 resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}
-  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}         GET
-  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}         UPDATE
-  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}         DELETE
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                                           GET
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                                           UPDATE
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                                           DELETE
+resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                                                  POST
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                                                  GET
+resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                                       GET
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                                       UPDATE
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                                       DELETE
