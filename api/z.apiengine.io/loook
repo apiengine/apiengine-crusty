@@ -21,3 +21,15 @@ resource r cog Api_Engine 1 /passwordreset
 resource r cog Api_Engine 1 /passwordreset/{token}
   method r cog Api_Engine 1 /passwordreset/{token}                   POST
   method r cog Api_Engine 1 /passwordreset/{token}                   GET
+resource r cog Api_Engine 1 /api
+  method r cog Api_Engine 1 /api                                     GET
+resource r cog Api_Engine 1 /user/{user}/api
+  method r cog Api_Engine 1 /user/{user}/api                         POST
+  method r cog Api_Engine 1 /user/{user}/api                         GET
+resource r cog Api_Engine 1 /user/{user}/api/{api}
+  method r cog Api_Engine 1 /user/{user}/api/{api}                   POST
+  method r cog Api_Engine 1 /user/{user}/api/{api}                   DELETE
+resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}         GET
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}         UPDATE
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}         DELETE

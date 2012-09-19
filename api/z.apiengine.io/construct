@@ -6,12 +6,6 @@
 
      api c cog Api_Engine false                                                                                                    '{"version":{"baseurl":"http://apiengine.io/cog/","label":"0.7","index":"some_markdown_for_v0.7"}}'
 
-resource c cog Api_Engine 1 /passwordreset                                                                      Password           '{"tag":"#password,#login","description":"password_reset"}'
-  method c cog Api_Engine 1 /passwordreset                                                                      POST     Create
-resource c cog Api_Engine 1 /passwordreset/{token}                                                              Credentials        '{"tag":"#password,#login","description":"password_reset"}'
-  method c cog Api_Engine 1 /passwordreset/{token}                                                              POST     Create
-  method c cog Api_Engine 1 /passwordreset/{token}                                                              GET      Read
-
 resource c cog Api_Engine 1 /status                                                                             Status             '{"tag":"#status","description":"general_system_status"}'
   method c cog Api_Engine 1 /status                                                                             GET      Read
 
@@ -29,11 +23,26 @@ resource c cog Api_Engine 1 /user/{user}                                        
   method c cog Api_Engine 1 /user/{user}                                                                        UPDATE   Update
   method c cog Api_Engine 1 /user/{user}                                                                        DELETE   Delete
 
-#resource c cog Api_Engine 1 /api                                                                                Api                '{"tag":"#api,#list","description":"list_all_apis"}'
-#resource c cog Api_Engine 1 /user/{user}/api                                                                    Api                '{"tag":"#api,#create,#new","description":"create_a_brand_spanking_new_api"}'
-#resource c cog Api_Engine 1 /user/{user}/api                                                                    Api                '{"tag":"#api,#user,#list","description":"view_apis_for_a_user"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}                                                              Api                '{"tag":"#api,#delete","description":"delete_a_users_entire_api"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}                                                              Api                '{"tag":"#api,#create,#version","description":"create_version_of_an_api"}'
+resource c cog Api_Engine 1 /passwordreset                                                                      Password           '{"tag":"#password,#login","description":"password_reset"}'
+  method c cog Api_Engine 1 /passwordreset                                                                      POST     Create
+resource c cog Api_Engine 1 /passwordreset/{token}                                                              Credentials        '{"tag":"#password,#login","description":"password_reset"}'
+  method c cog Api_Engine 1 /passwordreset/{token}                                                              POST     Create
+  method c cog Api_Engine 1 /passwordreset/{token}                                                              GET      Read
+
+resource c cog Api_Engine 1 /api                                                                                Api                '{"tag":"#api","description":"apis"}'
+  method c cog Api_Engine 1 /api                                                                                GET       Read
+resource c cog Api_Engine 1 /user/{user}/api                                                                    Api                '{"tag":"#api","description":"apis"}'
+  method c cog Api_Engine 1 /user/{user}/api                                                                    POST      Create
+  method c cog Api_Engine 1 /user/{user}/api                                                                    GET       Read  
+resource c cog Api_Engine 1 /user/{user}/api/{api}                                                              Api                '{"tag":"#api","description":"apis"}'
+  method c cog Api_Engine 1 /user/{user}/api/{api}                                                              POST      Create
+  method c cog Api_Engine 1 /user/{user}/api/{api}                                                              DELETE    Delete
+
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#version","description":"versioning"}'
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    GET       Read
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    UPDATE    Update
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    DELETE    Delete
+
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#api,#view,#inspect,#version","description":"obtain_specific_version_of_an_api"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#modify,#version","description":"modify_a_version_of_an_api"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#delete,#version","description":"delete_version_of_an_api"}'

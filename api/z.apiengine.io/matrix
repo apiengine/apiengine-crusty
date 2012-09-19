@@ -15,8 +15,8 @@
  api            r                                                               /api                                                                             200                               [api]
  api            c      user name private [version*]                             /user/#user/api                                                                  201       /user/{user}/api/{api}  
  api            r      user                                                     /user/#user/api                                                                  200                               [api]
- api            d      user api                                                 /user/#user/api/#api                                                             204                               
  api            c      user api baseurl* label* index*                          /user/#user/api/#api                                                             201       /user/{user}/api/{api}  {user api version label index [resources] baseurl*} 
+ api            d      user api                                                 /user/#user/api/#api                                                             204                               
 # was a duplicate... api            r      user api                                                 /user/#user/api/#api                                                             200                               [api]
  version        r      user api version                                         /user/#user/api/#api/#version                                                    200                               {user api version label index [resources] baseurl*}
 # FOLLOWING CAUSES A 500
