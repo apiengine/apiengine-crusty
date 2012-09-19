@@ -57,15 +57,19 @@ echo ${__url} ${__payload} >&2
 #echo "ABORTING..."
 #exit
 
-> ${CRUSTY_HTTPCODE} curl                      \
-    ${CRUSTY_COOKIES}                          \
-    ${CRUSTY_CSRF:-}                           \
-    -s                                         \
-    -X ${CRUSTY_METHOD}                        \
-    ${CRUSTY_DATA:-}                           \
-    -o ${CRUSTY_RESPONSE}                      \
-    -w %{http_code}                            \
-    ${CRUSTY_HOST}:${CRUSTY_PORT}${__url}
+# FIX move into function
+___="\
+> ${CRUSTY_HTTPCODE} curl \
+${CRUSTY_COOKIES} \
+${CRUSTY_CSRF:-} \
+-s \
+-X ${CRUSTY_METHOD} \
+${CRUSTY_DATA:-} \
+-o ${CRUSTY_RESPONSE} \
+-w %{http_code} \
+${CRUSTY_HOST}:${CRUSTY_PORT}${__url}"
+echo "$___" >&2
+eval "$___"
 
 response_get
 

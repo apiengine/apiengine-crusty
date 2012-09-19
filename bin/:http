@@ -19,7 +19,7 @@ http_payload() {
     > ${CRUSTY_RESPONSE} echo '{"CRUSTY_NO_RETURN":"CRUST"}'
 
     if [ "${CRUSTY_METHOD}" = "POST" -o "${CRUSTY_METHOD}" = "PUT" ]; then
-        CRUSTY_DATA="-d ${__payload}"
+        CRUSTY_DATA="-d '${__payload}'"
     fi
 }
 

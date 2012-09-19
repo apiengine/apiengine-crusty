@@ -1,43 +1,18 @@
 #!/bin/sh -e
 
-api r cog
-version r cog Api_Engine 1
-resource r cog Api_Engine 1 1
-resource r cog Api_Engine 1 2
-resource r cog Api_Engine 1 3
-resource r cog Api_Engine 1 4
-resource r cog Api_Engine 1 5
-resource r cog Api_Engine 1 6
-resource r cog Api_Engine 1 7
-resource r cog Api_Engine 1 8
-resource r cog Api_Engine 1 9
-resource r cog Api_Engine 1 10
-resource r cog Api_Engine 1 11
-resource r cog Api_Engine 1 12
-resource r cog Api_Engine 1 13
-resource r cog Api_Engine 1 14
-resource r cog Api_Engine 1 15
-resource r cog Api_Engine 1 16
-resource r cog Api_Engine 1 17
-resource r cog Api_Engine 1 18
-resource r cog Api_Engine 1 19
-resource r cog Api_Engine 1 20
-resource r cog Api_Engine 1 21
-resource r cog Api_Engine 1 22
-resource r cog Api_Engine 1 23
-resource r cog Api_Engine 1 24
-resource r cog Api_Engine 1 25
-resource r cog Api_Engine 1 26
-resource r cog Api_Engine 1 27
-resource r cog Api_Engine 1 28
-resource r cog Api_Engine 1 29
-resource r cog Api_Engine 1 30
-resource r cog Api_Engine 1 31
-resource r cog Api_Engine 1 32
-resource r cog Api_Engine 1 33
-resource r cog Api_Engine 1 34
-resource r cog Api_Engine 1 35
-resource r cog Api_Engine 1 36
-resource r cog Api_Engine 1 37
-resource r cog Api_Engine 1 38
-resource r cog Api_Engine 1 39
+     api r cog
+ version r cog Api_Engine 1
+resource r cog Api_Engine 1 /status
+  method r cog Api_Engine 1 /status             GET
+resource r cog Api_Engine 1 /session
+  method r cog Api_Engine 1 /session            POST
+  method r cog Api_Engine 1 /session            GET
+resource r cog Api_Engine 1 /session/{session}
+  method r cog Api_Engine 1 /session/{session}  DELETE
+resource r cog Api_Engine 1 /user
+  method r cog Api_Engine 1 /user               POST
+  method r cog Api_Engine 1 /user               GET
+resource r cog Api_Engine 1 /user/{user}
+  method r cog Api_Engine 1 /user/{user}        GET
+  method r cog Api_Engine 1 /user/{user}        UPDATE
+  method r cog Api_Engine 1 /user/{user}        DELETE
