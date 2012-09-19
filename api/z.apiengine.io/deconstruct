@@ -41,6 +41,21 @@ resource d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource
   method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                                       UPDATE
   method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                                       DELETE
 resource d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}
+  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                                                POST
+  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                                                GET
+resource d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method          
+  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                                       GET
+  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                                       UPDATE
+  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                                       DELETE
+resource d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}
+  method d cog Api_Engine 1 /user/{user}/notification                                                                                  GET
+resource d cog Api_Engine 1 /user/{user}/notification                                                     
+  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                                              GET
+resource d cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                
+  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                                          GET
+resource d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification           
+  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification                          GET
+resource d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification  
 
  version d cog Api_Engine 1
      api d cog Api_Engine

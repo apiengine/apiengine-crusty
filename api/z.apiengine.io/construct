@@ -51,15 +51,23 @@ resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}
   method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                UPDATE    Update
   method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                DELETE    Delete
 
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         Method             '{"tag":"#view,#method,#list","description":"get_methods_on_a_resource"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         Method             '{"tag":"#create,#method","description":"create_a_method_on_a_resource"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                Method             '{"tag":"#view,#inspect,#method","description":"get_a_method_on_a_resource"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                Method             '{"tag":"#delete,#method","description":"delete_a_method"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                Method             '{"tag":"#modify,#method","description":"change_details_for_a_method"}'
-#resource c cog Api_Engine 1 /user/{user}/notification                                                           Notification       '{"tag":"#user,#notify,#notification","description":"obtain_user_notifications"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                       Notification       '{"tag":"#api,#version,#notify,#notification","description":"obtain_api_notifications"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                   Notification       '{"tag":"#resource,#notify,#notification","description":"obtain_resource_notifications"}'
-#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification   Notification       '{"tag":"#method,#notify,#notification","description":"obtain_method_notifications"}'
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         Method             '{"tag":"#method","description":"methods"}'
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         POST      Create
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         GET       Read
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                Method             '{"tag":"#method","description":"methods"}'
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                GET       Read
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                UPDATE    Update
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                DELETE    Delete
+
+resource c cog Api_Engine 1 /user/{user}/notification                                                           Notification       '{"tag":"#notifications","description":"notifications"}'
+  method c cog Api_Engine 1 /user/{user}/notification                                                           GET       Read
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                       Notification       '{"tag":"#notifications","description":"notifications"}'
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                       GET       Read
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                   Notification       '{"tag":"#notifications","description":"notifications"}'
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                   GET       Read
+resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification   Notification       '{"tag":"#notifications","description":"notifications"}'
+  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification   GET       Read
+
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation                                     Representation     '{"tag":"#list,#representation,#representations","description":"list_representations"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation                                     Representation     '{"tag":"#create,#representation","description":"create_a_representation"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#view,#inspect,#representation","description":"obtain_representation_details"}'

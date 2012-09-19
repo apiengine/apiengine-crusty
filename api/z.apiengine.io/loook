@@ -40,3 +40,18 @@ resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}
   method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                                       GET
   method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                                       UPDATE
   method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                                       DELETE
+resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                                                POST
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                                                GET
+resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                                       GET
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                                       UPDATE
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                                       DELETE
+resource r cog Api_Engine 1 /user/{user}/notification
+  method r cog Api_Engine 1 /user/{user}/notification                                                                                  GET
+resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                                              GET
+resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                                          GET
+resource r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification
+  method r cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification                          GET
