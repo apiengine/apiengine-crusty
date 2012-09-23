@@ -62,10 +62,10 @@ req_optional() {
 }
 
 req_injectable() {
-    local vv
+    local v
 
-    vv=$1
-    vv=`echo ${vv} | sed 's,/#\([^/]*\),/${_\1_},g'`
-    vv=`echo ${vv} | sed 's,/=\([^/]*\),/${_\1_},g'`
-    __=${vv}
+    v=$1
+    v=`echo ${v} | sed 's,/#\([^/]*\),/${_\1_},g'`
+    v=`echo ${v} | sed 's,/=\([^/]*\),/${_\1_},g'`
+    __=${v}
 }
