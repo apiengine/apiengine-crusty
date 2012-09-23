@@ -13,8 +13,8 @@ indirects() {
     local result
 
     model=$1
+    actual=$2
     out="${CRUSTY_GEN}/${CRUSTY_CMD}_$$__${model}.out"
-    eval 'actual=${_indirect_'${model}'_}'
 
     if [ "${model}" = "resource" ]; then
         # FIX gonna need to tidy this and parameterise big time

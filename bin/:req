@@ -34,9 +34,8 @@ req_mandatory() {
             string_contains ${__url} "=${k}"
             if [ "$__" = "true" ]; then
                 # FIX will need to tidy this indirection gumf
-                eval _indirect_${k}_=${v}
                 . ${CRUSTY_INDIRECTS}
-                indirects ${k}
+                indirects ${k} ${v}
                 v=$__
                 eval _${k}_=${v}
             else
