@@ -16,6 +16,7 @@ PATH=${CRUSTY_BIN}:${PATH}
 . :json
 . :specs
 . :param
+. :indirection
 . :line
 . :req
 . :util

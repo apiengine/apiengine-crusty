@@ -1,0 +1,47 @@
+#!/bin/sh -euf
+
+indirection() {
+    local model
+    local actual
+    local command
+
+    local cmd
+
+    local out
+    local type
+    local len
+    local i
+    local el
+    local val
+    local found
+    local result
+
+    model=$1
+    actual=$2
+    command=$3
+
+    out="${CRUSTY_GEN}/${CRUSTY_CMD}_$$__${model}.out"
+
+    eval cmd='"'${command}'"'
+    eval ''${cmd}' > '${out}''
+
+    type=`jshon -t < ${out}`
+    len=`jshon -l < ${out}`
+    i=0; found=-1
+    while [ "${i}" != "${len}" ]; do
+        el=`jshon -e ${i} < ${out}`
+        val=`echo ${el} | jshon -e ${model} | sed 's+"++g'`
+        if [ "${val}" = "${actual}" ]; then
+            if [ "${found}" != "-1" ]; then
+                bomb_fail "duplicate key ${actual} for model ${model}"
+            fi
+            found=${i}
+            result=`echo ${el} | jshon -e id | sed 's+"++g'`
+        fi
+        math_inc "i"
+    done
+    if [ "${found}" = "-1" ]; then
+         bomb_fail "key ${actual} not found for model ${model}"
+    fi
+    __=${result}
+}
