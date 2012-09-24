@@ -15,7 +15,7 @@ CRUSTY_DEPS=$CRUSTY_HOME/.deps
 if [ ! -d $CRUSTY_DEPS/jansson ]; then
     echo "installing jansson..."
     mkdir -p $CRUSTY_DEPS; cd $CRUSTY_DEPS
-    curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | tar zx-
+    curl http://www.digip.org/jansson/releases/jansson-2.3.1.tar.gz | tar zx -
     ln -s jansson* jansson
     cd jansson
     ./configure
