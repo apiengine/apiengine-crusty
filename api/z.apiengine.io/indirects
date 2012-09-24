@@ -1,7 +1,24 @@
 #!/bin/sh -euf
 
+
 indirects() {
+    model=$1
+    actual=$2
+
+    if [ "${model}" = "resource" ]; then
+        indirects_map ${model} ${actual} 'resource r ${_user_} ${_api_} ${_version_}'
+    else
+        bomb_fail "indirect for ${k} not supported"
+    fi
+}
+
+indirects_map() {
     local model
+    local actual
+    local command
+
+    local cmd
+
     local out
     local type
     local len
@@ -9,36 +26,34 @@ indirects() {
     local el
     local val
     local found
-    local actual
     local result
 
     model=$1
     actual=$2
+    command=$3
+
     out="${CRUSTY_GEN}/${CRUSTY_CMD}_$$__${model}.out"
 
-    if [ "${model}" = "resource" ]; then
-        # FIX gonna need to tidy this and parameterise big time
-        resource r ${_user_} ${_api_} ${_version_} > ${out}
-        type=`jshon -t < ${out}`
-        len=`jshon -l < ${out}`
-        i=0; found=-1
-        while [ "${i}" != "${len}" ]; do
-            el=`jshon -e ${i} < ${out}`
-            val=`echo ${el} | jshon -e resource | sed 's+"++g'`
-            if [ "${val}" = "${actual}" ]; then
-                if [ "${found}" != "-1" ]; then
-                    bomb_fail "duplicate key ${actual} for model ${model}"
-                fi
-                found=${i}
-                result=`echo ${el} | jshon -e id | sed 's+"++g'`
+    eval cmd='"'${command}'"'
+    eval ''${cmd}' > '${out}''
+
+    type=`jshon -t < ${out}`
+    len=`jshon -l < ${out}`
+    i=0; found=-1
+    while [ "${i}" != "${len}" ]; do
+        el=`jshon -e ${i} < ${out}`
+        val=`echo ${el} | jshon -e ${model} | sed 's+"++g'`
+        if [ "${val}" = "${actual}" ]; then
+            if [ "${found}" != "-1" ]; then
+                bomb_fail "duplicate key ${actual} for model ${model}"
             fi
-            math_inc "i"
-        done
-        if [ "${found}" = "-1" ]; then
-             bomb_fail "key ${actual} not found for model ${model}"
+            found=${i}
+            result=`echo ${el} | jshon -e id | sed 's+"++g'`
         fi
-    else
-        bomb_fail "indirect for ${k} not supported"
+        math_inc "i"
+    done
+    if [ "${found}" = "-1" ]; then
+         bomb_fail "key ${actual} not found for model ${model}"
     fi
     __=${result}
 }

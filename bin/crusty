@@ -52,7 +52,7 @@ http_payload
 #echo LINE: ${__line}
 #echo PAYLOAD: ${__payload}
 #echo URL: ${__url}
-echo ${__url} ${__payload} >&2
+echo ${__line} ${__url} ${__payload} >&2
 
 #echo "ABORTING..."
 #exit
