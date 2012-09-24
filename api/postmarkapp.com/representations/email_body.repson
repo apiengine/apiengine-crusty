@@ -1,21 +1,34 @@
 {
+    "name": "email_body"
+    "representation": {
+
+
+
     "type": "object",
     "attributes": [
         {
             "name": "From",
+            "description": "_desc_"
             "type": "string"
         },
         {
             "name": "To",
+            "description": "_desc_"
             "type": "string"
         },
         {
             "name": "Subject",
+            "description": "_desc_"
             "type": "string"
         },
         {
             "name": "TextBody",
+            "description": "_desc_"
             "type": "string"
         }
     ]
-}
+
+
+
+    }
+}    
