@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "attributes": [
+        {
+            "name": "From",
+            "type": "string"
+        },
+        {
+            "name": "To",
+            "type": "string"
+        },
+        {
+            "name": "Subject",
+            "type": "string"
+        },
+        {
+            "name": "TextBody",
+            "type": "string"
+        }
+    ]
+}
