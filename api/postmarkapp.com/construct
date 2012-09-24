@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+  status r
+
+    user c postmarkapp info@postmarkapp.com orange                            '{"publicize":"true","name":"Post_Mark_Bod","url":"http://postmarkapp.com/"}'
+
+     api c postmarkapp Post_Mark false                                        '{"version":{"baseurl":"http://api.postmarkapp.com/","label":"1.0","index":"POSTMARK_API"}}'
+
+resource c postmarkapp Post_Mark 1 /email                      Status         '{"tag":"#email","description":"emailing"}'
+  method c postmarkapp Post_Mark 1 /email                      POST   Create

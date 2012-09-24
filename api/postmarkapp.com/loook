@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+  status r
+
+     api r postmarkapp
+ version r postmarkapp Post_Mark 1
+resource r postmarkapp Post_Mark 1 /email
+  method r postmarkapp Post_Mark 1 /email POST

@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+  status r
+
+ session c postmarkapp orange
+
+  method d postmarkapp Post_Mark 1 /email                  POST
+resource d postmarkapp Post_Mark 1 /email
+ version d postmarkapp Post_Mark 1
+     api d postmarkapp Post_Mark
+    user d postmarkapp
