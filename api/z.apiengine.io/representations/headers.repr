@@ -1,0 +1,26 @@
+{
+    "def": "http://z.apiengine.io/user/cogs/api/apiengine/1/representation/headers",
+    "type": "array",
+    "desc": "_________________________",
+    "meta": {
+        "type": "object",
+        "desc": "_________________________",
+        "meta": [
+            {
+                "name": "name",
+                "meta": {
+                    "type": "string",
+                    "desc": "_________________________"
+                }
+            },
+            {
+                "name": "value",
+                "struct": {
+                    "type": "string",
+                    "desc": "_________________________"
+                }
+            }
+        ]
+    }
+}
+

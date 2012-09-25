@@ -8,3 +8,6 @@
 
 resource c postmarkapp Post_Mark 1 /email                      Status         '{"tag":"#email","description":"emailing"}'
   method c postmarkapp Post_Mark 1 /email                      POST   Create
+
+representation c postmarkapp Post_Mark 1 '{"name":"email_body","representation":{"type":"object","attributes":[{"name":"From","description":"_desc_","type":"string"},{"name":"To","description":"_desc_","type":"string"},{"name":"Subject","description":"_desc_","type":"string"},{"name":"TextBody","description":"_desc_","type":"string"}]}}'
+

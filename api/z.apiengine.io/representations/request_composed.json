@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "meta": [
+        {
+            "name": "headers",
+            "meta": {
+                "backref": "rep://z.apiengine.io/cogs/apiengine/representation/headers.json",
+                "type": "array",
+                "desc": "_________________________",
+                "meta": {
+                    "type": "object",
+                    "desc": "_________________________",
+                    "meta": [
+                        {
+                            "name": "name",
+                            "meta": {
+                                "type": "string",
+                                "desc": "_________________________"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "struct": {
+                                "type": "string",
+                                "desc": "_________________________"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "body",
+            "meta": {
+                "backref": "rep://z.apiengine.io/cogs/apiengine/representation/body.json",
+                "type": "object",
+                "desc": "_________________________",
+                "meta": [
+                    {
+                        "name": "type",
+                        "meta": {
+                            "type": "string",
+                            "desc": "_________________________"
+                        }
+                    },
+                    {
+                        "name": "desc",
+                        "meta": {
+                            "type": "string",
+                            "desc": "_________________________"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "request": {
+        "headers": [
+            { "name": "Accept"                 , "value": "application/json" },
+            { "name": "Content-Type"           , "value": "application/json" },
+            { "name": "X-Postmark-Server-Token", "value": "ed742D75"         }
+        ],
+        "body": {
+            "From": "cogs@apiengine.io",
+            "To": "mag@netstorm.net.au",
+            "Subject": "test from postmark...",
+            "TextBody": "__hi__there__"
+        }
+    }
+}

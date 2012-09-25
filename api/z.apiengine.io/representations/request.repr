@@ -1,0 +1,19 @@
+{
+    "def": "http://z.apiengine.io/user/cogs/api/apiengine/1/representation/request",
+    "type": "object",
+    "meta": [
+        {
+            "name": "headers",
+            "meta": {
+                "ref": "http://z.apiengine.io/user/cogs/api/apiengine/1/representation/headers"
+
+            }
+        },
+        {
+            "name": "body",
+            "meta": {
+                "ref": "http://z.apiengine.io/user/cogs/api/apiengine/1/representation/body"
+            }
+        }
+    ]
+}

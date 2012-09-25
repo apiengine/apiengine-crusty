@@ -1,0 +1,31 @@
+{
+    "def": "http://z.apiengine.io/user/cogs/api/apiengine/1/representation/body",
+    "type": "object",
+    "desc": "_________________________",
+    "meta": [
+        {
+            "name": "type",
+            "meta": {
+                "type": "string",
+                "desc": "_________________________"
+            }
+        },
+        {
+            "name": "desc",
+            "meta": {
+                "type": "string",
+                "desc": "_________________________"
+            }
+        },
+        {
+            "name": "meta",
+            "meta": {
+                "type": "object",
+                "desc": "_________________________",
+                "meta": {
+                  "ref":"http://apiengine.io/user/cogs/api/apiengine/1/representation/body"
+                } 
+            }
+        }
+    ]
+}
