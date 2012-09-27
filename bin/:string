@@ -1,8 +1,7 @@
 #!/bin/sh
 
 string_startswith() {
-    (echo $1 | grep -q "^$2")
-    if [ $? = 0 ]; then
+    if echo $1 | grep -q "^$2"; then
         __="true"
     else
         __="false"
@@ -10,8 +9,7 @@ string_startswith() {
 }
 
 string_endswith() {
-    (echo $1 | grep -q "$2$")
-    if [ $? = 0 ]; then
+    if echo $1 | grep -q "$2$"; then
         __="true"
     else
         __="false"
@@ -19,8 +17,7 @@ string_endswith() {
 }
 
 string_contains() {
-    (echo $1 | grep -q "$2")
-    if [ $? = 0 ]; then
+    if echo $1 | grep -q "$2"; then
         __="true"
     else
         __="false"

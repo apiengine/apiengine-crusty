@@ -1,4 +1,4 @@
-#!/bin/sh -euf
+#!/bin/sh -uf
 
 CRUSTY_PWD=`pwd`
 CRUSTY_API=`dirname $0`
