@@ -1,5 +1,6 @@
 #!/bin/sh -euf
 
+CRUSTY_PWD=`pwd`
 CRUSTY_API=`dirname $0`
 CRUSTY_API=`cd ${CRUSTY_API}; pwd`
 CRUSTY_CMD=`basename $0`
@@ -54,9 +55,6 @@ http_payload
 #echo PAYLOAD: ${__payload}
 #echo URL: ${__url}
 echo ${__line} ${__url} ${__payload} >&2
-
-#echo "ABORTING..."
-#exit
 
 # FIX move into function
 ___="\

@@ -1,4 +1,29 @@
 #!/bin/sh
+cmdline_resolve() {
+    local i
+    local v
+    local fn
+    local arg
+
+    pushd ${CRUSTY_PWD} > /dev/null
+
+    i=0
+    while [ $i != ${__cmdline_n} ]; do
+        eval 'arg=${__cmdline_'${i}'}'
+        string_startswith ${arg} "@" 
+        if [ "$__" = "true" ]; then
+            fn=`echo $arg | sed 's/^@//g'`
+            if [ ! -f ${fn} ]; then
+                bomb_fail "file ${fn} does not exist"
+            fi
+            v=`cat ${fn} | tr '\n' ' ' | sed 's/ //g'`
+            val_poke __cmdline_$i ${v} 
+        fi
+        math_inc "i"
+    done
+
+    popd > /dev/null
+}
 
 # FIX delegate to :param_set
 # FIX needs to closely follow the hairy chested array pattern
@@ -9,3 +34,4 @@ while [ $i != $# ]; do
     eval __cmdline_$n='$'$i
 done
 __cmdline_n=$i
+cmdline_resolve
