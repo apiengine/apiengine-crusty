@@ -15,65 +15,65 @@ resource c cog Api_Engine 1 /session                                            
 resource c cog Api_Engine 1 /session/{session}                                                                  Session            '{"tag":"#session,#login","description":"login_and_system_management"}'
   method c cog Api_Engine 1 /session/{session}                                                                  DELETE   Delete
 
-resource c cog Api_Engine 1 /user                                                                               User               '{"tag":"#user","description":"user_management"}'
-  method c cog Api_Engine 1 /user                                                                               POST     Create
-  method c cog Api_Engine 1 /user                                                                               GET      Read
-resource c cog Api_Engine 1 /user/{user}                                                                        User               '{"tag":"#user","description":"user_management"}'
-  method c cog Api_Engine 1 /user/{user}                                                                        GET      Read
-  method c cog Api_Engine 1 /user/{user}                                                                        UPDATE   Update
-  method c cog Api_Engine 1 /user/{user}                                                                        DELETE   Delete
-
-resource c cog Api_Engine 1 /passwordreset                                                                      Password           '{"tag":"#password,#login","description":"password_reset"}'
-  method c cog Api_Engine 1 /passwordreset                                                                      POST     Create
-resource c cog Api_Engine 1 /passwordreset/{token}                                                              Credentials        '{"tag":"#password,#login","description":"password_reset"}'
-  method c cog Api_Engine 1 /passwordreset/{token}                                                              POST     Create
-  method c cog Api_Engine 1 /passwordreset/{token}                                                              GET      Read
-
-resource c cog Api_Engine 1 /api                                                                                Api                '{"tag":"#api","description":"apis"}'
-  method c cog Api_Engine 1 /api                                                                                GET       Read
-resource c cog Api_Engine 1 /user/{user}/api                                                                    Api                '{"tag":"#api","description":"apis"}'
-  method c cog Api_Engine 1 /user/{user}/api                                                                    POST      Create
-  method c cog Api_Engine 1 /user/{user}/api                                                                    GET       Read  
-resource c cog Api_Engine 1 /user/{user}/api/{api}                                                              Api                '{"tag":"#api","description":"apis"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}                                                              POST      Create
-  method c cog Api_Engine 1 /user/{user}/api/{api}                                                              DELETE    Delete
-
-resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#version","description":"versioning"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    GET       Read
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    UPDATE    Update
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    DELETE    Delete
-
-resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                           Resource           '{"tag":"#resource","description":"resources"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                           POST      Create
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                           GET       Read
-resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                Resource           '{"tag":"#resource","description":"resources"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                GET       Read
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                UPDATE    Update
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                DELETE    Delete
-
-resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         Method             '{"tag":"#method","description":"methods"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         POST      Create
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         GET       Read
-resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                Method             '{"tag":"#method","description":"methods"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                GET       Read
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                UPDATE    Update
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                DELETE    Delete
-
-resource c cog Api_Engine 1 /user/{user}/notification                                                           Notification       '{"tag":"#notifications","description":"notifications"}'
-  method c cog Api_Engine 1 /user/{user}/notification                                                           GET       Read
-resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                       Notification       '{"tag":"#notifications","description":"notifications"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                       GET       Read
-resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                   Notification       '{"tag":"#notifications","description":"notifications"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                   GET       Read
-resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification   Notification       '{"tag":"#notifications","description":"notifications"}'
-  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification   GET       Read
-
+#resource c cog Api_Engine 1 /user                                                                               User               '{"tag":"#user","description":"user_management"}'
+#  method c cog Api_Engine 1 /user                                                                               POST     Create
+#  method c cog Api_Engine 1 /user                                                                               GET      Read
+#resource c cog Api_Engine 1 /user/{user}                                                                        User               '{"tag":"#user","description":"user_management"}'
+#  method c cog Api_Engine 1 /user/{user}                                                                        GET      Read
+#  method c cog Api_Engine 1 /user/{user}                                                                        UPDATE   Update
+#  method c cog Api_Engine 1 /user/{user}                                                                        DELETE   Delete
+#
+#resource c cog Api_Engine 1 /passwordreset                                                                      Password           '{"tag":"#password,#login","description":"password_reset"}'
+#  method c cog Api_Engine 1 /passwordreset                                                                      POST     Create
+#resource c cog Api_Engine 1 /passwordreset/{token}                                                              Credentials        '{"tag":"#password,#login","description":"password_reset"}'
+#  method c cog Api_Engine 1 /passwordreset/{token}                                                              POST     Create
+#  method c cog Api_Engine 1 /passwordreset/{token}                                                              GET      Read
+#
+#resource c cog Api_Engine 1 /api                                                                                Api                '{"tag":"#api","description":"apis"}'
+#  method c cog Api_Engine 1 /api                                                                                GET       Read
+#resource c cog Api_Engine 1 /user/{user}/api                                                                    Api                '{"tag":"#api","description":"apis"}'
+#  method c cog Api_Engine 1 /user/{user}/api                                                                    POST      Create
+#  method c cog Api_Engine 1 /user/{user}/api                                                                    GET       Read  
+#resource c cog Api_Engine 1 /user/{user}/api/{api}                                                              Api                '{"tag":"#api","description":"apis"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}                                                              POST      Create
+#  method c cog Api_Engine 1 /user/{user}/api/{api}                                                              DELETE    Delete
+#
+#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    Version            '{"tag":"#version","description":"versioning"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    GET       Read
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    UPDATE    Update
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}                                                    DELETE    Delete
+#
+#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                           Resource           '{"tag":"#resource","description":"resources"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                           POST      Create
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource                                           GET       Read
+#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                Resource           '{"tag":"#resource","description":"resources"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                GET       Read
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                UPDATE    Update
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}                                DELETE    Delete
+#
+#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         Method             '{"tag":"#method","description":"methods"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         POST      Create
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method                         GET       Read
+#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                Method             '{"tag":"#method","description":"methods"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                GET       Read
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                UPDATE    Update
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}                DELETE    Delete
+#
+#resource c cog Api_Engine 1 /user/{user}/notification                                                           Notification       '{"tag":"#notifications","description":"notifications"}'
+#  method c cog Api_Engine 1 /user/{user}/notification                                                           GET       Read
+#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                       Notification       '{"tag":"#notifications","description":"notifications"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/notification                                       GET       Read
+#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                   Notification       '{"tag":"#notifications","description":"notifications"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification                   GET       Read
+#resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification   Notification       '{"tag":"#notifications","description":"notifications"}'
+#  method c cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification   GET       Read
+#
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation                                     Representation     '{"tag":"#list,#representation,#representations","description":"list_representations"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation                                     Representation     '{"tag":"#create,#representation","description":"create_a_representation"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#view,#inspect,#representation","description":"obtain_representation_details"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#modify,#representation","description":"modify_a_representation"}'
 #resource c cog Api_Engine 1 /user/{user}/api/{api}/{version}/representation/{representation}                    Representation     '{"tag":"#delete,#representation","description":"delete_a_representation"}'
-
+#
 # METHODS
-
+#
 # TODO: Multiple methods per resource.
