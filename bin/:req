@@ -25,21 +25,29 @@ req_mandatory() {
     while [ "${i}" != "${len}" ]; do
         array_get "__args__m" $i; local k=$__
         array_get "__cmdline" $i; local v=$__
-        # FIX tidy this muck up
-        # FIX encode in URL or PAYLOAD ... not both
-        string_contains ${__url} "#${k}"
+        string_startswith ${k} "@"
         if [ "$__" = "true" ]; then
-            eval _${k}_=${v}
+            if [ "${json}" != "{}" ]; then
+                bomb_fail "argument ${k} is about to overwrite json with file"
+            fi
+            json="${v}"
         else
-            string_contains ${__url} "=${k}"
+            # FIX tidy this muck up
+            # FIX encode in URL or PAYLOAD ... not both
+            string_contains ${__url} "#${k}"
             if [ "$__" = "true" ]; then
-                # FIX will need to tidy this indirection gumf
-                . ${CRUSTY_INDIRECTS}
-                indirects ${k} ${v}
-                v=$__
                 eval _${k}_=${v}
             else
-                json_add "${json}" "${k}" "${v}"; json=$__
+                string_contains ${__url} "=${k}"
+                if [ "$__" = "true" ]; then
+                    # FIX will need to tidy this indirection gumf
+                    . ${CRUSTY_INDIRECTS}
+                    indirects ${k} ${v}
+                    v=$__
+                    eval _${k}_=${v}
+                else
+                    json_add "${json}" "${k}" "${v}"; json=$__
+                fi
             fi
         fi
         math_inc "i"
@@ -50,12 +58,18 @@ req_mandatory() {
 req_optional() {
     local json
     # FIX the following should be encapsulated in :param
-    array_last "__cmdline"; json=$__
-    json_is "${json}"
+    array_last "__args__m"
+    string_startswith "$__" "@"
     if [ "$__" = "true" ]; then
-        __=${json}
-    else
         __="{}"
+    else
+        array_last "__cmdline"; json=$__
+        json_is "${json}"
+        if [ "$__" = "true" ]; then
+            __=${json}
+        else
+            __="{}"
+        fi
     fi
     # FIX validate each optional field
 }

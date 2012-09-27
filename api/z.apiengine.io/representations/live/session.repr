@@ -1,0 +1,18 @@
+{
+    "def": "http://z.apiengine.io/user/cogs/api/apiengine/1/representation/session",
+    "type": "object",
+    "meta": [
+        {
+            "name": "login",
+            "meta": {
+                "type": "string"
+            }
+        },
+        {
+            "name": "password",
+            "meta": {
+                "type": "string"
+            }
+        }
+    ]
+}

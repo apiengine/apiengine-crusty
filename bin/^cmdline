@@ -17,11 +17,10 @@ cmdline_resolve() {
                 bomb_fail "file ${fn} does not exist"
             fi
             v=`cat ${fn} | tr '\n' ' ' | sed 's/ //g'`
-            val_poke __cmdline_$i ${v} 
+            val_poke __cmdline_$i "${v}" 
         fi
         math_inc "i"
     done
-
     popd > /dev/null
 }
 

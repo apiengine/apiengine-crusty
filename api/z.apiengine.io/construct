@@ -15,6 +15,8 @@ resource c cog Api_Engine 1 /session                                            
 resource c cog Api_Engine 1 /session/{session}                                                                  Session            '{"tag":"#session,#login","description":"login_and_system_management"}'
   method c cog Api_Engine 1 /session/{session}                                                                  DELETE   Delete
 
+representation c cog Api_Engine 1 @representations/live/session.repr
+
 #resource c cog Api_Engine 1 /user                                                                               User               '{"tag":"#user","description":"user_management"}'
 #  method c cog Api_Engine 1 /user                                                                               POST     Create
 #  method c cog Api_Engine 1 /user                                                                               GET      Read

@@ -42,7 +42,11 @@ line_cmdline_match() {
         array_last "__cmdline"
         json_is "$__"
         if [ "$__" = "true" ]; then
-            math_inc "alen"    
+            array_last "__args__m"
+            string_startswith $__ "@"
+            if [ "$__" = "false" ]; then
+                math_inc "alen"    
+            fi
         fi
     fi
     if [ ${alen} = ${clen} ]; then

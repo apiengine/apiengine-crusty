@@ -9,5 +9,5 @@ val_peek_possibly_empty() {
 }
 
 val_poke() {
-    eval $1="$2"
+    eval $1=\'"$2"\'
 }
