@@ -26,6 +26,7 @@ if [ ! -d $CRUSTY_DEPS/jshon ]; then
     echo "installing jshon..."
     mkdir -p $CRUSTY_DEPS; cd $CRUSTY_DEPS
     curl http://kmkeen.com/jshon/jshon.tar.gz |  tar zxf -
+    ln -s jshon-* jshon
     cd jshon
     export C_INCLUDE_PATH=$CRUSTY_DEPS/jansson/src
     export LIBRARY_PATH=$CRUSTY_DEPS/jansson/src/.libs
