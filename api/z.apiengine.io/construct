@@ -4,18 +4,20 @@
 
     user c cog cog@apiengine.io orange                                                                                             '{"publicize":"true","name":"The_Big_Cog","url":"http://apiengine.io/spinning/cogs"}'
 
-     api c cog Api_Engine false                                                                                                    '{"version":{"baseurl":"http://apiengine.io/cog/","label":"0.7","index":"some_markdown_for_v0.7"}}'
+#     api c cog Api_Engine false                                                                                                    '{"version":{"baseurl":"http://apiengine.io/cog/","label":"0.7","index":"some_markdown_for_v0.7"}}'
+#
+#resource c cog Api_Engine 1 /status                                                                             Status             '{"tag":"#status","description":"general_system_status"}'
+#  method c cog Api_Engine 1 /status                                                                             GET      Read
+#
+#resource c cog Api_Engine 1 /session                                                                            Session            '{"tag":"#session,#login","description":"login_and_system_management"}'
+#  method c cog Api_Engine 1 /session                                                                            POST     Create
+#  method c cog Api_Engine 1 /session                                                                            GET      Read
+#resource c cog Api_Engine 1 /session/{session}                                                                  Session            '{"tag":"#session,#login","description":"login_and_system_management"}'
+#  method c cog Api_Engine 1 /session/{session}                                                                  DELETE   Delete
+#
+#representation c cog Api_Engine 1 @representations/live/session.repr
 
-resource c cog Api_Engine 1 /status                                                                             Status             '{"tag":"#status","description":"general_system_status"}'
-  method c cog Api_Engine 1 /status                                                                             GET      Read
 
-resource c cog Api_Engine 1 /session                                                                            Session            '{"tag":"#session,#login","description":"login_and_system_management"}'
-  method c cog Api_Engine 1 /session                                                                            POST     Create
-  method c cog Api_Engine 1 /session                                                                            GET      Read
-resource c cog Api_Engine 1 /session/{session}                                                                  Session            '{"tag":"#session,#login","description":"login_and_system_management"}'
-  method c cog Api_Engine 1 /session/{session}                                                                  DELETE   Delete
-
-representation c cog Api_Engine 1 @representations/live/session.repr
 
 #resource c cog Api_Engine 1 /user                                                                               User               '{"tag":"#user","description":"user_management"}'
 #  method c cog Api_Engine 1 /user                                                                               POST     Create

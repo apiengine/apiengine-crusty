@@ -1,0 +1,57 @@
+#!/bin/sh -e
+
+  status r
+
+    user c github dudlets@github.com gitfarked                                            '{"publicize":"true","name":"The_Git_Weensters","url":"http://github.com"}'
+     api c github IssueComments false                                                     '{"version":{"baseurl":"http://developer.github.com/","label":"v3","index":"3"}}'
+resource c github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments Comments '{"tag":"#comments","description":"List_comments_on_an_issue"}'
+  method c github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments GET Read '{"description":"___NOT_SET___"}'
+#
+#
+#
+ resbody u github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments GET
+#
+#respi r github
+ource c cog Api_Engine 1 /status                                                                             Status             '{"tag":"#status","description":"general_system_status"}'
+#  method c cog Api_Engine 1 /status                                                                             GET      Read
+#
+#resource c cog Api_Engine 1 /session                                                                            Session            '{"tag":"#session,#login","description":"login_and_system_management"}'
+#  method c cog Api_Engine 1 /session                                                                            POST     Create
+#  method c cog Api_Engine 1 /session                                                                            GET      Read
+#resource c cog Api_Engine 1 /session/{session}                                                                  Session            '{"tag":"#session,#login","description":"login_and_system_management"}'
+#  method c cog Api_Engine 1 /session/{session}                                                                  DELETE   Delete
+#
+#representation c cog Api_Engine 1 @representations/live/session.repr
+
+
+
+     api r github
+ version r github IssueComments 1
+resource r github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments
+  method r github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments GET
+#resource r cog Api_Engine 1 /session
+#  method r cog Api_Engine 1 /session                                                                                                   POST
+#  method r cog Api_Engine 1 /session                                                                                                   GET
+#resource r cog Api_Engine 1 /session/{session}
+#  method r cog Api_Engine 1 /session/{session}                                                                                         DELETE
+
+  status r
+ session c github gitfarked
+
+#  method d cog Api_Engine 1 /status                                                                                                    GET
+#resource d cog Api_Engine 1 /status
+#  method d cog Api_Engine 1 /session                                                                                                   POST
+#  method d cog Api_Engine 1 /session                                                                                                   GET
+#resource d cog Api_Engine 1 /session
+#  method d cog Api_Engine 1 /session/{session}                                                                                         DELETE
+#resource d cog Api_Engine 1 /session/{session}
+#resource d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/notification           
+#  method d cog Api_Engine 1 /user/{user}/api/{api}/{version}/resource/{resource}/method/{method}/notification                          GET
+  method d github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments GET
+resource d github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments
+
+ version d github IssueComments 1
+     api d github IssueComments
+
+    user d github
+    user r github
