@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+  status r
+ session c github gitfarked
+
+     api r github
+ version r github IssueComments 1
+resource r github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments
+  method r github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments GET
