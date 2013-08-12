@@ -1,0 +1,31 @@
+#!/bin/sh -e
+
+status r
+
+user c               \
+  github             \
+  dudlets@github.com \
+  gitfarked          \
+  '{"publicize":"true","name":"The_Git_Weensters","url":"http://github.com"}'
+
+api c                  \
+  github IssueComments \
+  false                \
+  '{"version":{"baseurl":"http://developer.github.com/","label":"v3","index":"3"}}'
+
+resource c                                       \
+  github                                         \
+  IssueComments                                  \
+  1                                              \
+  /repos/{owner}/{repo}/issues/{number}/comments \
+  Comments \
+  '{"tag":"#comments","description":"List_comments_on_an_issue"}'
+
+method c                                         \
+  github                                         \
+  IssueComments                                  \
+  1                                              \
+  /repos/{owner}/{repo}/issues/{number}/comments \
+  GET                                            \
+  Read                                           \
+  '{"description":"___NOT_SET___"}'
