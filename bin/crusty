@@ -54,7 +54,7 @@ http_payload
 #echo LINE: ${__line}
 #echo PAYLOAD: ${__payload}
 #echo URL: ${__url}
-echo ${__line} ${__url} ${__payload} >&2
+#...echo ${__line} ${__url} ${__payload} >&2
 
 # FIX move into function
 ___="\
@@ -67,7 +67,7 @@ ${CRUSTY_DATA:-} \
 -o ${CRUSTY_RESPONSE} \
 -w %{http_code} \
 ${CRUSTY_PROTOCOL}://${CRUSTY_HOST}:${CRUSTY_PORT}${__url}"
-echo "$___" >&2
+#...echo "$___" >&2
 eval "$___"
 
 response_get

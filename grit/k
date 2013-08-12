@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var jp = require('jsonpath');
+var path = process.argv[2];
+var input = fs.readFileSync('/dev/stdin').toString();
+var json = JSON.parse(input);
+
+var p = function () {
+  return jp.eval(json, path);
+
+};
+
+var x = p();
+
+console.log(x)
