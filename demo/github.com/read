@@ -1,9 +1,36 @@
-#!/bin/sh -e
+#!/bin/sh -euf
 
-  status r
- session c github gitfarked
+log() {
+  /bin/echo -n "$1"
+}
 
-     api r github
- version r github IssueComments 1
-resource r github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments
-  method r github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments GET
+echo "demo: github user"
+
+log "status: "
+status r \
+  | k "$.status" \
+  | s
+
+log "login: "
+session c github gitfarked \
+  | k "$.id" \
+  | s
+
+log "apis: "
+api r github \
+  | k "$.*.name"
+
+log "version: "
+version r github IssueComments 1 \
+  | k "$.label" \
+  | s
+
+log "resource: "
+resource r github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments \
+  | k "$.resource" \
+  | s
+
+log "method: "
+method r github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments GET \
+  | k "$.method" \
+  | s
