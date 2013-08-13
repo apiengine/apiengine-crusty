@@ -10,5 +10,5 @@ resource d github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments
  version d github IssueComments 1
      api d github IssueComments
 
-    user d github
+ account d github
     user r github
