@@ -2,11 +2,10 @@
 
 status r
 
-user c               \
+account c            \
   github             \
   dudlets@github.com \
-  gitfarked          \
-  '{"publicize":"true","name":"The_Git_Weensters","url":"http://github.com"}'
+  gitfarked
 
 api c                  \
   github IssueComments \

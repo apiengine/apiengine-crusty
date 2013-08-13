@@ -4,11 +4,13 @@
  session        c      login password                                           /session                                                                         201       /session/{id}           {csrf id login*}
  session        r                                                               /session                                                                         200  *                            {csrf id login*}
 #session        d      session                                                  /session/#session SPECIAL CASE THE SESSION IS ACTUALLY THE ID IN THE SESSION FILE200  *                            {csrf}
- user           c      login email password publicize* name* url*               /user                                                                            201       /user/{user}            {csrf login id}
+ user           c      username email password                                  /user                                                                            201       /user/{user}            {csrf login id}
+#account        c      username email password                                  /user/#username/account                                                          201       /user/{user}            {csrf login id}
  user           r                                                               /user                                                                            200                               {login gravatar epoch name* email* publicize* url*}
  user           r      login                                                    /user/#login                                                                     200                               {login gravatar epoch name* email* publicize* url*}
  user           u      login email publicize password* name* url*               /user/#login                                                                     204  *                        
- user           d      login                                                    /user/#login                                                                     204
+# DEPRECATED user           d      login                                                    /user/#login                                                                     204
+ account        d      username                                                 /user/#username/account                                                          204
 #password       c      email                                                    /passwordreset                                                                   204                           
  password       r      key                                                      /passwordreset/#key                                                              200                               {token expiry}
 #password       c      key password                                             /passwordreset/#key                                                              204                                
