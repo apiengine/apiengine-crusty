@@ -1,0 +1,5 @@
+ user           c      login email password publicize* name* url*               /user                                                                            201       /user/{user}            {csrf login id}
+ user           r                                                               /user                                                                            200                               {login gravatar epoch name* email* publicize* url*}
+ user           r      login                                                    /user/#login                                                                     200                               {login gravatar epoch name* email* publicize* url*}
+ user           u      login email publicize password* name* url*               /user/#login                                                                     204  *                        
+ user           d      login                                                    /user/#login                                                                     204
