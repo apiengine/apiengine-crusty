@@ -2,10 +2,12 @@
 
 status r
 
-account c            \
+user c               \
   github             \
   dudlets@github.com \
   gitfarked
+
+# TODO modify some account yumminess...
 
 api c                  \
   github IssueComments \
