@@ -1,2 +1,6 @@
 #!/bin/sh -euf
-sed "s_\[ '__" | sed "s_' \]__"
+cat \
+  | sed "s_\[ __" \
+  | sed "s_ \]__" \
+  | sed "s_^'__"  \
+  | sed "s_'\$__" 

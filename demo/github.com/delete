@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -euf
 
   status r
 
@@ -10,5 +10,8 @@ resource d github IssueComments 1 /repos/{owner}/{repo}/issues/{number}/comments
  version d github IssueComments 1
      api d github IssueComments
 
- account d github
+ account d github \
+   | k "$.errors" \
+   | s
+
     user r github

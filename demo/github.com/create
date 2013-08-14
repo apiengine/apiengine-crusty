@@ -1,18 +1,22 @@
-#!/bin/sh -e
+#!/bin/sh -euf
 
 status r
 
-user c               \
-  github             \
-  dudlets@github.com \
-  gitfarked
+user c                 \
+    github             \
+    dudlets@github.com \
+    gitfarked          \
+  | k "$.username"     \
+  | s
 
 # TODO modify some account yumminess...
 
 api c                  \
   github IssueComments \
   false                \
-  '{"version":{"baseurl":"http://developer.github.com/","label":"v3","index":"3"}}'
+  '{"version":{"baseurl":"http://developer.github.com/","label":"v3","index":"3"}}' \
+  | k "$.name"         \
+  | s
 
 resource c                                       \
   github                                         \
@@ -30,3 +34,12 @@ method c                                         \
   GET                                            \
   Read                                           \
   '{"description":"___NOT_SET___"}'
+
+resbody u \
+  github                                         \
+  IssueComments                                  \
+  1                                              \
+  /repos/{owner}/{repo}/issues/{number}/comments \
+  GET                                            \
+  Read                                           \
+  @body
