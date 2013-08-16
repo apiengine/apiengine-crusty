@@ -1,0 +1,7 @@
+#!/bin/sh -euf
+
+. __inc
+
+check_args $# 1 "<username>"
+
+_user_show $*

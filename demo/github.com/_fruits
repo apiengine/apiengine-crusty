@@ -26,5 +26,7 @@ _user_create() {
 }
 
 _user_show() {
-  usage "not implemented"
+  local username=$1
+
+  user r ${username}
 }
