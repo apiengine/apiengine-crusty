@@ -1,6 +1,25 @@
 #!/bin/sh -euf
 
+_status() {
+  status r
+}
+
+_user() {
+  local username=$1
+  local email=$2
+  local password=$3
+
+  user c                 \
+      ${username}        \
+      ${email}           \
+      ${password}        \
+    | k "$.username"     \
+    | s
+}
+
+
 status r
+
 
 # TODO modify some account yumminess...
 
