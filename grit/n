@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var input = fs.readFileSync('/dev/stdin').toString();
+var json = JSON.parse(input);
+
+console.log(json)
