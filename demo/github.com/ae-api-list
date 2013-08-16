@@ -1,0 +1,9 @@
+#!/bin/sh -euf
+
+. __inc
+
+# TODO [(user,api_name)] instead of [api_name]
+
+check_args $# 0 "no args"
+
+_api_list

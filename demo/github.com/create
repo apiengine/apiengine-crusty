@@ -1,10 +1,11 @@
 #!/bin/sh -euf
 
-api c                  \
-  github IssueComments \
-  false                \
+api c             \
+  github          \
+  IssueComments   \
+  false           \
   '{"version":{"baseurl":"http://developer.github.com/","label":"v3","index":"3"}}' \
-  | k "$.name"         \
+  | k "$.name"    \
   | s
 
 resource c                                       \

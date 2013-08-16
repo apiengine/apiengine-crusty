@@ -40,3 +40,9 @@ _login() {
     | k "$.id" \
     | s
 }
+
+_api_list() {
+  api r \
+    | k "$.*.name" \
+    | s
+}
