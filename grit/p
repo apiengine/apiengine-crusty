@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var input = fs.readFileSync('/dev/stdin').toString();
+var json = JSON.parse(input);
+
+function smack_me(json_value) {
+  var k, result;
+
+  if (json_value === null) { return null; }
+
+  if (json_value instanceof Array) {
+    result = [];
+    for (i=0; i<json_value.length; ++i) {
+      result.push(smack_me(json_value[i]));
+    }
+    return result;
+  }
+
+  switch (typeof(json_value)) {
+    case "object":
+      result = {};
+      for (k in json_value) {
+        result[k] = smack_me(json_value[k]);
+      }
+      return result;
+    default:
+      return "_";
+  }
+  return json;
+}
+
+var p = function () {
+  return smack_me(json);
+};
+
+var x = p();
+
+console.log(x)
