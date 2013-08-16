@@ -28,5 +28,6 @@ _user_create() {
 _user_show() {
   local username=$1
 
-  user r ${username}
+  user r ${username} \
+    | n
 }

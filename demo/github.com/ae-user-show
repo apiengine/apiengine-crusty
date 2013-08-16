@@ -2,6 +2,8 @@
 
 . __inc
 
+# TODO: show only main parts.  Include a --detail option.
+
 check_args $# 1 "<username>"
 
 _user_show $*

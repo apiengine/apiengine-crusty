@@ -1,9 +1,5 @@
 #!/bin/sh -euf
 
-status r
-
-# TODO modify some account yumminess...
-
 api c                  \
   github IssueComments \
   false                \
