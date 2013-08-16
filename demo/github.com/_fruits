@@ -6,7 +6,13 @@ _status() {
     | s
 }
 
-_user() {
+_user_list() {
+  user r \
+    | k "$.[*].username" \
+    | s
+}
+
+_user_create() {
   local username=$1
   local email=$2
   local password=$3
@@ -17,4 +23,8 @@ _user() {
       ${password}        \
     | k "$.username"     \
     | s
+}
+
+_user_show() {
+  usage "not implemented"
 }
