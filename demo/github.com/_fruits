@@ -1,7 +1,9 @@
 #!/bin/sh -euf
 
 _status() {
-  status r
+  status r \
+    | k "$.status" \
+    | s
 }
 
 _user() {
@@ -16,42 +18,3 @@ _user() {
     | k "$.username"     \
     | s
 }
-
-
-status r
-
-
-# TODO modify some account yumminess...
-
-api c                  \
-  github IssueComments \
-  false                \
-  '{"version":{"baseurl":"http://developer.github.com/","label":"v3","index":"3"}}' \
-  | k "$.name"         \
-  | s
-
-resource c                                       \
-  github                                         \
-  IssueComments                                  \
-  1                                              \
-  /repos/{owner}/{repo}/issues/{number}/comments \
-  Comments \
-  '{"tag":"#comments","description":"List_comments_on_an_issue"}'
-
-method c                                         \
-  github                                         \
-  IssueComments                                  \
-  1                                              \
-  /repos/{owner}/{repo}/issues/{number}/comments \
-  GET                                            \
-  Read                                           \
-  '{"description":"___NOT_SET___"}'
-
-resbody u \
-  github                                         \
-  IssueComments                                  \
-  1                                              \
-  /repos/{owner}/{repo}/issues/{number}/comments \
-  GET                                            \
-  Read                                           \
-  @body

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+usage() {
+    local msg=$1
+    echo "usage: `basename $0` ${msg}"
+    exit 1
+}
+
+check_args() {
+    local actual=$1
+    local required=$2
+    local msg=$3
+
+    [ ${actual} == ${required} ] || usage "${msg}"
+}

@@ -67,7 +67,7 @@ ${CRUSTY_DATA:-} \
 -o ${CRUSTY_RESPONSE} \
 -w %{http_code} \
 ${CRUSTY_PROTOCOL}://${CRUSTY_HOST}:${CRUSTY_PORT}${__url}"
-echo "$___" >&2
+#...echo "$___" >&2
 eval "$___"
 
 response_get

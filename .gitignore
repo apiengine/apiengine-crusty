@@ -1,3 +1,4 @@
 api/z.apiengine.io/gen
 node_modules
 *.swp
+gen/
