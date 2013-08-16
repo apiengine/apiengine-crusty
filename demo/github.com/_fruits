@@ -31,3 +31,12 @@ _user_show() {
   user r ${username} \
     | n
 }
+
+_login() {
+  local username=$1
+  local password=$2
+  
+  session c ${username} ${password} \
+    | k "$.id" \
+    | s
+}

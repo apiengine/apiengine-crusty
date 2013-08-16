@@ -1,0 +1,7 @@
+#!/bin/sh -euf
+
+. __inc
+
+check_args $# 2 "<username|email> <password>"
+
+_login $*
