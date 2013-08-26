@@ -9,6 +9,8 @@
  user           r                                                               /user                                                                            200                               {login gravatar epoch name* email* publicize* url*}
  user           r      login                                                    /user/#login                                                                     200                               {login gravatar epoch name* email* publicize* url*}
  user           u      login email publicize password* name* url*               /user/#login                                                                     204  *                        
+ apikey         c      user                                                     /user/#user/apikey                                                               200
+ apikey         r      user                                                     /user/#user/apikey                                                               200
 # DEPRECATED user           d      login                                                    /user/#login                                                                     204
  account        d      username                                                 /user/#username/account                                                          200
 #password       c      email                                                    /passwordreset                                                                   204                           
